@@ -6,21 +6,89 @@
 //
 
 import UIKit
+import CoreLocation
+
+struct StoreOrderData {
+    static var histories: [HistoryOrder] = []
+}
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
+    static let shared: AppDelegate = {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Cannot cast to AppDelegate.")
+        }
+        return delegate
+    }()
+    
+    
     var window: UIWindow?
+    
+    lazy var locationManager = CLLocationManager()
+    let mapsViewController = MapViewController()
+    
+    func enableLocationService(){
+        CLLocationManager.locationServicesEnabled()
+    }
+    func startStandardLocationService() {
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.distanceFilter = 500
+        locationManager.startUpdatingLocation()
+    }
+    func stopStandarLocationService() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    func startSignificanChangeLocationService() {
+        locationManager.startMonitoringSignificantLocationChanges()
+    }
+    
+    func stopSignificanChangeLocationService() {
+        locationManager.stopMonitoringSignificantLocationChanges()
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-        let homeVC = HomeViewController()
-        let navi = UINavigationController(rootViewController: homeVC)
-        window?.rootViewController = navi
+        let homeVC = TabbarViewController()
+        window?.rootViewController = homeVC
         window?.makeKeyAndVisible()
         return true
     }
+    
+    func configLocationService() {
+        locationManager.delegate = self
+        let status = locationManager.authorizationStatus
+        switch status {
+            case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("USER using app")
+            break
+        case .denied:
+            let title = "Request location service"
+            let message = "Please go to Setting > Privacy > Location service to turn on location service for \"Map demo\""
+            showAlert(title: title, message: message)
+        case .restricted:
+            break
+        }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        alertVC.addAction(action)
+        window?.rootViewController?.present(alertVC, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let lastLocation = locations.last else {return}
+        print("timestampe \(lastLocation.timestamp)")
+        print("lat \(lastLocation.coordinate.latitude)")
+        print("lng \(lastLocation.coordinate.longitude)")
+    }
+
 }
 

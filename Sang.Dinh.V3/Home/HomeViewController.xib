@@ -4,12 +4,13 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Sang_Dinh_V3" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="BEd-bp-2qo" id="JtT-QY-LAF"/>
+                <outlet property="tableView" destination="sDK-QK-0L3" id="dhV-sG-46m"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +18,32 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sDK-QK-0L3">
+                    <rect key="frame" x="0.0" y="126" width="414" height="736"/>
+                    <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                </tableView>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-bp-2qo">
+                    <rect key="frame" x="48" y="62" width="318" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="jxz-s3-B9d"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemGreenColor"/>
-            <point key="canvasLocation" x="139" y="84"/>
+            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sDK-QK-0L3" secondAttribute="trailing" id="1kf-eE-upE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BEd-bp-2qo" secondAttribute="trailing" constant="48" id="4Mf-yx-YCy"/>
+                <constraint firstItem="sDK-QK-0L3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NEl-7i-gvP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sDK-QK-0L3" secondAttribute="bottom" id="eGw-6b-e6B"/>
+                <constraint firstItem="BEd-bp-2qo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="gl4-XG-MBU"/>
+                <constraint firstItem="BEd-bp-2qo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="18" id="mT4-G4-820"/>
+                <constraint firstItem="sDK-QK-0L3" firstAttribute="top" secondItem="BEd-bp-2qo" secondAttribute="bottom" constant="28" id="v39-BO-3pe"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>
