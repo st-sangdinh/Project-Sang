@@ -7,13 +7,20 @@
 
 import UIKit
 
-class BookingHistoryTableViewCell: UITableViewCell {
+protocol BookingHistoryTableViewCellDelegate: AnyObject {
+    func bookingTable(subView: BookingHistoryTableViewCell)
+}
 
+class BookingHistoryTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var contenView: UIView!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var nameLable: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    
+    
+    weak var delegate: BookingHistoryTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,6 +50,6 @@ class BookingHistoryTableViewCell: UITableViewCell {
     }
     
     @IBAction func buttonCheck(_ sender: Any) {
-        print("Check")
+        delegate?.bookingTable(subView: self)
     }
 }

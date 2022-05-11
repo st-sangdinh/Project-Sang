@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-struct StoreOrderData {
+class StoreOrderData {
     static var histories: [HistoryOrder] = []
 }
 

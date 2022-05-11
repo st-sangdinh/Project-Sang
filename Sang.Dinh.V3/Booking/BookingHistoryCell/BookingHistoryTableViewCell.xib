@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9VA-98-t1v">
                         <rect key="frame" x="18" y="0.0" width="331" height="88"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blog-1" translatesAutoresizingMaskIntoConstraints="NO" id="6ZD-rJ-kkZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image=" " translatesAutoresizingMaskIntoConstraints="NO" id="6ZD-rJ-kkZ">
                                 <rect key="frame" x="12" y="12" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="2KW-7i-ROy"/>
@@ -104,7 +104,7 @@ Chittagong</string>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="blog-1" width="370" height="240"/>
+        <image name=" " width="128" height="128"/>
         <image name="place" width="9" height="12"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

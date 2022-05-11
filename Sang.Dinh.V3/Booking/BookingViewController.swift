@@ -40,6 +40,19 @@ extension BookingViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookingHistoryTableViewCell", for: indexPath) as? BookingHistoryTableViewCell
         let menuHistory = StoreOrderData.histories[indexPath.row]
         cell?.setData(img: menuHistory.img , name: menuHistory.nameStore, address: menuHistory.address)
+        cell?.delegate = self
         return cell ?? UITableViewCell()
     }
 }
+
+extension BookingViewController:  BookingHistoryTableViewCellDelegate {
+    func bookingTable(subView: BookingHistoryTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: subView) else { return }
+        let vm = BookingViewModel().makeVC(indexPath: indexPath)
+        let vc = DetailHistoryViewController(viewModel: vm)
+
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.present(vc, animated: true)
+    }
+}
+

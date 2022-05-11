@@ -9,26 +9,26 @@ import Foundation
 
 
 struct ListMenu {
-    var id: Int
-    var name: String
-    var address: Address
-    var photos: [String]
-    var menu: [Menu]
+    var id: Int = 0
+    var name: String = ""
+    var address: Address = Address()
+    var photos: [String] = []
+    var menu: [Menu] = []
 }
 
 struct Address {
-    var lat: Double
-    var lng: Double
-    var address: String
+    var lat: Double = 0
+    var lng: Double = 0
+    var address: String = ""
 }
 
 struct Menu {
-    var id: Int
-    var type: Int
-    var name: String
-    var description: String
-    var price: Int
-    var imageUrl: String
-    var number: Int
-    var discount: Int
+    var id: Int = 0
+    var type: Int = 0
+    var name: String = ""
+    var description: String = ""
+    var price: Int = 0
+    var imageUrl: String = ""
+    var number: Int = 0
+    var discount: Int = 0
 }

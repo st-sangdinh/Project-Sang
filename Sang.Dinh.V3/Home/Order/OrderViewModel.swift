@@ -37,9 +37,12 @@ extension OrderViewModel: OrderViewModelType {
     
     func saveHistoryOrder() {
         let item = ItemOrder(menuItem: listOrder , amout: number, notes: note)
-        let historyOrder = HistoryOrder(nameStore: nameStore, address: address, img: img, restaurantId: restaurantId, orderdDateTime: Date(), orderedItems: [item])
-        StoreOrderData.histories.append(historyOrder)
-        
+        if let index = StoreOrderData.histories.firstIndex(where: { $0.restaurantId == restaurantId }) {
+            StoreOrderData.histories[index].orderedItems.append(item)
+        } else {
+            let historyOrder = HistoryOrder(nameStore: nameStore, address: address, img: img, restaurantId: restaurantId, orderdDateTime: Date(), orderedItems: [item])
+            StoreOrderData.histories.append(historyOrder)
+        }
         
     }
     
