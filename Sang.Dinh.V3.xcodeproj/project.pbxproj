@@ -21,6 +21,12 @@
 		22397C7E2824BAFF00DD9D7A /* ListDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22397C7C2824BAFF00DD9D7A /* ListDetailsTableViewCell.xib */; };
 		22397C812824C7CE00DD9D7A /* DetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22397C802824C7CE00DD9D7A /* DetailsTableView.swift */; };
 		22397C832824C7FC00DD9D7A /* DetailsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22397C822824C7FC00DD9D7A /* DetailsTableView.xib */; };
+		22800EC4282CE39E00D99DF4 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22800EC2282CE39E00D99DF4 /* CartViewController.swift */; };
+		22800EC5282CE39E00D99DF4 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22800EC3282CE39E00D99DF4 /* CartViewController.xib */; };
+		22800EC9282CECFD00D99DF4 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22800EC7282CECFD00D99DF4 /* CartTableViewCell.swift */; };
+		22800ECA282CECFD00D99DF4 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22800EC8282CECFD00D99DF4 /* CartTableViewCell.xib */; };
+		22800ECC282CF44500D99DF4 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22800ECB282CF44500D99DF4 /* CartViewModel.swift */; };
+		22800ECE282E4BD600D99DF4 /* BookingTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22800ECD282E4BD500D99DF4 /* BookingTableViewModel.swift */; };
 		22A2513028193CE9003FF30B /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2512E28193CE9003FF30B /* BookingViewController.swift */; };
 		22A2513128193CE9003FF30B /* BookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A2512F28193CE9003FF30B /* BookingViewController.xib */; };
 		22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2513228193CF7003FF30B /* AccountViewController.swift */; };
@@ -92,6 +98,12 @@
 		22397C7C2824BAFF00DD9D7A /* ListDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		22397C802824C7CE00DD9D7A /* DetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableView.swift; sourceTree = "<group>"; };
 		22397C822824C7FC00DD9D7A /* DetailsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableView.xib; sourceTree = "<group>"; };
+		22800EC2282CE39E00D99DF4 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		22800EC3282CE39E00D99DF4 /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
+		22800EC7282CECFD00D99DF4 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		22800EC8282CECFD00D99DF4 /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
+		22800ECB282CF44500D99DF4 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		22800ECD282E4BD500D99DF4 /* BookingTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTableViewModel.swift; sourceTree = "<group>"; };
 		22A2512E28193CE9003FF30B /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		22A2512F28193CE9003FF30B /* BookingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingViewController.xib; sourceTree = "<group>"; };
 		22A2513228193CF7003FF30B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +219,26 @@
 			path = HeaderCell;
 			sourceTree = "<group>";
 		};
+		22800EC1282CE36600D99DF4 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				22800EC6282CECDC00D99DF4 /* CartViewCell */,
+				22800EC2282CE39E00D99DF4 /* CartViewController.swift */,
+				22800EC3282CE39E00D99DF4 /* CartViewController.xib */,
+				22800ECB282CF44500D99DF4 /* CartViewModel.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		22800EC6282CECDC00D99DF4 /* CartViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				22800EC7282CECFD00D99DF4 /* CartTableViewCell.swift */,
+				22800EC8282CECFD00D99DF4 /* CartTableViewCell.xib */,
+			);
+			path = CartViewCell;
+			sourceTree = "<group>";
+		};
 		22A25137281A73C6003FF30B /* CustomCell  */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +296,7 @@
 			children = (
 				22A25160281B74CC003FF30B /* BookingTableViewCell.swift */,
 				22A25161281B74CC003FF30B /* BookingTableViewCell.xib */,
+				22800ECD282E4BD500D99DF4 /* BookingTableViewModel.swift */,
 			);
 			path = BookingTableViewCell;
 			sourceTree = "<group>";
@@ -392,6 +425,7 @@
 		22A79B60281937B000673642 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				22800EC1282CE36600D99DF4 /* Cart */,
 				22EC211C282A10BA00118F42 /* Order */,
 				22EC21152829067E00118F42 /* SeeAll */,
 				22A2517528221582003FF30B /* Details Restaurant */,
@@ -542,6 +576,7 @@
 				22A2515E281AC0D9003FF30B /* TodayCollectionViewCell.xib in Resources */,
 				22A79B562819376900673642 /* Assets.xcassets in Resources */,
 				22A2517A282217E7003FF30B /* BookingHistoryTableViewCell.xib in Resources */,
+				22800EC5282CE39E00D99DF4 /* CartViewController.xib in Resources */,
 				22EC212C282B4CA400118F42 /* DetailHistoryTableViewCell.xib in Resources */,
 				2237854A2823CDD5009EAF47 /* DetailsViewController.xib in Resources */,
 				22A2516A281B81E8003FF30B /* HomeTableHeaderView.xib in Resources */,
@@ -549,6 +584,7 @@
 				22A2518A282222CC003FF30B /* Cell3TableViewCell.xib in Resources */,
 				22A25140281A7860003FF30B /* BannerCollectionViewCell.xib in Resources */,
 				22EC21102828A8C900118F42 /* DetailsCollectionViewCell.xib in Resources */,
+				22800ECA282CECFD00D99DF4 /* CartTableViewCell.xib in Resources */,
 				22A2513128193CE9003FF30B /* BookingViewController.xib in Resources */,
 				22A79B542819376700673642 /* Main.storyboard in Resources */,
 				22A2516F281BC61A003FF30B /* HomeNavigationBar.xib in Resources */,
@@ -580,7 +616,10 @@
 				22EC2126282B48F200118F42 /* DetailHistoryViewController.swift in Sources */,
 				22A25150281AAB28003FF30B /* TodayTableViewCell.swift in Sources */,
 				22A25162281B74CC003FF30B /* BookingTableViewCell.swift in Sources */,
+				22800ECE282E4BD600D99DF4 /* BookingTableViewModel.swift in Sources */,
+				22800EC4282CE39E00D99DF4 /* CartViewController.swift in Sources */,
 				2237853A28224D3B009EAF47 /* AccountViewModel .swift in Sources */,
+				22800ECC282CF44500D99DF4 /* CartViewModel.swift in Sources */,
 				223785462823C7A1009EAF47 /* UIImageViewExt.swift in Sources */,
 				22A79B6C28193C5500673642 /* TabbarViewController.swift in Sources */,
 				22A25181282222AF003FF30B /* Cell1TableViewCell.swift in Sources */,
@@ -593,6 +632,7 @@
 				22A25142281A89C1003FF30B /* HomeViewControllerModel.swift in Sources */,
 				22397C7D2824BAFF00DD9D7A /* ListDetailsTableViewCell.swift in Sources */,
 				22EC2130282B670C00118F42 /* DetailHistoryViewModel.swift in Sources */,
+				22800EC9282CECFD00D99DF4 /* CartTableViewCell.swift in Sources */,
 				22EC21142828C86600118F42 /* DetailsTableViewModel.swift in Sources */,
 				22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */,
 				22EC210F2828A8C900118F42 /* DetailsCollectionViewCell.swift in Sources */,

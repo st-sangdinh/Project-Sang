@@ -42,7 +42,7 @@ extension TodayTableViewCell: UICollectionViewDataSource{
         if viewModel.getListMenu().count > 4 {
             return 4
         } else {
-            return viewModel.getListMenu().count
+            return viewModel.getListMenu().first?.menu.count ?? 0
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -54,9 +54,8 @@ extension TodayTableViewCell: UICollectionViewDataSource{
               cell?.layer.shadowRadius = 1
               cell?.layer.shadowOpacity = 8
               cell?.layer.masksToBounds = false
-        let menu = viewModel.getMenu(at: indexPath)
-        
-        cell?.setData(avatar: menu.photos.first ?? "", name: menu.name, address: menu.address.address)
+        let menu = viewModel.getMenu(at: indexPath).menu[indexPath.item]
+        cell?.setData(avatar: menu.imageUrl, name: menu.name, price: menu.price)
 
         return cell ?? UICollectionViewCell()
     }

@@ -43,9 +43,11 @@ class BookingHistoryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setData(img: String, name: String, address: String) {
+    func setData(img: String?, name: String, address: String) {
         nameLable.text = name
-        imgView.downloaded(from: img)
+        if let img = img {
+            imgView.downloaded(from: img)
+        }
         addressLabel.text = address
     }
     

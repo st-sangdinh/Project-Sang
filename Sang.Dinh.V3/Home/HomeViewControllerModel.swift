@@ -15,9 +15,13 @@ protocol HomeViewModelType {
     
     func numberOfItem(in section: Int) -> Int
     
+    func getListMenu(in indexPath: IndexPath) -> Restaurant
+    
     func viewModelForBannerTabbleViewCell(in indexPath: IndexPath) -> BannerTableCellViewModel
     
     func viewModelForTodayTabbleViewCell(in indexPath: IndexPath) -> TodayTableViewModel
+    
+    func viewModelForBookingTabbleViewCell(in indexPath: IndexPath) -> BookingTableViewModel
     
     func viewModelForSeeAllViewController() -> SeeALLViewModel
     
@@ -36,7 +40,7 @@ enum HomeType: Int, CaseIterable {
 
 class HomeViewModel {
     var bannerImages: [UIImage?] = []
-    var listMenus: [ListMenu] = []
+    var listMenus: [Restaurant] = []
     var listPhoto: [String] = []
     
     init(){
@@ -46,6 +50,14 @@ class HomeViewModel {
 }
 
 extension HomeViewModel: HomeViewModelType {
+    func getListMenu(in indexPath: IndexPath) -> Restaurant {
+        listMenus[indexPath.row]
+    }
+    
+    func viewModelForBookingTabbleViewCell(in indexPath: IndexPath) -> BookingTableViewModel {
+        return BookingTableViewModel(listToday: listMenus)
+    }
+    
     func viewModelForSeeAllViewController() -> SeeALLViewModel {
         return SeeALLViewModel(listToday: listMenus)
     }
@@ -74,7 +86,7 @@ extension HomeViewModel: HomeViewModelType {
             return 1
         case .booking:
             // TODO
-            return 5
+            return listMenus.count
         }
     }
     
@@ -115,7 +127,7 @@ extension HomeViewModel: HomeViewModelType {
                             }
                         }
             
-                        let list = ListMenu(id: id , name: name , address: Address(lat: lat , lng: lng , address: ar), photos: photos, menu: menus)
+                        let list = Restaurant(id: id , name: name , address: Address(lat: lat , lng: lng , address: ar), photos: photos, menu: menus)
                         
                         self.listMenus.append(list)
                     }

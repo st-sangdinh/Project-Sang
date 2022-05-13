@@ -39,7 +39,7 @@ extension BookingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookingHistoryTableViewCell", for: indexPath) as? BookingHistoryTableViewCell
         let menuHistory = StoreOrderData.histories[indexPath.row]
-        cell?.setData(img: menuHistory.img , name: menuHistory.nameStore, address: menuHistory.address)
+        cell?.setData(img: menuHistory.img, name: menuHistory.nameStore, address: menuHistory.address)
         cell?.delegate = self
         return cell ?? UITableViewCell()
     }

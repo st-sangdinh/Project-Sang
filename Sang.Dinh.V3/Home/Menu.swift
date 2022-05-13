@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct ListMenu {
+struct Restaurant {
     var id: Int = 0
     var name: String = ""
     var address: Address = Address()

@@ -15,7 +15,8 @@ protocol OrderViewControllerDelegate: AnyObject {
 class OrderViewController: UIViewController {
     
     enum Action {
-        case getNumber(number: Int)
+        case addCart
+    
     }
 
     var viewModel: OrderViewModel?
@@ -76,7 +77,7 @@ class OrderViewController: UIViewController {
         priceLabel.text = "\(viewModel?.getMenu().price ?? 0) $ "
         descriptionLabel.text = viewModel?.getMenu().description
         imgView.downloaded(from: viewModel?.getMenu().imageUrl ?? "")
-        self.quantity = viewModel?.getMenu().number ?? 0
+//        self.quantity = viewModel?.getMenu().number ?? 0
     }
     
     @IBAction func plusButton(_ sender: Any) {
@@ -104,7 +105,9 @@ class OrderViewController: UIViewController {
         if quantity > 0 {
             dismiss(animated: true)
         }
-        viewModel.saveHistoryOrder()
+//        viewModel.saveHistoryOrder()
+        viewModel.saveCartData()
+        delegate?.viewController(supView: self, action: .addCart)
     }
 }
 

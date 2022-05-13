@@ -9,7 +9,9 @@ import UIKit
 
 class BookingTableViewCell: UITableViewCell {
 
- 
+    var viewModel: BookingTableViewModelType = BookingTableViewModel()
+    
+    
     @IBOutlet weak var contenView: UIView!
     @IBOutlet weak var imgBooking: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

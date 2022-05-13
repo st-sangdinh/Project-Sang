@@ -12,7 +12,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     
     
@@ -29,10 +29,10 @@ class TodayCollectionViewCell: UICollectionViewCell {
     
     }
     
-    func setData(avatar: String, name: String, address: String) {
+    func setData(avatar: String, name: String, price: Int) {
         img.downloaded(from: avatar)
         nameLabel.text = name
-        addressLabel.text = address
+        priceLabel.text = ("\(price) $")
     }
 
 }

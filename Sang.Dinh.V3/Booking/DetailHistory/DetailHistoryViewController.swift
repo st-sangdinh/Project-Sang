@@ -38,6 +38,11 @@ class DetailHistoryViewController: UIViewController {
         super.viewDidLoad()
         configTabelView()
         headerLabel.text = viewModel.resName
+        let date = viewModel.dateTime
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd - HH:mm a"
+        
+        dateLabel.text = dateFormatter.string(from: date!)
         viewTotal.layer.cornerRadius = 10
         viewModel.resMenu?.forEach({ item in
             totalPrice += item.amout * item.menuItem.price

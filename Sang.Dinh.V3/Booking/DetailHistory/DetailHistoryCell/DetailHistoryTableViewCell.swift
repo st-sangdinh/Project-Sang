@@ -40,6 +40,6 @@ class DetailHistoryTableViewCell: UITableViewCell {
         nameLabel.text = name
         priceLabel.text = "\(price) $"
         noteLabel.text = note
-        quantityLabel.text = "\(quantity)"
+        quantityLabel.text = "x\(quantity)"
     }
 }

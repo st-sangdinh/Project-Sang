@@ -27,24 +27,17 @@
                             <constraint firstAttribute="height" constant="98" id="24s-lL-XP7"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Chicken Biryani" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hk6-DR-Q4j">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Chicken Biryani" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hk6-DR-Q4j">
                         <rect key="frame" x="10" y="118" width="203" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place" translatesAutoresizingMaskIntoConstraints="NO" id="cGm-xK-zBb">
-                        <rect key="frame" x="10" y="142.5" width="18" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="18" id="YVM-lU-cFd"/>
-                            <constraint firstAttribute="height" constant="20" id="vep-cc-JH7"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbV-et-2il">
-                        <rect key="frame" x="30" y="142.5" width="173" height="33.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbV-et-2il">
+                        <rect key="frame" x="20" y="142.5" width="183" height="33.5"/>
                         <string key="text">Ambrosia Hotel &amp;
 Restaurant</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -61,26 +54,23 @@ Restaurant</string>
                 <constraint firstAttribute="bottom" secondItem="ag1-wk-4mL" secondAttribute="bottom" id="MBt-9w-btf"/>
                 <constraint firstItem="fBy-Is-IzS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="SNY-GX-biv"/>
                 <constraint firstAttribute="trailing" secondItem="tbV-et-2il" secondAttribute="trailing" constant="20" id="Uo3-z5-fKy"/>
-                <constraint firstItem="cGm-xK-zBb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="W0Q-ma-fAT"/>
-                <constraint firstItem="cGm-xK-zBb" firstAttribute="top" secondItem="hk6-DR-Q4j" secondAttribute="bottom" constant="5" id="avv-9s-B2A"/>
                 <constraint firstItem="hk6-DR-Q4j" firstAttribute="top" secondItem="fBy-Is-IzS" secondAttribute="bottom" constant="10" id="fIQ-82-t1j"/>
                 <constraint firstItem="hk6-DR-Q4j" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="hcv-X0-lO8"/>
                 <constraint firstItem="ag1-wk-4mL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jIp-zI-JeE"/>
                 <constraint firstItem="ag1-wk-4mL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tud-OQ-v5a"/>
-                <constraint firstItem="tbV-et-2il" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="ytD-wm-Yaf"/>
+                <constraint firstItem="tbV-et-2il" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="ytD-wm-Yaf"/>
             </constraints>
             <size key="customSize" width="223" height="196"/>
             <connections>
-                <outlet property="addressLabel" destination="tbV-et-2il" id="MCl-3L-d3U"/>
                 <outlet property="img" destination="fBy-Is-IzS" id="bbv-34-zxn"/>
                 <outlet property="nameLabel" destination="hk6-DR-Q4j" id="ADB-5I-LO1"/>
+                <outlet property="priceLabel" destination="tbV-et-2il" id="zUO-P3-xJW"/>
                 <outlet property="view" destination="ag1-wk-4mL" id="e0T-JE-iye"/>
             </connections>
             <point key="canvasLocation" x="261.59420289855075" y="127.23214285714285"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="place" width="9" height="12"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

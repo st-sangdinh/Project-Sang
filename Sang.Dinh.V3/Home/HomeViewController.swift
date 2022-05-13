@@ -136,8 +136,11 @@ extension HomeViewController: UITableViewDataSource {
             }
             return cell
         case .booking:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BookingTableViewCell", for: indexPath)
-                
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookingTableViewCell", for: indexPath) as? BookingTableViewCell else {
+                return UITableViewCell()
+            }
+            let menu = viewModel.getListMenu(in: indexPath)
+            cell.setData(img: menu.photos.first ?? "", name: menu.name , address: menu.address.address )
             return cell
         }
     }
@@ -193,8 +196,10 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("dsds")
-        
+
+            let vc = DetailsViewController(viewModel: self.viewModel.viewMdelForDetailsView(in: indexPath))
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

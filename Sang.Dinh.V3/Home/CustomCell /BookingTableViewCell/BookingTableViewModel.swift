@@ -1,29 +1,31 @@
 //
-//  TodataTableViewModel.swift
+//  BookingTableViewModel.swift
 //  Sang.Dinh.V3
 //
-//  Created by Rin Sang on 04/05/2022.
+//  Created by Rin Sang on 13/05/2022.
 //
 
 import Foundation
 
-protocol TodayTableViewModelType {
+
+protocol BookingTableViewModelType {
     func getListMenu() -> [Restaurant]
+    
     func getMenu(at indexPath: IndexPath) -> Restaurant
     
 
 }
 
 
-class TodayTableViewModel {
+class BookingTableViewModel {
     var listToday: [Restaurant] = []
     
     init(listToday: [Restaurant] = []) {
-        self.listToday = listToday 
+        self.listToday = listToday
     }
 }
 
-extension TodayTableViewModel: TodayTableViewModelType {
+extension BookingTableViewModel: BookingTableViewModelType {
     func getListMenu() -> [Restaurant] {
         listToday
     }
@@ -32,5 +34,4 @@ extension TodayTableViewModel: TodayTableViewModelType {
         listToday[indexPath.item]
     }
     
-   
 }

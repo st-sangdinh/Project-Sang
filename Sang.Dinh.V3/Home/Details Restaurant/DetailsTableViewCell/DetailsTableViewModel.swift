@@ -8,14 +8,14 @@
 import Foundation
 
 protocol DetailsTableViewModelType {
-    func getListMenu() -> ListMenu
+    func getListMenu() -> Restaurant
 }
 
 
 class DetailsTableViewModel {
-    var listDetails: ListMenu
+    var listDetails: Restaurant
     
-    init(listDetails: ListMenu) {
+    init(listDetails: Restaurant) {
         self.listDetails = listDetails
     }
 }
@@ -23,7 +23,7 @@ class DetailsTableViewModel {
 
 extension DetailsTableViewModel: DetailsTableViewModelType {
     
-    func getListMenu() -> ListMenu {
+    func getListMenu() -> Restaurant {
         listDetails
     }
 }

@@ -9,8 +9,11 @@ import Foundation
 
 protocol DetailsViewModelType {
     
-    func getListMenu() -> ListMenu
+    func getListMenu() -> Restaurant
 
+    func price() -> Int
+    
+    func quantity() -> Int
     
     func getMenu(at indexPath: IndexPath) -> Menu
     
@@ -18,21 +21,47 @@ protocol DetailsViewModelType {
     
     func viewModelForOrder(in indexPath: IndexPath) -> OrderViewModel
     
+    func viewModelForCart() -> CartViewModel
+    
+    func cartOrder() -> [HistoryOrder]
+    
 }
 
 
 class DetailsViewModel {
-    var listDetails: ListMenu
+    var listDetails: Restaurant
+    var totalPrice: Int = 0
+    var totalAmout: Int = 0
     
-    init(listDetails: ListMenu) {
+    init(listDetails: Restaurant) {
         self.listDetails = listDetails
     }
 }
 
 
 extension DetailsViewModel: DetailsViewModelType {
+    func quantity() -> Int {
+        totalAmout
+    }
+    
+    func price() -> Int{
+        CartData.carts.forEach{ item in
+            totalAmout += item.amout
+            totalPrice += item.amout * item.menuItem.price
+        }
+        return totalPrice
+    }
+    
+    func viewModelForCart() -> CartViewModel {
+        return CartViewModel( restaurantId: listDetails.id, nameStore: listDetails.name, address: listDetails.address.address, img: listDetails.photos.first ?? "", price: totalPrice)
+    }
+    
+    func cartOrder() ->  [HistoryOrder]{
+        return StoreOrderData.histories
+    }
+    
     func viewModelForOrder(in indexPath: IndexPath) -> OrderViewModel {
-        return OrderViewModel(listOrder: listDetails.menu[indexPath.row], restaurantId: listDetails.id, nameStore: listDetails.name, address: listDetails.address.address, img: listDetails.photos.first ?? "")
+        return OrderViewModel(listOrder: listDetails.menu[indexPath.row], restaurant: listDetails)
     }
     
     func viewModelForDetails(in indexPath: IndexPath) -> DetailsTableViewModel {
@@ -40,7 +69,7 @@ extension DetailsViewModel: DetailsViewModelType {
     }
     
     
-    func getListMenu() -> ListMenu {
+    func getListMenu() -> Restaurant {
         listDetails
     }
     
@@ -50,3 +79,6 @@ extension DetailsViewModel: DetailsViewModelType {
     }
     
 }
+
+
+
