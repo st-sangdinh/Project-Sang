@@ -68,7 +68,7 @@ final class HomeViewController: UIViewController {
         
             let button = UIButton(frame: CGRect(x: 30, y: 8, width: 174, height: 28))
             button.backgroundColor = .clear
-            button.addTarget(self, action: #selector(buttonTouch), for: .touchUpInside)
+//            button.addTarget(self, action: #selector(buttonTouch), for: .touchUpInside)
             titleContainer.addSubview(button)
             titleLabel.text = "Agrabad 435, Chittagong"
 
@@ -94,9 +94,9 @@ final class HomeViewController: UIViewController {
     @objc func imgAccButton() {
         
     }
-    @objc func buttonTouch() {
-        navigationController?.pushViewController(MapViewController(), animated: true)
-    }
+//    @objc func buttonTouch() {
+//        navigationController?.pushViewController(MapViewController(), animated: true)
+//    }
 
 }
 

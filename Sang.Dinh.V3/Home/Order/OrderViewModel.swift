@@ -36,7 +36,6 @@ extension OrderViewModel: OrderViewModelType {
 
     func saveCartData() {
         let item = ItemOrder(menuItem: listOrder, restaurant: restaurent, amout: number, notes: note)
-
         if let index = CartData.carts.firstIndex(where: { $0.menuItem.id == item.menuItem.id }) {
             CartData.carts[index] = item
         } else {
@@ -50,11 +49,12 @@ extension OrderViewModel: OrderViewModelType {
 }
 
 struct HistoryOrder {
+    var id: String
     var nameStore: String
     var address: String
     var img: String?
     var restaurantId: Int
-    var orderdDateTime: Date
+    var orderdDateTime: Date?
     var orderedItems: [ItemOrder] = []
 }
 

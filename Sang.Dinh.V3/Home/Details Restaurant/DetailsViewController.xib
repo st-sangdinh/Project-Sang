@@ -62,7 +62,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="axr-uM-lGL">
-                    <rect key="frame" x="0.0" y="106" width="414" height="756"/>
+                    <rect key="frame" x="0.0" y="106" width="414" height="790"/>
                     <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bot-Cy-me6">
@@ -152,11 +152,17 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="axr-uM-lGL" secondAttribute="trailing" id="La3-je-Q3i"/>
                 <constraint firstItem="y1H-vA-qfB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="MsP-jG-bz0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="y1H-vA-qfB" secondAttribute="trailing" id="NaD-sJ-Eou"/>
+                <constraint firstAttribute="bottom" secondItem="axr-uM-lGL" secondAttribute="bottom" id="Oj7-gD-w0D"/>
                 <constraint firstAttribute="bottom" secondItem="bot-Cy-me6" secondAttribute="bottom" id="Vgl-2k-yk6"/>
                 <constraint firstItem="y1H-vA-qfB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gCT-pX-Dcc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bot-Cy-me6" secondAttribute="trailing" id="ie7-J1-W92"/>
                 <constraint firstItem="y1H-vA-qfB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jZ7-Na-of8"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="7d8-vq-vEJ"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="137.68115942028987" y="69.642857142857139"/>
         </view>
     </objects>

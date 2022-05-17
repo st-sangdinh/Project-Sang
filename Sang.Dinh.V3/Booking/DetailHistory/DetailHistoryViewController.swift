@@ -43,6 +43,7 @@ class DetailHistoryViewController: UIViewController {
         dateFormatter.dateFormat = "YYYY-MM-dd - HH:mm a"
         
         dateLabel.text = dateFormatter.string(from: date!)
+        dateLabel.font = UIFont.boldSystemFont(ofSize: 14)
         viewTotal.layer.cornerRadius = 10
         viewModel.resMenu?.forEach({ item in
             totalPrice += item.amout * item.menuItem.price

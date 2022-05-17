@@ -45,6 +45,7 @@ class BookingTableViewCell: UITableViewCell {
     
     func setData(img: String, name: String, address: String) {
         nameLabel.text = name
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
         imgBooking.downloaded(from: img)
         addressLabel.text = address
     }

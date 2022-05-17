@@ -84,6 +84,18 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-Z2-nsO">
+                                <rect key="frame" x="337" y="302" width="111" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="BQv-iZ-eeO"/>
+                                    <constraint firstAttribute="width" constant="111" id="PeN-eq-KFW"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="locationButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3iA-z0-sRa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -102,8 +114,10 @@
                             <constraint firstItem="RlN-93-s4f" firstAttribute="top" secondItem="tem-00-GpN" secondAttribute="bottom" constant="24" id="Tuy-Sr-MML"/>
                             <constraint firstItem="kt1-fN-6yp" firstAttribute="leading" secondItem="pf8-pU-sv2" secondAttribute="leading" constant="32" id="VDx-69-OeU"/>
                             <constraint firstItem="GAI-xe-Ox9" firstAttribute="top" secondItem="pf8-pU-sv2" secondAttribute="top" constant="20" id="Xbb-mq-blC"/>
+                            <constraint firstItem="yZe-Z2-nsO" firstAttribute="top" secondItem="tem-00-GpN" secondAttribute="bottom" constant="35" id="Zhu-Cl-JtE"/>
                             <constraint firstItem="eo9-GL-4x2" firstAttribute="top" secondItem="tem-00-GpN" secondAttribute="bottom" constant="33.5" id="aL9-0B-CeJ"/>
                             <constraint firstItem="9eu-mN-XPy" firstAttribute="leading" secondItem="pf8-pU-sv2" secondAttribute="leading" constant="32" id="fei-Pw-O2Q"/>
+                            <constraint firstAttribute="trailing" secondItem="yZe-Z2-nsO" secondAttribute="trailing" constant="18" id="lO6-V5-vC3"/>
                             <constraint firstItem="GAI-xe-Ox9" firstAttribute="leading" secondItem="pf8-pU-sv2" secondAttribute="leading" constant="18" id="n4c-Cr-wbT"/>
                             <constraint firstAttribute="bottom" secondItem="eo9-GL-4x2" secondAttribute="bottom" constant="40.5" id="oS7-CT-P15"/>
                             <constraint firstItem="tH6-ft-MrC" firstAttribute="leading" secondItem="pf8-pU-sv2" secondAttribute="leading" constant="20" id="ofY-rS-BV1"/>
@@ -125,6 +139,7 @@
                 <outlet property="addressLable" destination="mdS-fh-b1m" id="bVQ-fM-lHs"/>
                 <outlet property="collectionView" destination="tem-00-GpN" id="tjz-FN-9Tq"/>
                 <outlet property="nameLabel" destination="GAI-xe-Ox9" id="oS9-jL-vUx"/>
+                <outlet property="timeLabel" destination="kt1-fN-6yp" id="v7o-cf-cYf"/>
                 <outlet property="view" destination="pf8-pU-sv2" id="BmE-Wb-bkl"/>
             </connections>
             <point key="canvasLocation" x="242.0289855072464" y="184.15178571428569"/>

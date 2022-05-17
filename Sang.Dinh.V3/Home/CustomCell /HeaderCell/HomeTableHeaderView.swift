@@ -33,6 +33,7 @@ class HomeTableHeaderView: UITableViewHeaderFooterView {
     
     func setData(name: String, content: String, tag: Int) {
         nameHeader.text = name
+        nameHeader.font = UIFont.boldSystemFont(ofSize: 16)
         contentHeader.text = content
         self.tag = tag
     }

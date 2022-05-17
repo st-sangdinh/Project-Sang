@@ -14,17 +14,22 @@ class DetailsTableViewCell: UITableViewCell {
             collectionView.reloadData()
         }
     }
-
+    
+    var didSelect: (() -> Void)?
+    
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLable: UILabel!
-
+    @IBOutlet weak var timeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         view.layer.cornerRadius = 30
         selectionStyle = .none
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        timeLabel.font =  UIFont.boldSystemFont(ofSize: 12)
         configCollection()
     }
 
@@ -32,7 +37,7 @@ class DetailsTableViewCell: UITableViewCell {
         collectionView.register(UINib(nibName: "DetailsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DetailsCollectionViewCell")
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+
         collectionView.layer.cornerRadius = 10
     }
     
@@ -41,6 +46,10 @@ class DetailsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func locationButton(_ sender: Any) {
+        didSelect?()
     }
     
     
@@ -77,5 +86,6 @@ extension DetailsTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         11
     }
+
     
 }

@@ -10,9 +10,11 @@ import UIKit
 class DetailsTableView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var view: UIView!
-
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func layoutSubviews() {
         super.layoutSubviews()
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 17)
         view.roundCorner(corners: [.topLeft,.topRight], radius: 16)
     }
 }

@@ -31,6 +31,7 @@ class ListDetailsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         view.layer.cornerRadius = 10
         view.layer.shadowColor = UIColor(red: 0.133, green: 0.133, blue: 0.133, alpha: 0.1).cgColor
         view.layer.shadowOpacity = 1
@@ -38,7 +39,6 @@ class ListDetailsTableViewCell: UITableViewCell {
         view.layer.shadowOffset =  CGSize(width: 0, height: 1)
         view.layer.bounds = view.bounds
         view.layer.position = view.center
-
         img.layer.cornerRadius = 8
         checkButton.layer.cornerRadius = 8
         

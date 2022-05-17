@@ -32,6 +32,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
     func setData(avatar: String, name: String, price: Int) {
         img.downloaded(from: avatar)
         nameLabel.text = name
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
         priceLabel.text = ("\(price) $")
     }
 

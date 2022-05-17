@@ -27,6 +27,8 @@ class DetailHistoryTableViewCell: UITableViewCell {
     }
     
     func configTabelView() {
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        
         contenView.layer.cornerRadius = 10
         contenView.layer.shadowColor = UIColor(red: 0.133, green: 0.133, blue: 0.133, alpha: 0.06).cgColor
         contenView.layer.shadowOpacity = 1

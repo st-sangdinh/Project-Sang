@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Restaurant {
     var id: Int = 0
     var name: String = ""
@@ -17,8 +16,8 @@ struct Restaurant {
 }
 
 struct Address {
-    var lat: Double = 0
-    var lng: Double = 0
+    var lat: String = ""
+    var lng: String = ""
     var address: String = ""
 }
 
@@ -32,3 +31,6 @@ struct Menu {
     var number: Int = 0
     var discount: Int = 0
 }
+
+
+

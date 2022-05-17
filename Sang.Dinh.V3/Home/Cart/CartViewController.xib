@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartViewController" customModule="Sang_Dinh_V3" customModuleProvider="target">
             <connections>
                 <outlet property="checkOutView" destination="oX5-ff-Vei" id="sfZ-Yr-GNb"/>
+                <outlet property="clear" destination="Mcd-Mn-YKT" id="C0V-et-CD7"/>
                 <outlet property="footerView" destination="thv-mA-YCH" id="EYk-Cj-bOU"/>
                 <outlet property="headerView" destination="3PF-7a-1Ws" id="1BW-j7-cN8"/>
                 <outlet property="priceLabel" destination="OAz-rI-TDD" id="w6s-Vt-JdF"/>
@@ -47,14 +48,26 @@
                                 <action selector="back:" destination="-1" eventType="touchUpInside" id="3Hm-Cz-Zza"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcd-Mn-YKT">
+                            <rect key="frame" x="340" y="11.5" width="58" height="31"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Clear">
+                                <color key="baseForegroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="clearButton:" destination="-1" eventType="touchUpInside" id="jyb-CQ-YaB"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <constraints>
                         <constraint firstItem="SrD-Be-DKJ" firstAttribute="centerY" secondItem="3PF-7a-1Ws" secondAttribute="centerY" id="44H-GJ-cwO"/>
                         <constraint firstItem="gaO-E8-qL9" firstAttribute="centerY" secondItem="3PF-7a-1Ws" secondAttribute="centerY" id="DIX-Hn-LUy"/>
                         <constraint firstItem="SrD-Be-DKJ" firstAttribute="leading" secondItem="3PF-7a-1Ws" secondAttribute="leading" constant="16" id="M0X-Hw-1F6"/>
+                        <constraint firstAttribute="trailing" secondItem="Mcd-Mn-YKT" secondAttribute="trailing" constant="16" id="YmR-fB-qaE"/>
                         <constraint firstAttribute="height" constant="54" id="jtY-hh-JOw"/>
                         <constraint firstItem="gaO-E8-qL9" firstAttribute="centerX" secondItem="3PF-7a-1Ws" secondAttribute="centerX" id="l7g-Og-lOa"/>
+                        <constraint firstItem="Mcd-Mn-YKT" firstAttribute="centerY" secondItem="3PF-7a-1Ws" secondAttribute="centerY" id="se9-TR-gBe"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8V1-DR-rvG">

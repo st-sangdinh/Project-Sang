@@ -25,6 +25,8 @@ class BookingHistoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        nameLable.font = UIFont.boldSystemFont(ofSize: 16)
+//        addressLabel.font = UIFont(name: "Inter-Regular", size: 50)
         imgView.layer.cornerRadius = 8
         checkButton.layer.cornerRadius = 10
         selectionStyle = .none

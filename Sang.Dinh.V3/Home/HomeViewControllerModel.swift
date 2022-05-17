@@ -108,8 +108,8 @@ extension HomeViewModel: HomeViewModelType {
                         let id = item["id"] as? Int ?? 0
                         let name = item["name"] as? String ?? ""
                         let address = item["address"] as? [String:Any]
-                        let lat = address?["lat"] as? Double ?? 0
-                        let lng = address?["lng"] as? Double ?? 0
+                        let lat = address?["lat"] as? String ?? ""
+                        let lng = address?["lng"] as? String ?? ""
                         let ar = address?["address"] as? String ?? ""
                         let photos = item["photos"] as? [String] ?? []
                         var menus: [Menu] = []

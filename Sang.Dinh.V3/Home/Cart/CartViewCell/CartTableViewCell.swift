@@ -30,6 +30,7 @@ class CartTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         configView()
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -58,7 +59,7 @@ class CartTableViewCell: UITableViewCell {
     func setData(name: String, note: String, price: Int, quantity: Int) {
         nameLabel.text = name
         noteLabel.text = note
-        priceLabel.text = "\(price)"
+        priceLabel.text = "\(price) $"
         quantityLabel.text = "\(quantity)"
     }
 }

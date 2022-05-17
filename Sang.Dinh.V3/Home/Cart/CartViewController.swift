@@ -15,7 +15,7 @@ class CartViewController: UIViewController {
     
     enum Action {
         case checkOut
-        case updateCart(amout: Int)
+        case updateCart
     }
     
     
@@ -30,6 +30,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var checkOutView: UIView!
     @IBOutlet weak var totalItem: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var clear: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,6 +58,7 @@ class CartViewController: UIViewController {
         
     
     func configView() {
+        
         headerView.layer.cornerRadius = 20
         headerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         
@@ -82,6 +84,7 @@ class CartViewController: UIViewController {
     
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true)
+
     }
     
     @IBAction func order(_ sender: Any) {
@@ -91,6 +94,12 @@ class CartViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    @IBAction func clearButton(_ sender: Any) {
+        CartData.carts.removeAll()
+        tableView.reloadData()
+        totalItem.text = "\(0) Item"
+        priceLabel.text = "\(0) $"
+    }
     
 }
 
@@ -104,7 +113,7 @@ extension CartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartTableViewCell", for: indexPath) as? CartTableViewCell
         let cart = CartData.carts[indexPath.row]
-        cell?.setData(name: cart.menuItem.name, note: cart.notes, price: cart.menuItem.price, quantity: cart.amout)
+            cell?.setData(name: cart.menuItem.name, note: cart.notes, price: cart.menuItem.price, quantity: cart.amout)
         cell?.delegate = self
         return cell ?? UITableViewCell()
     }
@@ -115,16 +124,24 @@ extension CartViewController: CartTableViewCellDelegate {
         switch action {
         case.minius:
             guard let indexPath = tableView.indexPath(for: cell) else { return  }
-         
-            CartData.carts[indexPath.row].amout -= 1
-            tableView.reloadData()
-            delegate?.viewController(view: self, acction: .updateCart(amout:  CartData.carts[indexPath.row].amout))
+            if CartData.carts[indexPath.row].amout > 0 {
+                CartData.carts[indexPath.row].amout -= 1
+                priceLabel.text = "\(viewModel?.price ?? 0  ) $"
+                tableView.reloadData()
+                delegate?.viewController(view: self, acction: .updateCart)
+            } else if CartData.carts[indexPath.row].amout < 1 {
+                CartData.carts.remove(at: indexPath.row)
+                totalItem.text = "\(CartData.carts.count) Items"
+                tableView.reloadData()
+            }
+
             
         case.plus:
             guard let indexPath = tableView.indexPath(for: cell) else { return  }
             CartData.carts[indexPath.row].amout += 1
+//            priceLabel.text = "\(CartData.carts[indexPath.row].amout * CartData.carts[indexPath.row].menuItem.price) $"
             tableView.reloadData()
-            delegate?.viewController(view: self, acction: .updateCart(amout:  CartData.carts[indexPath.row].amout))
+            delegate?.viewController(view: self, acction: .updateCart )
 
         }
     }

@@ -11,9 +11,6 @@ protocol DetailsViewModelType {
     
     func getListMenu() -> Restaurant
 
-    func price() -> Int
-    
-    func quantity() -> Int
     
     func getMenu(at indexPath: IndexPath) -> Menu
     
@@ -21,7 +18,9 @@ protocol DetailsViewModelType {
     
     func viewModelForOrder(in indexPath: IndexPath) -> OrderViewModel
     
-    func viewModelForCart() -> CartViewModel
+    func viewModelForCart(price: Int) -> CartViewModel
+    
+    func viewModelForMap() -> MapViewModel
     
     func cartOrder() -> [HistoryOrder]
     
@@ -30,8 +29,6 @@ protocol DetailsViewModelType {
 
 class DetailsViewModel {
     var listDetails: Restaurant
-    var totalPrice: Int = 0
-    var totalAmout: Int = 0
     
     init(listDetails: Restaurant) {
         self.listDetails = listDetails
@@ -40,20 +37,12 @@ class DetailsViewModel {
 
 
 extension DetailsViewModel: DetailsViewModelType {
-    func quantity() -> Int {
-        totalAmout
+    func viewModelForMap() -> MapViewModel {
+        return MapViewModel(lat: listDetails.address.lat, lng: listDetails.address.lng)
     }
     
-    func price() -> Int{
-        CartData.carts.forEach{ item in
-            totalAmout += item.amout
-            totalPrice += item.amout * item.menuItem.price
-        }
-        return totalPrice
-    }
-    
-    func viewModelForCart() -> CartViewModel {
-        return CartViewModel( restaurantId: listDetails.id, nameStore: listDetails.name, address: listDetails.address.address, img: listDetails.photos.first ?? "", price: totalPrice)
+    func viewModelForCart(price: Int) -> CartViewModel {
+        return CartViewModel( restaurantId: listDetails.id, nameStore: listDetails.name, address: listDetails.address.address, img: listDetails.photos.first ?? "", price: price)
     }
     
     func cartOrder() ->  [HistoryOrder]{

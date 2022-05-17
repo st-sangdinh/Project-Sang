@@ -19,7 +19,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var viewCheckOut: UIView!
     @IBOutlet weak var labelCheckOut: UILabel!
     
-
+    var totalPrice: Int = 0
+    var totalAmout: Int = 0
     
     init(viewModel: DetailsViewModelType) {
         self.viewModel = viewModel
@@ -102,8 +103,14 @@ class DetailsViewController: UIViewController {
     }
     
     func loadCartData() {
-        labelCheckOut.text = "Check Out \(viewModel.price()) $"
-        quantityCart.text = "\(viewModel.quantity()) "
+        totalPrice = 0
+        totalAmout = 0
+        CartData.carts.forEach{ item in
+            totalAmout += item.amout
+            totalPrice += item.amout * item.menuItem.price
+        }
+        labelCheckOut.text = "Check Out \(totalPrice) $"
+        quantityCart.text = "\(totalAmout) "
 
     }
     
@@ -116,7 +123,7 @@ class DetailsViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func checkOut(_ sender: Any) {
-        let vc = CartViewController(viewModel: viewModel.viewModelForCart())
+        let vc = CartViewController(viewModel: viewModel.viewModelForCart(price: totalPrice))
         vc.delegate = self
         navigationController?.present(vc, animated: true)
     }
@@ -140,9 +147,12 @@ extension DetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsTableViewCell", for: indexPath) as? DetailsTableViewCell
             
             let menu = viewModel.getListMenu()
-            
             cell?.setData(name: menu.name, address: menu.address.address)
             cell?.viewModel = viewModel.viewModelForDetails(in: indexPath)
+            cell?.didSelect = {
+                let vc = MapViewController(viewModel: self.viewModel.viewModelForMap())
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             
             return cell ?? UITableViewCell()
         }else {
@@ -175,6 +185,7 @@ extension DetailsViewController: UITableViewDelegate {
         }
         return .leastNormalMagnitude
     }
+
 }
 
 extension DetailsViewController: ListDetailsTableViewCellDelegate {
@@ -203,8 +214,12 @@ extension DetailsViewController: CartViewControllerDelegate {
         switch acction {
         case.checkOut:
             footerView.isHidden = true
-        case .updateCart(let amout):
-            quantityCart.text = "\(amout)"
+        case .updateCart:
+//            quantityCart.text = "\(amout)"
+            loadCartData()
+            if totalAmout <= 0 {
+                footerView.isHidden = true
+            }
         }
     }
 }
