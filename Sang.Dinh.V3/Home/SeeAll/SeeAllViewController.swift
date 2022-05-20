@@ -40,12 +40,12 @@ class SeeAllViewController: UIViewController {
 
 extension SeeAllViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.getListMenu().first?.menu.count ?? 0
+        viewModel.getListMenu().first?.menus.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookingTableViewCell", for: indexPath) as? BookingTableViewCell
         
-        let menu = viewModel.getMenu(at: indexPath).menu[indexPath.row]
+        let menu = viewModel.getMenu(at: indexPath).menus[indexPath.row]
         
         cell?.setData(img: menu.imageUrl , name: menu.name, address: "\(menu.price) $")
         return cell ?? UITableViewCell()

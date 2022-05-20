@@ -35,14 +35,18 @@ class CartViewModel {
     
     func saveHistoryOrder() {
         let idOrder = randomString(length: 5)
-        CartData.carts.forEach{cart in
+        CartDataStore.shared.getCart().forEach{cart in
             let item = ItemOrder(menuItem: cart.menuItem, restaurant: cart.restaurant, amout: cart.amout, notes: cart.notes)
-//
-            if let index = StoreOrderData.histories.firstIndex(where: { $0.restaurantId == restaurantId && $0.id == idOrder }) {
-                StoreOrderData.histories[index].orderedItems.append(item)
+            var storeDataOrder = StoreDataOrder.shared.getHistoryOrder()
+            if let index = storeDataOrder.firstIndex(where: { $0.restaurantId == restaurantId && $0.id == idOrder }) {
+//                StoreOrderData.histories[index].orderedItems.append(item)
+                storeDataOrder[index].orderedItems.append(item)
+                CartDataStore.shared.insertItemOrder(item: item, index: index)
+                
             } else {
                 let historyOrder = HistoryOrder(id: idOrder, nameStore: cart.restaurant.name, address: cart.restaurant.address.address, img: cart.restaurant.photos.first, restaurantId: cart.restaurant.id, orderdDateTime: Date(), orderedItems: [item])
-                StoreOrderData.histories.append(historyOrder)
+//                StoreOrderData.histories.append(historyOrder)
+                StoreDataOrder.shared.appendHistoryOrder(item: historyOrder)
                 
             }
 

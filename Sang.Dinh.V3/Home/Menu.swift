@@ -7,30 +7,33 @@
 
 import Foundation
 
-struct Restaurant {
-    var id: Int = 0
-    var name: String = ""
-    var address: Address = Address()
-    var photos: [String] = []
-    var menu: [Menu] = []
+struct Restaurant: Codable {
+    var id: Int
+    var name: String
+    var address: Address
+    var photos: [String]
+    var menus: [Menu]
 }
 
-struct Address {
+struct Address: Codable {
     var lat: String = ""
     var lng: String = ""
     var address: String = ""
 }
 
-struct Menu {
+struct Menu: Codable {
     var id: Int = 0
     var type: Int = 0
     var name: String = ""
     var description: String = ""
     var price: Int = 0
     var imageUrl: String = ""
-    var number: Int = 0
+//    var number: Int = 0
     var discount: Int = 0
 }
 
+struct RestaurantResponse: Codable {
+    var data: [Restaurant]
+}
 
 

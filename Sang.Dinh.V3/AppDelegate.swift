@@ -8,14 +8,6 @@
 import UIKit
 import CoreLocation
 
-class StoreOrderData {
-    static var histories: [HistoryOrder] = []
-}
-
-class CartData {
-    static var carts: [ItemOrder] = []
-}
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate{
 

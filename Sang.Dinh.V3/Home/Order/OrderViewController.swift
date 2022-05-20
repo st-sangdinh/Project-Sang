@@ -84,7 +84,6 @@ class OrderViewController: UIViewController {
         quantity += 1
         quantityLable.text = "\(quantity)"
 //        delegate?.cell(supView: self, action: .getNumber(number: quantity))
-        
     }
     
     @IBAction func minusButton(_ sender: Any) {

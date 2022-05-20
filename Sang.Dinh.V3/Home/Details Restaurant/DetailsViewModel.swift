@@ -46,11 +46,11 @@ extension DetailsViewModel: DetailsViewModelType {
     }
     
     func cartOrder() ->  [HistoryOrder]{
-        return StoreOrderData.histories
+        return StoreDataOrder.shared.getHistoryOrder()
     }
     
     func viewModelForOrder(in indexPath: IndexPath) -> OrderViewModel {
-        return OrderViewModel(listOrder: listDetails.menu[indexPath.row], restaurant: listDetails)
+        return OrderViewModel(listOrder: listDetails.menus[indexPath.row], restaurant: listDetails)
     }
     
     func viewModelForDetails(in indexPath: IndexPath) -> DetailsTableViewModel {
@@ -63,7 +63,7 @@ extension DetailsViewModel: DetailsViewModelType {
     }
     
     func getMenu(at indexPath: IndexPath) -> Menu {
-        let menus = listDetails.menu[indexPath.item]
+        let menus = listDetails.menus[indexPath.item]
         return menus
     }
     

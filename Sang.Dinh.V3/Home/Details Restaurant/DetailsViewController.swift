@@ -42,7 +42,7 @@ class DetailsViewController: UIViewController {
         navigationView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         reloadData()
         
-        if CartData.carts.isEmpty {
+        if CartDataStore.shared.getCart().isEmpty {
             footerView.isHidden = true
         }else {
             loadCartData()
@@ -105,7 +105,7 @@ class DetailsViewController: UIViewController {
     func loadCartData() {
         totalPrice = 0
         totalAmout = 0
-        CartData.carts.forEach{ item in
+        CartDataStore.shared.getCart().forEach{ item in
             totalAmout += item.amout
             totalPrice += item.amout * item.menuItem.price
         }
@@ -139,7 +139,7 @@ extension DetailsViewController: UITableViewDataSource {
         if section == 0 {
             return 1
         }
-        return viewModel.getListMenu().menu.count
+        return viewModel.getListMenu().menus.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -220,6 +220,8 @@ extension DetailsViewController: CartViewControllerDelegate {
             if totalAmout <= 0 {
                 footerView.isHidden = true
             }
+        case .clearCart:
+            footerView.isHidden = true
         }
     }
 }

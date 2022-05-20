@@ -36,19 +36,22 @@ extension OrderViewModel: OrderViewModelType {
 
     func saveCartData() {
         let item = ItemOrder(menuItem: listOrder, restaurant: restaurent, amout: number, notes: note)
-        if let index = CartData.carts.firstIndex(where: { $0.menuItem.id == item.menuItem.id }) {
-            CartData.carts[index] = item
+
+        let carts = CartDataStore.shared.getCart()
+        if let index = carts.firstIndex(where: { $0.menuItem.id == item.menuItem.id }) {
+//            CartData.carts[index] = item
+                CartDataStore.shared.replaceItemOrder(item: item, index: index)
         } else {
-            CartData.carts.append(item)
+            CartDataStore.shared.appendCart(item: item)
         }
-    }
+    } 
     func getMenu() -> Menu {
         listOrder
     }
     
 }
 
-struct HistoryOrder {
+struct HistoryOrder: Codable {
     var id: String
     var nameStore: String
     var address: String
@@ -58,8 +61,8 @@ struct HistoryOrder {
     var orderedItems: [ItemOrder] = []
 }
 
-struct ItemOrder {
-    let menuItem: Menu
+struct ItemOrder: Codable {
+    var menuItem: Menu
     let restaurant: Restaurant
     var amout: Int
     let notes: String

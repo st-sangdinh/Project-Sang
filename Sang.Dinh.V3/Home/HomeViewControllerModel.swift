@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import Darwin
 
 protocol HomeViewModelType {
     
@@ -86,7 +86,11 @@ extension HomeViewModel: HomeViewModelType {
             return 1
         case .booking:
             // TODO
-            return listMenus.count
+            if listMenus.count > 4 {
+                return 4
+            }else {
+                return listMenus.count  
+            }
         }
     }
     
@@ -102,36 +106,41 @@ extension HomeViewModel: HomeViewModelType {
         let session = URLSession(configuration: configuration)
         let task = session.dataTask(with: url) { data, _, _ in
             if let data = data {
-                let json = data.converToJson(from: data)
-                if let datas = json["data"] as? [[String: Any]]{
-                    for item in datas {
-                        let id = item["id"] as? Int ?? 0
-                        let name = item["name"] as? String ?? ""
-                        let address = item["address"] as? [String:Any]
-                        let lat = address?["lat"] as? String ?? ""
-                        let lng = address?["lng"] as? String ?? ""
-                        let ar = address?["address"] as? String ?? ""
-                        let photos = item["photos"] as? [String] ?? []
-                        var menus: [Menu] = []
-                        if let menu = item["menus"] as? [[String: Any]] {
-                            for i in menu {
-                                let id = i["id"] as? Int ?? 0
-                                let type = i["type"] as? Int ?? 0
-                                let name = i["name"] as? String ?? ""
-                                let description = i["description"] as? String ?? ""
-                                let price = i["price"] as? Int ?? 0
-                                let imageUrl = i["imageUrl"] as? String ?? ""
-                                let discount = i["discount"] as? Int ?? 0
-                                let menu = Menu(id: id, type: type, name: name, description: description, price: price, imageUrl: imageUrl, number: 0, discount: discount)
-                                menus.append(menu)
-                            }
-                        }
-            
-                        let list = Restaurant(id: id , name: name , address: Address(lat: lat , lng: lng , address: ar), photos: photos, menu: menus)
-                        
-                        self.listMenus.append(list)
-                    }
+                let decoder = JSONDecoder()
+                if let datas = try? decoder.decode(RestaurantResponse.self, from: data) {
+                    self.listMenus.append(contentsOf: datas.data)
+
                 }
+//                let json = data.converToJson(from: data)
+//                if let datas = json["data"] as? [[String: Any]]{
+//                    for item in datas {
+//                        let id = item["id"] as? Int ?? 0
+//                        let name = item["name"] as? String ?? ""
+//                        let address = item["address"] as? [String:Any]
+//                        let lat = address?["lat"] as? String ?? ""
+//                        let lng = address?["lng"] as? String ?? ""
+//                        let ar = address?["address"] as? String ?? ""
+//                        let photos = item["photos"] as? [String] ?? []
+//                        var menus: [Menu] = []
+//                        if let menu = item["menus"] as? [[String: Any]] {
+//                            for i in menu {
+//                                let id = i["id"] as? Int ?? 0
+//                                let type = i["type"] as? Int ?? 0
+//                                let name = i["name"] as? String ?? ""
+//                                let description = i["description"] as? String ?? ""
+//                                let price = i["price"] as? Int ?? 0
+//                                let imageUrl = i["imageUrl"] as? String ?? ""
+//                                let discount = i["discount"] as? Int ?? 0
+//                                let menu = Menu(id: id, type: type, name: name, description: description, price: price, imageUrl: imageUrl, number: 0, discount: discount)
+//                                menus.append(menu)
+//                            }
+//                        }
+//
+//                        let list = Restaurant(id: id , name: name , address: Address(lat: lat , lng: lng , address: ar), photos: photos, menu: menus)
+//
+//                        self.listMenus.append(list)
+//                    }
+//                }
             }
             DispatchQueue.main.async {
                 completion()
@@ -139,19 +148,22 @@ extension HomeViewModel: HomeViewModelType {
         }
         task.resume()
     }
+    
 }
 
-extension Data {
-    func converToJson(from jsonData: Data) -> [String: Any] {
-        var json: [String: Any] = [:]
-        do {
-            if let jsonObj = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any] {
-                json = jsonObj
-            }
-        }catch {
-            print("Json error")
-        }
-        
-        return json
-    }
-}
+
+
+//extension Data {
+//    func converToJson(from jsonData: Data) -> [String: Any] {
+//        var json: [String: Any] = [:]
+//        do {
+//            if let jsonObj = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any] {
+//                json = jsonObj
+//            }
+//        }catch {
+//            print("Json error")
+//        }
+//
+//        return json
+//    }
+//}

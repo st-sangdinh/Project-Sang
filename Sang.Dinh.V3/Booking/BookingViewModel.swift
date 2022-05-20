@@ -10,9 +10,10 @@ import Foundation
 class BookingViewModel {
     
     func makeVC(indexPath: IndexPath) -> DetailHistoryViewModel {
-        let name = StoreOrderData.histories[indexPath.row].nameStore
-        let dateTime = StoreOrderData.histories[indexPath.row].orderdDateTime
-        let menu = StoreOrderData.histories[indexPath.row].orderedItems
+        let storeDataOreder = StoreDataOrder.shared.getHistoryOrder(at: indexPath.row)
+        let name = storeDataOreder.nameStore
+        let dateTime = storeDataOreder.orderdDateTime
+        let menu = storeDataOreder.orderedItems
         let vm = DetailHistoryViewModel(resName: name, resMenu: menu, dateTime: dateTime)
         return vm
     }
