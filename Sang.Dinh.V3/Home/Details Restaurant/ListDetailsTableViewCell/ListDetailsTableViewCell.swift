@@ -7,26 +7,23 @@
 
 import UIKit
 
-
 protocol ListDetailsTableViewCellDelegate: AnyObject {
     func cell(subView: ListDetailsTableViewCell)
 }
 
 class ListDetailsTableViewCell: UITableViewCell {
-    
+
     enum Action {
         case order
     }
-    
 
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
-    
     weak var delegate: ListDetailsTableViewCellDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,7 +38,6 @@ class ListDetailsTableViewCell: UITableViewCell {
         view.layer.position = view.center
         img.layer.cornerRadius = 8
         checkButton.layer.cornerRadius = 8
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -49,17 +45,13 @@ class ListDetailsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
+
     func setData(image: String, name: String, description: String) {
         img.downloaded(from: image)
         nameLabel.text = name
         descriptionLabel.text = description
     }
     @IBAction func checkButton(_ sender: Any) {
-        
-        delegate?.cell(subView: self)
-        
+//        delegate?.cell(subView: self)
     }
-    
 }

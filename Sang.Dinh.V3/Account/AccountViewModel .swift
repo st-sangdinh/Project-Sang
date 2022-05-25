@@ -9,7 +9,6 @@ import Foundation
 
 protocol AccountViewModelType {
     func numberOfSections() -> Int
-    
     func numberOfItem(in section: Int) -> Int
 }
 
@@ -20,17 +19,14 @@ enum AccountType: Int, CaseIterable {
     case logout
 }
 
-
 class AccountViewModel {
-    
 }
 
 extension AccountViewModel: AccountViewModelType {
- 
     func numberOfSections() -> Int {
         return AccountType.allCases.count
     }
-    
+
     func numberOfItem(in section: Int) -> Int {
         guard let section = AccountType(rawValue: section) else {
             return 0
@@ -46,5 +42,4 @@ extension AccountViewModel: AccountViewModelType {
             return 1
         }
     }
-    
 }

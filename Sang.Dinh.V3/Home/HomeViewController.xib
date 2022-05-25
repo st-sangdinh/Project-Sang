@@ -4,14 +4,17 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Sang_Dinh_V3" customModuleProvider="target">
             <connections>
+                <outlet property="loaderView" destination="M8C-M7-KDJ" id="2HB-1l-qd4"/>
                 <outlet property="searchBar" destination="BEd-bp-2qo" id="JtT-QY-LAF"/>
                 <outlet property="tableView" destination="sDK-QK-0L3" id="dhV-sG-46m"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewLoad" destination="Xgz-fT-sPk" id="AwJ-oR-omf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -31,19 +34,60 @@
                     </constraints>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAy-jQ-uQg">
+                    <rect key="frame" x="48" y="62" width="318" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="9YQ-n0-ky9"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
+                    <connections>
+                        <action selector="searchButton:" destination="-1" eventType="touchUpInside" id="hgP-q7-a9G"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgz-fT-sPk">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8C-M7-KDJ" customClass="Loader" customModule="Sang_Dinh_V3" customModuleProvider="target">
+                            <rect key="frame" x="182" y="423" width="50" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="JQC-tp-BXg"/>
+                                <constraint firstAttribute="width" constant="50" id="iPw-rR-ZdD"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="M8C-M7-KDJ" firstAttribute="centerX" secondItem="Xgz-fT-sPk" secondAttribute="centerX" id="NP3-gK-FvC"/>
+                        <constraint firstItem="M8C-M7-KDJ" firstAttribute="centerY" secondItem="Xgz-fT-sPk" secondAttribute="centerY" id="Y1S-6M-fWK"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sDK-QK-0L3" secondAttribute="trailing" id="1kf-eE-upE"/>
+                <constraint firstItem="Xgz-fT-sPk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2dS-US-dr9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BEd-bp-2qo" secondAttribute="trailing" constant="48" id="4Mf-yx-YCy"/>
+                <constraint firstItem="Xgz-fT-sPk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GHY-iM-snn"/>
                 <constraint firstItem="sDK-QK-0L3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NEl-7i-gvP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fAy-jQ-uQg" secondAttribute="trailing" constant="48" id="WSl-A8-wDe"/>
+                <constraint firstItem="fAy-jQ-uQg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="18" id="c1L-IS-Dj4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sDK-QK-0L3" secondAttribute="bottom" id="eGw-6b-e6B"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xgz-fT-sPk" secondAttribute="trailing" id="fwg-2J-nSX"/>
                 <constraint firstItem="BEd-bp-2qo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="gl4-XG-MBU"/>
+                <constraint firstAttribute="bottom" secondItem="Xgz-fT-sPk" secondAttribute="bottom" id="jDI-vW-1Jq"/>
                 <constraint firstItem="BEd-bp-2qo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="18" id="mT4-G4-820"/>
                 <constraint firstItem="sDK-QK-0L3" firstAttribute="top" secondItem="BEd-bp-2qo" secondAttribute="bottom" constant="28" id="v39-BO-3pe"/>
+                <constraint firstItem="fAy-jQ-uQg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="zJX-Qz-P9S"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

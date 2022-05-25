@@ -13,22 +13,18 @@ class TodayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         view.layer.cornerRadius = 16
         view.layer.shadowOffset = CGSize(width: 0, height: 10)
     }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        img.roundCorner(corners: [.topLeft,.topRight], radius: 10)
-    
+        img.roundCorner(corners: [.topLeft, .topRight], radius: 10)
     }
-    
+
     func setData(avatar: String, name: String, price: Int) {
         img.downloaded(from: avatar)
         nameLabel.text = name
@@ -39,11 +35,12 @@ class TodayCollectionViewCell: UICollectionViewCell {
 }
 extension UIView {
     public func roundCorner(corners: UIRectCorner, radius: CGFloat) {
-      let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+      let path = UIBezierPath(
+        roundedRect: bounds,
+        byRoundingCorners: corners,
+        cornerRadii: CGSize(width: radius, height: radius))
       let mask = CAShapeLayer()
       mask.path = path.cgPath
       layer.mask = mask
     }
 }
-
-

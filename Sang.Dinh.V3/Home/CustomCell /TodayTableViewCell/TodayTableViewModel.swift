@@ -10,16 +10,13 @@ import Foundation
 protocol TodayTableViewModelType {
     func getListMenu() -> [Restaurant]
     func getMenu(at indexPath: IndexPath) -> Restaurant
-    
-
 }
-
 
 class TodayTableViewModel {
     var listToday: [Restaurant] = []
-    
+
     init(listToday: [Restaurant] = []) {
-        self.listToday = listToday 
+        self.listToday = listToday
     }
 }
 
@@ -27,10 +24,8 @@ extension TodayTableViewModel: TodayTableViewModelType {
     func getListMenu() -> [Restaurant] {
         listToday
     }
-    
+
     func getMenu(at indexPath: IndexPath) -> Restaurant {
-        listToday[indexPath.item]
+        listToday[indexPath.section]
     }
-    
-   
 }

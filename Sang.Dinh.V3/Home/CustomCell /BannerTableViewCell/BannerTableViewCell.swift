@@ -11,24 +11,25 @@ class BannerTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
+
     var viewModel: BannerTableCellViewModelType? {
         didSet {
             reloadData()
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         configTableViewCell()
     }
-    
+
     func configTableViewCell() {
-        collectionView.register(UINib(nibName: "BannerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BannerCollectionViewCell")
+        collectionView.register(UINib(nibName: "BannerCollectionViewCell", bundle: nil),
+                                forCellWithReuseIdentifier: "BannerCollectionViewCell")
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-    
+
     func reloadData() {
         pageControl.numberOfPages = viewModel?.numberOfItem() ?? 0
         collectionView.reloadData()
@@ -48,30 +49,40 @@ extension BannerTableViewCell: UICollectionViewDataSource {
         viewModel?.numberOfItem() ?? 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionViewCell", for: indexPath) as? BannerCollectionViewCell else {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "BannerCollectionViewCell", for: indexPath) as? BannerCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.updateImage(img: viewModel?.bannerImage(at: indexPath))
+        let bannerImg = viewModel?.banner(at: indexPath.row) ?? ""
+        cell.updateImage(img: bannerImg)
+//        cell.updateImage(img: viewModel?.bannerImage(at: indexPath))
         return cell
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension BannerTableViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 280, height: 120)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 70)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        11
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 11
     }
-    
 }
 
+// MARK: - UIScrollViewDelegate
 extension BannerTableViewCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let indexPath = indexPathOfCurrentCell() else {

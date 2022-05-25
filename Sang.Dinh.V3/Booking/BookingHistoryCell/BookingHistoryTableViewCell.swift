@@ -12,16 +12,15 @@ protocol BookingHistoryTableViewCellDelegate: AnyObject {
 }
 
 class BookingHistoryTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var contenView: UIView!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var nameLable: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    
-    
+
     weak var delegate: BookingHistoryTableViewCellDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -44,7 +43,7 @@ class BookingHistoryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func setData(img: String?, name: String, address: String) {
         nameLable.text = name
         if let img = img {
@@ -52,7 +51,7 @@ class BookingHistoryTableViewCell: UITableViewCell {
         }
         addressLabel.text = address
     }
-    
+
     @IBAction func buttonCheck(_ sender: Any) {
         delegate?.bookingTable(subView: self)
     }

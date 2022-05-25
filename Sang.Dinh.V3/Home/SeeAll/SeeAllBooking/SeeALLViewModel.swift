@@ -9,34 +9,29 @@ import Foundation
 
 protocol SeeALLViewModelType {
     func getListMenu() -> [Restaurant]
-    
+
     func getMenu(at indexPath: IndexPath) -> Restaurant
-    
     func viewMdelForDetailsView(in indexPath: IndexPath) -> DetailsViewModel
 }
 
-
 class SeeALLViewModel {
-    var listToday: [Restaurant] = []
-    
-    init(listToday: [Restaurant] = []) {
-        self.listToday = listToday
+    var listBooking: [Restaurant] = []
+
+    init(listBooking: [Restaurant] = []) {
+        self.listBooking = listBooking
     }
 }
 
 extension SeeALLViewModel: SeeALLViewModelType {
     func viewMdelForDetailsView(in indexPath: IndexPath) -> DetailsViewModel {
-        return DetailsViewModel(listDetails: listToday[indexPath.item])
+        return DetailsViewModel(listDetails: listBooking[indexPath.item])
     }
-    
+
     func getListMenu() -> [Restaurant] {
-        listToday
+        listBooking
     }
-    
+
     func getMenu(at indexPath: IndexPath) -> Restaurant {
-        listToday[indexPath.item]
+        listBooking[indexPath.item]
     }
-    
-    
-    
 }

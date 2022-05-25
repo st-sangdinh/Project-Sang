@@ -12,19 +12,19 @@ protocol CartViewControllerDelegate: AnyObject {
 }
 
 class CartViewController: UIViewController {
-    
+
     enum Action {
         case checkOut
         case updateCart
         case clearCart
     }
-    
-    
+
     var viewModel: CartViewModel?
-    var a: Int = 0
-    
+    var priceDiscount: Int = 0
+    var totalAmout: Int = 0
+
     weak var delegate: CartViewControllerDelegate?
-    
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
@@ -34,44 +34,47 @@ class CartViewController: UIViewController {
     @IBOutlet weak var clear: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configView()
         configTableView()
         // Do any additional setup after loading the view.
     }
-    
-    init(viewModel: CartViewModel){
+
+    init(viewModel: CartViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func configTableView() {
-        tableView.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "CartTableViewCell")
+        tableView.register(UINib(nibName: "CartTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "CartTableViewCell")
         tableView.dataSource = self
-        
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         totalItem.text = "\(CartDataStore.shared.getCart().count) Items"
         priceLabel.text = "\(viewModel?.price ?? 0) $"
     }
-        
-    
+
     func configView() {
-        
+
         headerView.layer.cornerRadius = 20
-        headerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-        
+        headerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+
         footerView.layer.cornerRadius = 20
-        footerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        footerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         footerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.09).cgColor
         footerView.layer.shadowOpacity = 1
         footerView.layer.shadowRadius = 14
         footerView.layer.shadowOffset = CGSize(width: 0, height: -1)
         footerView.layer.bounds = footerView.bounds
         footerView.layer.position = footerView.center
-        
+
         checkOutView.layer.cornerRadius = 15
         checkOutView.layer.cornerRadius = 10
         checkOutView.layer.shadowColor = UIColor(red: 0.055, green: 0.498, blue: 0.239, alpha: 0.24).cgColor
@@ -80,60 +83,83 @@ class CartViewController: UIViewController {
         checkOutView.layer.shadowOffset = CGSize(width: 0, height: 2)
         checkOutView.layer.bounds = checkOutView.bounds
         checkOutView.layer.position = checkOutView.center
-        
+
     }
-    
+
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true)
 
     }
-    
+
     @IBAction func order(_ sender: Any) {
         viewModel?.saveHistoryOrder()
         CartDataStore.shared.removeAll()
         delegate?.viewController(view: self, acction: .checkOut)
         dismiss(animated: true)
     }
-    
+
     @IBAction func clearButton(_ sender: Any) {
-        CartDataStore.shared.removeAll()
-        tableView.reloadData()
-        delegate?.viewController(view: self, acction: .clearCart)
-        totalItem.text = "\(0) Item"
-        priceLabel.text = "\(0) $"
+
+        let viewController = AlertCartViewController()
+        viewController.modalPresentationStyle = .overCurrentContext
+        present(viewController, animated: true, completion: nil)
+        viewController.delegate = self
     }
-    
+    func loadCartData() {
+        priceDiscount = 0
+        totalAmout = 0
+        CartDataStore.shared.getCart().forEach { item in
+            let price = item.menuItem.price
+            var discount = item.menuItem.discount
+            let amout = item.amout
+            totalAmout += item.amout
+//            totalPrice += item.amout * item.menuItem.price
+            discount = Int(CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100)))
+            priceDiscount += discount * amout
+        }
+    }
 }
 
+// MARK: - UITableViewDataSource
 extension CartViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        CartData.carts.count
         CartDataStore.shared.getCart().count
-        
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CartTableViewCell", for: indexPath) as? CartTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "CartTableViewCell", for: indexPath) as? CartTableViewCell
 //        let cart = CartData.carts[indexPath.row]
         let cart = CartDataStore.shared.getItemOrder(at: indexPath.row)
-            cell?.setData(name: cart.menuItem.name, note: cart.notes, price: cart.menuItem.price, quantity: cart.amout)
+        let price = cart.menuItem.price
+        let discount = cart.menuItem.discount
+        let priceDiscount = CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100))
+        cell?.setData(
+            name: cart.menuItem.name,
+            note: cart.notes, price: price,
+            quantity: cart.amout,
+            discount: Int(priceDiscount) )
         cell?.delegate = self
         return cell ?? UITableViewCell()
     }
 }
 
+// MARK: - CartTableViewCellDelegate
 extension CartViewController: CartTableViewCellDelegate {
     func viewCell(cell: CartTableViewCell, action: CartTableViewCell.Action) {
         switch action {
         case.minius:
             guard let indexPath = tableView.indexPath(for: cell) else { return  }
             var itemOrder = CartDataStore.shared.getItemOrder(at: indexPath.row)
-        
+
             if itemOrder.amout > 0 {
                 itemOrder.amout -= 1
                 CartDataStore.shared.replaceItemOrder(item: itemOrder, index: indexPath.row)
-                priceLabel.text = "\(itemOrder.amout * itemOrder.menuItem.price) $"
+//                priceLabel.text = "\(itemOrder.amout * itemOrder.menuItem.price) $"
+                loadCartData()
+                priceLabel.text = "\(priceDiscount) $"
                 tableView.reloadData()
                 delegate?.viewController(view: self, acction: .updateCart)
             } else if itemOrder.amout < 1 {
@@ -142,16 +168,29 @@ extension CartViewController: CartTableViewCellDelegate {
                 tableView.reloadData()
             }
 
-
         case.plus:
             guard let indexPath = tableView.indexPath(for: cell) else { return  }
             var itemOrder = CartDataStore.shared.getItemOrder(at: indexPath.row)
             itemOrder.amout += 1
             CartDataStore.shared.replaceItemOrder(item: itemOrder, index: indexPath.row)
-            priceLabel.text = "\(itemOrder.amout * itemOrder.menuItem.price) $"
+            loadCartData()
+            priceLabel.text = "\(priceDiscount) $"
             tableView.reloadData()
             delegate?.viewController(view: self, acction: .updateCart )
+        }
+    }
+}
 
+// MARK: - AlertCartViewControllerDelegate
+extension CartViewController: AlertCartViewControllerDelegate {
+    func viewController(view: AlertCartViewController, action: AlertCartViewController.Action) {
+        switch action {
+        case.clearCart:
+            CartDataStore.shared.removeAll()
+            tableView.reloadData()
+            delegate?.viewController(view: self, acction: .clearCart)
+            totalItem.text = "\(0) Item"
+            priceLabel.text = "\(0) $"
         }
     }
 }

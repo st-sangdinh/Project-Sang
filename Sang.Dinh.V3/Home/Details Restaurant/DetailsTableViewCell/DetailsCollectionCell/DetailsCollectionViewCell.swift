@@ -15,7 +15,6 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         // Initialization code
         img.layer.cornerRadius = 10
     }
-    
     func setData(image: String) {
         img.downloaded(from: image)
     }

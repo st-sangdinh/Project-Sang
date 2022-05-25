@@ -8,29 +8,27 @@
 import UIKit
 
 protocol HomeTableHeaderViewDelegate: AnyObject {
-    func cell(_ view: HomeTableHeaderView,_ action: HomeTableHeaderView.Action)
+    func cell(_ view: HomeTableHeaderView, _ action: HomeTableHeaderView.Action)
 }
 
 class HomeTableHeaderView: UITableViewHeaderFooterView {
-    
+
     enum Action {
         case seeAll(isSeeAll: Bool)
     }
-    
+
     var seeAll: Bool = false
 
-    
     weak var delegate: HomeTableHeaderViewDelegate?
- 
+
     @IBOutlet weak var nameHeader: UILabel!
     @IBOutlet weak var contentHeader: UILabel!
-
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     func setData(name: String, content: String, tag: Int) {
         nameHeader.text = name
         nameHeader.font = UIFont.boldSystemFont(ofSize: 16)
@@ -40,5 +38,4 @@ class HomeTableHeaderView: UITableViewHeaderFooterView {
     @IBAction func buttonSeeAll(_ sender: Any) {
         delegate?.cell(self, .seeAll(isSeeAll: seeAll))
     }
-    
 }

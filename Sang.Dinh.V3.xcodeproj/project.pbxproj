@@ -20,10 +20,27 @@
 		22397C792824B21000DD9D7A /* DetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22397C772824B21000DD9D7A /* DetailsTableViewCell.xib */; };
 		22397C7D2824BAFF00DD9D7A /* ListDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22397C7B2824BAFF00DD9D7A /* ListDetailsTableViewCell.swift */; };
 		22397C7E2824BAFF00DD9D7A /* ListDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22397C7C2824BAFF00DD9D7A /* ListDetailsTableViewCell.xib */; };
-		22397C812824C7CE00DD9D7A /* DetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22397C802824C7CE00DD9D7A /* DetailsTableView.swift */; };
-		22397C832824C7FC00DD9D7A /* DetailsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22397C822824C7FC00DD9D7A /* DetailsTableView.xib */; };
+		22397C812824C7CE00DD9D7A /* DetailsHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22397C802824C7CE00DD9D7A /* DetailsHeaderViewCell.swift */; };
+		22397C832824C7FC00DD9D7A /* DetailsHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22397C822824C7FC00DD9D7A /* DetailsHeaderViewCell.xib */; };
+		223C8021283B32640046E334 /* SeeAllToDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C801F283B32640046E334 /* SeeAllToDayViewController.swift */; };
+		223C8022283B32640046E334 /* SeeAllToDayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223C8020283B32640046E334 /* SeeAllToDayViewController.xib */; };
+		223C8024283B38110046E334 /* SeeAllTodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C8023283B38100046E334 /* SeeAllTodayViewModel.swift */; };
+		2242023028372520007B5A4B /* RecommendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242022E28372520007B5A4B /* RecommendedTableViewCell.swift */; };
+		2242023128372520007B5A4B /* RecommendedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2242022F28372520007B5A4B /* RecommendedTableViewCell.xib */; };
+		224202352837256C007B5A4B /* RecommendedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224202332837256C007B5A4B /* RecommendedCollectionViewCell.swift */; };
+		224202362837256C007B5A4B /* RecommendedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224202342837256C007B5A4B /* RecommendedCollectionViewCell.xib */; };
+		2242023828373510007B5A4B /* RecommendedTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242023728373510007B5A4B /* RecommendedTableViewModel.swift */; };
+		2242024A28377D9E007B5A4B /* SeeAllMenuDeltailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242024828377D9E007B5A4B /* SeeAllMenuDeltailsViewController.swift */; };
+		2242024B28377D9E007B5A4B /* SeeAllMenuDeltailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2242024928377D9E007B5A4B /* SeeAllMenuDeltailsViewController.xib */; };
+		2242024D28378681007B5A4B /* SeeAllMenuDeltailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242024C28378681007B5A4B /* SeeAllMenuDeltailsViewModel.swift */; };
 		22514040283632CD00319D8B /* CartDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251403F283632CC00319D8B /* CartDataStore.swift */; };
 		225140422836332600319D8B /* StoreDataOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225140412836332600319D8B /* StoreDataOrder.swift */; };
+		225E58B4283CC72000A66B77 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E58B2283CC72000A66B77 /* SearchViewController.swift */; };
+		225E58B5283CC72000A66B77 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 225E58B3283CC72000A66B77 /* SearchViewController.xib */; };
+		225E58B7283CE3EC00A66B77 /* SearchBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E58B6283CE3EC00A66B77 /* SearchBarViewModel.swift */; };
+		225E58B9283DE33300A66B77 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E58B8283DE33300A66B77 /* Loader.swift */; };
+		225E58BC283E096E00A66B77 /* AlertCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E58BA283E096E00A66B77 /* AlertCartViewController.swift */; };
+		225E58BD283E096E00A66B77 /* AlertCartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 225E58BB283E096E00A66B77 /* AlertCartViewController.xib */; };
 		22800EC4282CE39E00D99DF4 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22800EC2282CE39E00D99DF4 /* CartViewController.swift */; };
 		22800EC5282CE39E00D99DF4 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22800EC3282CE39E00D99DF4 /* CartViewController.xib */; };
 		22800EC9282CECFD00D99DF4 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22800EC7282CECFD00D99DF4 /* CartTableViewCell.swift */; };
@@ -49,8 +66,6 @@
 		22A25163281B74CC003FF30B /* BookingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A25161281B74CC003FF30B /* BookingTableViewCell.xib */; };
 		22A25166281B818D003FF30B /* HomeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A25165281B818D003FF30B /* HomeTableHeaderView.swift */; };
 		22A2516A281B81E8003FF30B /* HomeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A25169281B81E8003FF30B /* HomeTableHeaderView.xib */; };
-		22A2516D281BC604003FF30B /* HomeNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2516C281BC604003FF30B /* HomeNavigationBar.swift */; };
-		22A2516F281BC61A003FF30B /* HomeNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A2516E281BC61A003FF30B /* HomeNavigationBar.xib */; };
 		22A25173281BD347003FF30B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A25171281BD347003FF30B /* MapViewController.swift */; };
 		22A25174281BD347003FF30B /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A25172281BD347003FF30B /* MapViewController.xib */; };
 		22A25179282217E7003FF30B /* BookingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A25177282217E7003FF30B /* BookingHistoryTableViewCell.swift */; };
@@ -101,10 +116,27 @@
 		22397C772824B21000DD9D7A /* DetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableViewCell.xib; sourceTree = "<group>"; };
 		22397C7B2824BAFF00DD9D7A /* ListDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		22397C7C2824BAFF00DD9D7A /* ListDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListDetailsTableViewCell.xib; sourceTree = "<group>"; };
-		22397C802824C7CE00DD9D7A /* DetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableView.swift; sourceTree = "<group>"; };
-		22397C822824C7FC00DD9D7A /* DetailsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableView.xib; sourceTree = "<group>"; };
+		22397C802824C7CE00DD9D7A /* DetailsHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeaderViewCell.swift; sourceTree = "<group>"; };
+		22397C822824C7FC00DD9D7A /* DetailsHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsHeaderViewCell.xib; sourceTree = "<group>"; };
+		223C801F283B32640046E334 /* SeeAllToDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllToDayViewController.swift; sourceTree = "<group>"; };
+		223C8020283B32640046E334 /* SeeAllToDayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeeAllToDayViewController.xib; sourceTree = "<group>"; };
+		223C8023283B38100046E334 /* SeeAllTodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllTodayViewModel.swift; sourceTree = "<group>"; };
+		2242022E28372520007B5A4B /* RecommendedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTableViewCell.swift; sourceTree = "<group>"; };
+		2242022F28372520007B5A4B /* RecommendedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedTableViewCell.xib; sourceTree = "<group>"; };
+		224202332837256C007B5A4B /* RecommendedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCollectionViewCell.swift; sourceTree = "<group>"; };
+		224202342837256C007B5A4B /* RecommendedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedCollectionViewCell.xib; sourceTree = "<group>"; };
+		2242023728373510007B5A4B /* RecommendedTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTableViewModel.swift; sourceTree = "<group>"; };
+		2242024828377D9E007B5A4B /* SeeAllMenuDeltailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllMenuDeltailsViewController.swift; sourceTree = "<group>"; };
+		2242024928377D9E007B5A4B /* SeeAllMenuDeltailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeeAllMenuDeltailsViewController.xib; sourceTree = "<group>"; };
+		2242024C28378681007B5A4B /* SeeAllMenuDeltailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllMenuDeltailsViewModel.swift; sourceTree = "<group>"; };
 		2251403F283632CC00319D8B /* CartDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDataStore.swift; sourceTree = "<group>"; };
 		225140412836332600319D8B /* StoreDataOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataOrder.swift; sourceTree = "<group>"; };
+		225E58B2283CC72000A66B77 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		225E58B3283CC72000A66B77 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		225E58B6283CE3EC00A66B77 /* SearchBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewModel.swift; sourceTree = "<group>"; };
+		225E58B8283DE33300A66B77 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		225E58BA283E096E00A66B77 /* AlertCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCartViewController.swift; sourceTree = "<group>"; };
+		225E58BB283E096E00A66B77 /* AlertCartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertCartViewController.xib; sourceTree = "<group>"; };
 		22800EC2282CE39E00D99DF4 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		22800EC3282CE39E00D99DF4 /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		22800EC7282CECFD00D99DF4 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,8 +162,6 @@
 		22A25161281B74CC003FF30B /* BookingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingTableViewCell.xib; sourceTree = "<group>"; };
 		22A25165281B818D003FF30B /* HomeTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableHeaderView.swift; sourceTree = "<group>"; };
 		22A25169281B81E8003FF30B /* HomeTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableHeaderView.xib; sourceTree = "<group>"; };
-		22A2516C281BC604003FF30B /* HomeNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationBar.swift; sourceTree = "<group>"; };
-		22A2516E281BC61A003FF30B /* HomeNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNavigationBar.xib; sourceTree = "<group>"; };
 		22A25171281BD347003FF30B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		22A25172281BD347003FF30B /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		22A25177282217E7003FF30B /* BookingHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -194,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				223785452823C7A1009EAF47 /* UIImageViewExt.swift */,
+				225E58B8283DE33300A66B77 /* Loader.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,10 +252,79 @@
 		22397C7F2824C75900DD9D7A /* HeaderCell */ = {
 			isa = PBXGroup;
 			children = (
-				22397C802824C7CE00DD9D7A /* DetailsTableView.swift */,
-				22397C822824C7FC00DD9D7A /* DetailsTableView.xib */,
+				22397C802824C7CE00DD9D7A /* DetailsHeaderViewCell.swift */,
+				22397C822824C7FC00DD9D7A /* DetailsHeaderViewCell.xib */,
 			);
 			path = HeaderCell;
+			sourceTree = "<group>";
+		};
+		223C801D283B32070046E334 /* SeeAllBooking */ = {
+			isa = PBXGroup;
+			children = (
+				22EC211628291CC000118F42 /* SeeAllViewController.swift */,
+				22EC211728291CC000118F42 /* SeeAllViewController.xib */,
+				22EC211A2829FCEA00118F42 /* SeeALLViewModel.swift */,
+			);
+			path = SeeAllBooking;
+			sourceTree = "<group>";
+		};
+		223C801E283B323E0046E334 /* SeeAllToday */ = {
+			isa = PBXGroup;
+			children = (
+				223C801F283B32640046E334 /* SeeAllToDayViewController.swift */,
+				223C8020283B32640046E334 /* SeeAllToDayViewController.xib */,
+				223C8023283B38100046E334 /* SeeAllTodayViewModel.swift */,
+			);
+			path = SeeAllToday;
+			sourceTree = "<group>";
+		};
+		2242022D283724AB007B5A4B /* RecommendedMenu */ = {
+			isa = PBXGroup;
+			children = (
+				2242023228372541007B5A4B /* RecommendedCollectionCell */,
+				2242022E28372520007B5A4B /* RecommendedTableViewCell.swift */,
+				2242022F28372520007B5A4B /* RecommendedTableViewCell.xib */,
+				2242023728373510007B5A4B /* RecommendedTableViewModel.swift */,
+			);
+			path = RecommendedMenu;
+			sourceTree = "<group>";
+		};
+		2242023228372541007B5A4B /* RecommendedCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				224202332837256C007B5A4B /* RecommendedCollectionViewCell.swift */,
+				224202342837256C007B5A4B /* RecommendedCollectionViewCell.xib */,
+			);
+			path = RecommendedCollectionCell;
+			sourceTree = "<group>";
+		};
+		2242024728377D69007B5A4B /* SeeAllMenuDetails */ = {
+			isa = PBXGroup;
+			children = (
+				2242024828377D9E007B5A4B /* SeeAllMenuDeltailsViewController.swift */,
+				2242024928377D9E007B5A4B /* SeeAllMenuDeltailsViewController.xib */,
+				2242024C28378681007B5A4B /* SeeAllMenuDeltailsViewModel.swift */,
+			);
+			path = SeeAllMenuDetails;
+			sourceTree = "<group>";
+		};
+		225E58B1283CC6BC00A66B77 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				225E58B2283CC72000A66B77 /* SearchViewController.swift */,
+				225E58B3283CC72000A66B77 /* SearchViewController.xib */,
+				225E58B6283CE3EC00A66B77 /* SearchBarViewModel.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		225E58BE283E097900A66B77 /* AlertCart */ = {
+			isa = PBXGroup;
+			children = (
+				225E58BA283E096E00A66B77 /* AlertCartViewController.swift */,
+				225E58BB283E096E00A66B77 /* AlertCartViewController.xib */,
+			);
+			path = AlertCart;
 			sourceTree = "<group>";
 		};
 		22800EC1282CE36600D99DF4 /* Cart */ = {
@@ -241,6 +341,7 @@
 		22800EC6282CECDC00D99DF4 /* CartViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				225E58BE283E097900A66B77 /* AlertCart */,
 				22800EC7282CECFD00D99DF4 /* CartTableViewCell.swift */,
 				22800EC8282CECFD00D99DF4 /* CartTableViewCell.xib */,
 			);
@@ -250,7 +351,6 @@
 		22A25137281A73C6003FF30B /* CustomCell  */ = {
 			isa = PBXGroup;
 			children = (
-				22A2516B281BC5E0003FF30B /* HomeNavigationBar */,
 				22A25164281B812C003FF30B /* HeaderCell */,
 				22A2515F281B748C003FF30B /* BookingTableViewCell */,
 				22A2514D281AAAFC003FF30B /* TodayTableViewCell */,
@@ -318,15 +418,6 @@
 			path = HeaderCell;
 			sourceTree = "<group>";
 		};
-		22A2516B281BC5E0003FF30B /* HomeNavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				22A2516C281BC604003FF30B /* HomeNavigationBar.swift */,
-				22A2516E281BC61A003FF30B /* HomeNavigationBar.xib */,
-			);
-			path = HomeNavigationBar;
-			sourceTree = "<group>";
-		};
 		22A25170281BD304003FF30B /* MapView */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +431,7 @@
 		22A2517528221582003FF30B /* Details Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				2242022D283724AB007B5A4B /* RecommendedMenu */,
 				22397C7F2824C75900DD9D7A /* HeaderCell */,
 				22397C7A2824BAD700DD9D7A /* ListDetailsTableViewCell */,
 				22397C752824B18A00DD9D7A /* DetailsTableViewCell */,
@@ -437,6 +529,7 @@
 		22A79B60281937B000673642 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				225E58B1283CC6BC00A66B77 /* SearchBar */,
 				22800EC1282CE36600D99DF4 /* Cart */,
 				22EC211C282A10BA00118F42 /* Order */,
 				22EC21152829067E00118F42 /* SeeAll */,
@@ -486,9 +579,9 @@
 		22EC21152829067E00118F42 /* SeeAll */ = {
 			isa = PBXGroup;
 			children = (
-				22EC211628291CC000118F42 /* SeeAllViewController.swift */,
-				22EC211728291CC000118F42 /* SeeAllViewController.xib */,
-				22EC211A2829FCEA00118F42 /* SeeALLViewModel.swift */,
+				2242024728377D69007B5A4B /* SeeAllMenuDetails */,
+				223C801E283B323E0046E334 /* SeeAllToday */,
+				223C801D283B32070046E334 /* SeeAllBooking */,
 			);
 			path = SeeAll;
 			sourceTree = "<group>";
@@ -533,6 +626,7 @@
 				22A79B452819376700673642 /* Sources */,
 				22A79B462819376700673642 /* Frameworks */,
 				22A79B472819376700673642 /* Resources */,
+				224754EC283C761500699CB2 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -586,12 +680,16 @@
 				22A25163281B74CC003FF30B /* BookingTableViewCell.xib in Resources */,
 				2237853F282251A4009EAF47 /* LogoutTableViewCell.xib in Resources */,
 				22A2515E281AC0D9003FF30B /* TodayCollectionViewCell.xib in Resources */,
+				2242023128372520007B5A4B /* RecommendedTableViewCell.xib in Resources */,
+				223C8022283B32640046E334 /* SeeAllToDayViewController.xib in Resources */,
 				22A79B562819376900673642 /* Assets.xcassets in Resources */,
 				22A2517A282217E7003FF30B /* BookingHistoryTableViewCell.xib in Resources */,
 				22800EC5282CE39E00D99DF4 /* CartViewController.xib in Resources */,
 				22EC212C282B4CA400118F42 /* DetailHistoryTableViewCell.xib in Resources */,
 				2237854A2823CDD5009EAF47 /* DetailsViewController.xib in Resources */,
 				22A2516A281B81E8003FF30B /* HomeTableHeaderView.xib in Resources */,
+				225E58BD283E096E00A66B77 /* AlertCartViewController.xib in Resources */,
+				225E58B5283CC72000A66B77 /* SearchViewController.xib in Resources */,
 				22EC211928291CC000118F42 /* SeeAllViewController.xib in Resources */,
 				22A2518A282222CC003FF30B /* Cell3TableViewCell.xib in Resources */,
 				22A25140281A7860003FF30B /* BannerCollectionViewCell.xib in Resources */,
@@ -599,10 +697,11 @@
 				22800ECA282CECFD00D99DF4 /* CartTableViewCell.xib in Resources */,
 				22A2513128193CE9003FF30B /* BookingViewController.xib in Resources */,
 				22A79B542819376700673642 /* Main.storyboard in Resources */,
-				22A2516F281BC61A003FF30B /* HomeNavigationBar.xib in Resources */,
+				224202362837256C007B5A4B /* RecommendedCollectionViewCell.xib in Resources */,
+				2242024B28377D9E007B5A4B /* SeeAllMenuDeltailsViewController.xib in Resources */,
 				22A25182282222AF003FF30B /* Cell1TableViewCell.xib in Resources */,
 				22A2513528193CF7003FF30B /* AccountViewController.xib in Resources */,
-				22397C832824C7FC00DD9D7A /* DetailsTableView.xib in Resources */,
+				22397C832824C7FC00DD9D7A /* DetailsHeaderViewCell.xib in Resources */,
 				22A25186282222BC003FF30B /* Cell2TableViewCell.xib in Resources */,
 				22A25174281BD347003FF30B /* MapViewController.xib in Resources */,
 				22397C7E2824BAFF00DD9D7A /* ListDetailsTableViewCell.xib in Resources */,
@@ -616,6 +715,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		224754EC283C761500699CB2 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		22A79B452819376700673642 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -627,24 +747,33 @@
 				22A2515D281AC0D9003FF30B /* TodayCollectionViewCell.swift in Sources */,
 				22EC2126282B48F200118F42 /* DetailHistoryViewController.swift in Sources */,
 				22A25150281AAB28003FF30B /* TodayTableViewCell.swift in Sources */,
+				223C8021283B32640046E334 /* SeeAllToDayViewController.swift in Sources */,
 				22A25162281B74CC003FF30B /* BookingTableViewCell.swift in Sources */,
+				225E58B9283DE33300A66B77 /* Loader.swift in Sources */,
 				22800ECE282E4BD600D99DF4 /* BookingTableViewModel.swift in Sources */,
 				22800EC4282CE39E00D99DF4 /* CartViewController.swift in Sources */,
 				2237853A28224D3B009EAF47 /* AccountViewModel .swift in Sources */,
+				2242023028372520007B5A4B /* RecommendedTableViewCell.swift in Sources */,
 				22800ECC282CF44500D99DF4 /* CartViewModel.swift in Sources */,
+				223C8024283B38110046E334 /* SeeAllTodayViewModel.swift in Sources */,
 				223785462823C7A1009EAF47 /* UIImageViewExt.swift in Sources */,
 				22A79B6C28193C5500673642 /* TabbarViewController.swift in Sources */,
+				2242023828373510007B5A4B /* RecommendedTableViewModel.swift in Sources */,
 				22A25181282222AF003FF30B /* Cell1TableViewCell.swift in Sources */,
 				22A2513A281A753A003FF30B /* BannerTableViewCell.swift in Sources */,
+				2242024A28377D9E007B5A4B /* SeeAllMenuDeltailsViewController.swift in Sources */,
+				224202352837256C007B5A4B /* RecommendedCollectionViewCell.swift in Sources */,
 				22A79B512819376700673642 /* ViewController.swift in Sources */,
-				22A2516D281BC604003FF30B /* HomeNavigationBar.swift in Sources */,
 				223785492823CDD5009EAF47 /* DetailsViewController.swift in Sources */,
 				225140422836332600319D8B /* StoreDataOrder.swift in Sources */,
 				22A25185282222BC003FF30B /* Cell2TableViewCell.swift in Sources */,
-				22397C812824C7CE00DD9D7A /* DetailsTableView.swift in Sources */,
+				22397C812824C7CE00DD9D7A /* DetailsHeaderViewCell.swift in Sources */,
+				225E58BC283E096E00A66B77 /* AlertCartViewController.swift in Sources */,
 				22A25142281A89C1003FF30B /* HomeViewControllerModel.swift in Sources */,
 				22397C7D2824BAFF00DD9D7A /* ListDetailsTableViewCell.swift in Sources */,
 				22EC2130282B670C00118F42 /* DetailHistoryViewModel.swift in Sources */,
+				225E58B7283CE3EC00A66B77 /* SearchBarViewModel.swift in Sources */,
+				2242024D28378681007B5A4B /* SeeAllMenuDeltailsViewModel.swift in Sources */,
 				22800EC9282CECFD00D99DF4 /* CartTableViewCell.swift in Sources */,
 				22EC21142828C86600118F42 /* DetailsTableViewModel.swift in Sources */,
 				22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */,
@@ -664,6 +793,7 @@
 				22A25166281B818D003FF30B /* HomeTableHeaderView.swift in Sources */,
 				22EC21122828AF9100118F42 /* DetailsViewModel.swift in Sources */,
 				22EC211F282A111800118F42 /* OrderViewController.swift in Sources */,
+				225E58B4283CC72000A66B77 /* SearchViewController.swift in Sources */,
 				223785432822729A009EAF47 /* TodayTableViewModel.swift in Sources */,
 				22EC2122282A244800118F42 /* OrderViewModel.swift in Sources */,
 				22514040283632CD00319D8B /* CartDataStore.swift in Sources */,

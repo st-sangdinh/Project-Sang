@@ -13,10 +13,10 @@ class BannerCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        imageView.layer.cornerRadius = 20 
+        imageView.layer.cornerRadius = 20
     }
-    
-    func updateImage(img: UIImage?){
-        imageView.image  = img
+
+    func updateImage(img: String) {
+        imageView.downloaded(from: img)
     }
 }

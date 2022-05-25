@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertCartViewController" customModule="Sang_Dinh_V3" customModuleProvider="target">
+            <connections>
+                <outlet property="canceView" destination="wGb-jv-6Dy" id="by1-RO-rgI"/>
+                <outlet property="clearLabel" destination="WDi-b1-CHG" id="jvo-oj-5CH"/>
+                <outlet property="contentView" destination="1q3-YA-CK0" id="cgm-Qb-SrE"/>
+                <outlet property="okView" destination="khk-Cq-ODM" id="ViL-CQ-mh1"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1q3-YA-CK0">
+                    <rect key="frame" x="82" y="378" width="250" height="150"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clear Cart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDi-b1-CHG">
+                            <rect key="frame" x="86.5" y="15" width="77" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure  you want to clear cart !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abx-vg-KsC">
+                            <rect key="frame" x="25" y="46" width="200" height="33.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="IFn-lS-x2t"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.48627450980392156" green="0.52549019607843139" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGb-jv-6Dy">
+                            <rect key="frame" x="25" y="100" width="75" height="35"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="75" id="O9Z-FA-zE8"/>
+                                <constraint firstAttribute="height" constant="35" id="nts-Yx-n1y"/>
+                            </constraints>
+                            <color key="tintColor" red="0.1960784314" green="0.71764705880000002" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Cance"/>
+                            <connections>
+                                <action selector="canceButton:" destination="-1" eventType="touchUpInside" id="pio-7N-bBs"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khk-Cq-ODM">
+                            <rect key="frame" x="150" y="100" width="75" height="35"/>
+                            <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="CJS-0n-QjM"/>
+                                <constraint firstAttribute="width" constant="75" id="Chj-gS-u6S"/>
+                            </constraints>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="OK"/>
+                            <connections>
+                                <action selector="okButton:" destination="-1" eventType="touchUpInside" id="cyG-Ai-13s"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="wGb-jv-6Dy" secondAttribute="bottom" constant="15" id="2e1-H7-7n6"/>
+                        <constraint firstItem="WDi-b1-CHG" firstAttribute="centerX" secondItem="1q3-YA-CK0" secondAttribute="centerX" id="7u3-6C-grP"/>
+                        <constraint firstItem="Abx-vg-KsC" firstAttribute="top" secondItem="WDi-b1-CHG" secondAttribute="bottom" constant="10" id="C0z-Jy-JBF"/>
+                        <constraint firstAttribute="bottom" secondItem="khk-Cq-ODM" secondAttribute="bottom" constant="15" id="KWk-zI-ClA"/>
+                        <constraint firstAttribute="height" constant="150" id="NY1-Wb-5BU"/>
+                        <constraint firstAttribute="width" constant="250" id="WEu-Q4-6Ju"/>
+                        <constraint firstAttribute="trailing" secondItem="khk-Cq-ODM" secondAttribute="trailing" constant="25" id="Y9l-Zs-GxR"/>
+                        <constraint firstItem="Abx-vg-KsC" firstAttribute="centerX" secondItem="WDi-b1-CHG" secondAttribute="centerX" id="c3A-WQ-XPo"/>
+                        <constraint firstItem="WDi-b1-CHG" firstAttribute="top" secondItem="1q3-YA-CK0" secondAttribute="top" constant="15" id="lKk-ut-iHG"/>
+                        <constraint firstItem="wGb-jv-6Dy" firstAttribute="leading" secondItem="1q3-YA-CK0" secondAttribute="leading" constant="25" id="mwk-e0-T25"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1q3-YA-CK0" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="F4z-d0-v3X"/>
+                <constraint firstItem="1q3-YA-CK0" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="dAY-t0-EpF"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="73.660714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

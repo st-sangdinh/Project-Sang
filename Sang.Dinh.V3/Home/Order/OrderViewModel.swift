@@ -8,12 +8,8 @@
 import Foundation
 
 protocol OrderViewModelType {
-    
     func getMenu() -> Menu
-    
-
 }
-
 
 class OrderViewModel {
     let listOrder: Menu
@@ -24,10 +20,11 @@ class OrderViewModel {
     let restaurent: Restaurant
     var number: Int = 0
     var note = ""
-        
-    init(listOrder: Menu, restaurant: Restaurant){
+    var priceDiscount: Int = 0
+    init(listOrder: Menu, restaurant: Restaurant, priceDiscount: Int) {
         self.listOrder = listOrder
         self.restaurent = restaurant
+        self.priceDiscount = priceDiscount
 
     }
 }
@@ -35,7 +32,12 @@ class OrderViewModel {
 extension OrderViewModel: OrderViewModelType {
 
     func saveCartData() {
-        let item = ItemOrder(menuItem: listOrder, restaurant: restaurent, amout: number, notes: note)
+        let item = ItemOrder(
+            menuItem: listOrder,
+            restaurant: restaurent,
+            amout: number,
+            priceDiscount: priceDiscount,
+            notes: note)
 
         let carts = CartDataStore.shared.getCart()
         if let index = carts.firstIndex(where: { $0.menuItem.id == item.menuItem.id }) {
@@ -44,11 +46,10 @@ extension OrderViewModel: OrderViewModelType {
         } else {
             CartDataStore.shared.appendCart(item: item)
         }
-    } 
+    }
     func getMenu() -> Menu {
         listOrder
     }
-    
 }
 
 struct HistoryOrder: Codable {
@@ -65,5 +66,6 @@ struct ItemOrder: Codable {
     var menuItem: Menu
     let restaurant: Restaurant
     var amout: Int
+    var priceDiscount: Int
     let notes: String
 }

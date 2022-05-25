@@ -11,18 +11,15 @@ protocol DetailsTableViewModelType {
     func getListMenu() -> Restaurant
 }
 
-
 class DetailsTableViewModel {
     var listDetails: Restaurant
-    
+
     init(listDetails: Restaurant) {
         self.listDetails = listDetails
     }
 }
 
-
 extension DetailsTableViewModel: DetailsTableViewModelType {
-    
     func getListMenu() -> Restaurant {
         listDetails
     }

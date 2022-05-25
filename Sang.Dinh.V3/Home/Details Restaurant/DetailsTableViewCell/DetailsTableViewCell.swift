@@ -7,22 +7,30 @@
 
 import UIKit
 
+protocol DetailsTableViewCellDelegate: AnyObject {
+    func viewCell(view: DetailsTableViewCell, action: DetailsTableViewCell.Action)
+}
+
 class DetailsTableViewCell: UITableViewCell {
-    
+
+    enum Action {
+        case didSelectMapView
+    }
+
     var viewModel: DetailsTableViewModelType! {
         didSet {
             collectionView.reloadData()
         }
     }
-    
-    var didSelect: (() -> Void)?
-    
+
+    weak var delegate: DetailsTableViewCellDelegate?
+
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLable: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,58 +42,56 @@ class DetailsTableViewCell: UITableViewCell {
     }
 
     func configCollection() {
-        collectionView.register(UINib(nibName: "DetailsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DetailsCollectionViewCell")
+        collectionView.register(UINib(nibName: "DetailsCollectionViewCell", bundle: nil),
+                                forCellWithReuseIdentifier: "DetailsCollectionViewCell")
         collectionView.dataSource = self
         collectionView.delegate = self
-
         collectionView.layer.cornerRadius = 10
     }
-    
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-    
+
     @IBAction func locationButton(_ sender: Any) {
-        didSelect?()
+        delegate?.viewCell(view: self, action: .didSelectMapView)
     }
-    
-    
+
     func setData(name: String, address: String) {
         nameLabel.text = name
         addressLable.text = address
     }
-    
 }
 
+// MARK: - UICollectionViewDataSource
 extension DetailsTableViewCell: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.getListMenu().photos.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsCollectionViewCell", for: indexPath) as? DetailsCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "DetailsCollectionViewCell", for: indexPath) as? DetailsCollectionViewCell
         let image = viewModel.getListMenu().photos[indexPath.item]
         cell?.setData(image: image)
         return cell ?? UICollectionViewCell()
     }
-    
 }
 
-
+// MARK: - UICollectionViewDelegateFlowLayout
 extension DetailsTableViewCell: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.size.width
-        return CGSize(width: width , height: 182)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        11
+        return CGSize(width: width, height: 182)
     }
 
-    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 11
+    }
 }

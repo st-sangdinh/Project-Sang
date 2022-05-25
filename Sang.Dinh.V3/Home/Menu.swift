@@ -28,7 +28,6 @@ struct Menu: Codable {
     var description: String = ""
     var price: Int = 0
     var imageUrl: String = ""
-//    var number: Int = 0
     var discount: Int = 0
 }
 
@@ -36,4 +35,11 @@ struct RestaurantResponse: Codable {
     var data: [Restaurant]
 }
 
+struct ListBanners: Codable {
+    var id: Int = 0
+    var imageUrl: String = ""
+}
 
+struct ListBannersResponse: Codable {
+    var data: [ListBanners]
+}

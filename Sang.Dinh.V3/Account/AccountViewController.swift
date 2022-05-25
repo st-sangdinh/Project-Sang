@@ -10,35 +10,35 @@ import UIKit
 class AccountViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    
+
     let viewModel: AccountViewModelType = AccountViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.navigationController?.isNavigationBarHidden = true
-       
+
         configTableView()
         // Do any additional setup after loading the view.
     }
-    
+
     func configTableView() {
-        tableView.register(UINib(nibName: "Cell1TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell1TableViewCell")
-        tableView.register(UINib(nibName: "Cell2TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell2TableViewCell")
-        tableView.register(UINib(nibName: "Cell3TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell3TableViewCell")
-        tableView.register(UINib(nibName: "LogoutTableViewCell", bundle: nil), forCellReuseIdentifier: "LogoutTableViewCell")
-        
+        tableView.register(UINib(nibName: "Cell1TableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "Cell1TableViewCell")
+        tableView.register(UINib(nibName: "Cell2TableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "Cell2TableViewCell")
+        tableView.register(UINib(nibName: "Cell3TableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "Cell3TableViewCell")
+        tableView.register(UINib(nibName: "LogoutTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "LogoutTableViewCell")
         tableView.dataSource = self
     }
-    
 }
 
 extension AccountViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.numberOfSections()
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfItem(in: section)
     }

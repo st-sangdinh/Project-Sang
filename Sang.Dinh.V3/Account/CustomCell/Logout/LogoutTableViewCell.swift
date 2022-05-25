@@ -20,7 +20,7 @@ class LogoutTableViewCell: UITableViewCell {
         viewContent.layer.shadowOffset = CGSize(width: 0, height: 2)
         viewContent.layer.shadowRadius = 6
         viewContent.layer.shadowOpacity = 1
-        viewContent.layer.masksToBounds = false 
+        viewContent.layer.masksToBounds = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,7 +28,6 @@ class LogoutTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
     @IBAction func logoutButton(_ sender: Any) {
         print("Logout")
     }

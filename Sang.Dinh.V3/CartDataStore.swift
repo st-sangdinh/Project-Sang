@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol CartDataStoreType {
     func getCart() -> [ItemOrder]
     func getItemOrder(at index: Int) -> ItemOrder
@@ -19,25 +18,24 @@ protocol CartDataStoreType {
 }
 
 class CartDataStore: CartDataStoreType {
-    
+
     // Signleton
     static let shared = CartDataStore()
     private init() {}
-    
     // Private properties
     private let standard = UserDefault.shared
     private let kCarts = "kCarts"
-    
+
     func getCart() -> [ItemOrder] {
         let value = standard.getObjects(type: ItemOrder.self, key: kCarts)
         return value
     }
-    
+
     func getItemOrder(at index: Int) -> ItemOrder {
         let result = getCart()
         return result[index]
     }
-    
+
     func minusCart(at index: Int) {
         var result = standard.getObjects(type: ItemOrder.self, key: kCarts)
         if result[index].amout > 0 {
@@ -45,7 +43,7 @@ class CartDataStore: CartDataStoreType {
             standard.saveObject(result[index], forKey: kCarts)
         }
     }
-    
+
     func appendCart(item: ItemOrder) {
         var result = standard.getObjects(type: ItemOrder.self, key: kCarts)
         result.append(item)
@@ -56,24 +54,23 @@ class CartDataStore: CartDataStoreType {
         result.insert(item, at: index)
         standard.saveObjects(result, forKey: kCarts)
     }
-    
+
     func replaceItemOrder(item: ItemOrder, index: Int) {
         var result = standard.getObjects(type: ItemOrder.self, key: kCarts)
         result.remove(at: index)
         result.insert(item, at: index)
         standard.saveObjects(result, forKey: kCarts)
     }
-    
+
     func removeItemOrder(item: ItemOrder, index: Int) {
         var result = standard.getObjects(type: ItemOrder.self, key: kCarts)
         result.remove(at: index)
         standard.saveObjects(result, forKey: kCarts)
     }
-    
+
     func removeAll() {
         var result = standard.getObjects(type: ItemOrder.self, key: kCarts)
         result.removeAll()
         standard.saveObject(result, forKey: kCarts)
     }
-    
 }

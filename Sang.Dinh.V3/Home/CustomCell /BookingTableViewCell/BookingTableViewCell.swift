@@ -10,8 +10,7 @@ import UIKit
 class BookingTableViewCell: UITableViewCell {
 
     var viewModel: BookingTableViewModelType = BookingTableViewModel()
-    
-    
+
     @IBOutlet weak var contenView: UIView!
     @IBOutlet weak var imgBooking: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -28,21 +27,17 @@ class BookingTableViewCell: UITableViewCell {
         contenView.layer.shadowRadius = 1
         contenView.layer.shadowOpacity = 8
         contenView.layer.masksToBounds = false
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-            
         // Configure the view for the selected state
     }
-    
-    
-    
+
     @IBAction func booking(_ sender: Any) {
         print("Book")
     }
-    
+
     func setData(img: String, name: String, address: String) {
         nameLabel.text = name
         nameLabel.font = UIFont.boldSystemFont(ofSize: 16)

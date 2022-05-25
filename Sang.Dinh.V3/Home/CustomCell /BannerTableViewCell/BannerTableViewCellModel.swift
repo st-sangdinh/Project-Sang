@@ -10,26 +10,29 @@ import UIKit
 
 protocol BannerTableCellViewModelType {
     func numberOfItem() -> Int
-    
-    func bannerImage(at indexPath: IndexPath) -> UIImage?
+    func banner(at index: Int) -> String
+//    func bannerImage(at indexPath: IndexPath) -> UIImage?
 }
 
-
 class BannerTableCellViewModel {
-    var bannerImages: [UIImage?] = []
-    
-    init(bannerImages: [UIImage?] = []) {
+    var bannerImages: [ListBanners] = []
+
+    init(bannerImages: [ListBanners] = []) {
         self.bannerImages = bannerImages
     }
 }
 
 extension BannerTableCellViewModel: BannerTableCellViewModelType {
+    func banner(at index: Int) -> String {
+        bannerImages[index].imageUrl
+    }
+
     func numberOfItem() -> Int {
         return bannerImages.count
     }
-    
-    func bannerImage(at indexPath: IndexPath) -> UIImage? {
-        let bannerImage = bannerImages[indexPath.row]
-        return bannerImage
-    }
+
+//    func bannerImage(at indexPath: IndexPath) -> UIImage? {
+//        let bannerImage = bannerImages[indexPath.row]
+//        return bannerImage
+//    }
 }
