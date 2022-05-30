@@ -13,6 +13,8 @@ class SeeAllViewController: UIViewController {
 
     @IBOutlet weak var navigationView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
+
     init(viewModel: SeeALLViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -22,8 +24,7 @@ class SeeAllViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationView.layer.cornerRadius = 20
-        navigationView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        configView()
         configTableView()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +34,12 @@ class SeeAllViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
+    }
+
+    func configView() {
+        navigationView.layer.cornerRadius = 20
+        navigationView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
     }
 
     func configTableView() {

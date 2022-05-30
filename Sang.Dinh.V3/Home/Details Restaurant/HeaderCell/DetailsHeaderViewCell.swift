@@ -21,6 +21,7 @@ class DetailsHeaderViewCell: UITableViewHeaderFooterView {
     enum Action {
         case seeAll
     }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         nameLabel.font = UIFont.boldSystemFont(ofSize: 17)

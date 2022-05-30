@@ -16,6 +16,7 @@
                 <outlet property="footerView" destination="xiu-9i-TUV" id="bLK-Jm-VAT"/>
                 <outlet property="labelCheckOut" destination="D6E-7O-Pmy" id="T9v-pF-EDZ"/>
                 <outlet property="quantityCart" destination="Or5-qg-gKN" id="DOe-JL-nU2"/>
+                <outlet property="titleLabel" destination="kxf-xH-6h9" id="HoW-Gi-u0o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewCheckOut" destination="g1n-3V-dIP" id="8BP-WL-oGa"/>
             </connections>

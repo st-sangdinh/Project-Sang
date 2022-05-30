@@ -16,6 +16,7 @@
                 <outlet property="headerView" destination="3PF-7a-1Ws" id="1BW-j7-cN8"/>
                 <outlet property="priceLabel" destination="OAz-rI-TDD" id="w6s-Vt-JdF"/>
                 <outlet property="tableView" destination="8V1-DR-rvG" id="jFA-GA-PwM"/>
+                <outlet property="titleLabel" destination="gaO-E8-qL9" id="VCK-s1-xVL"/>
                 <outlet property="totalItem" destination="gGB-IP-YVy" id="MoR-K0-RtX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

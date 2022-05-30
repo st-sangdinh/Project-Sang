@@ -10,6 +10,7 @@ import UIKit
 class SeeAllMenuDeltailsViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var cartView: UIView!
@@ -47,6 +48,7 @@ class SeeAllMenuDeltailsViewController: UIViewController {
     }
 
     func configView() {
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         contentView.layer.cornerRadius = 10
         contentView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
@@ -97,23 +99,12 @@ class SeeAllMenuDeltailsViewController: UIViewController {
     }
     @IBAction func back(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-
     }
 
     func loadCartData() {
-        priceDiscount = 0
-        totalAmout = 0
-        CartDataStore.shared.getCart().forEach { item in
-            let price = item.menuItem.price
-            var discount = item.menuItem.discount
-            let amout = item.amout
-            totalAmout += item.amout
-//            totalPrice += item.amout * item.menuItem.price
-            discount = Int(CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100)))
-            priceDiscount += discount * amout
-        }
-        labelCheckOut.text = "Check Out \(priceDiscount) $"
-        quantityCart.text = "\(totalAmout) "
+        _ = viewModel?.loadCart()
+        labelCheckOut.text = "Check Out \(viewModel?.discount() ?? 0) $"
+        quantityCart.text = "\(viewModel?.amout() ?? 0) "
     }
 
     @IBAction func checkOut(_ sender: Any) {

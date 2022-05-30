@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="navigationView" destination="1Zf-Va-XYr" id="rzr-Gq-3ec"/>
                 <outlet property="tableView" destination="RG9-pn-dYf" id="xGs-9R-FTY"/>
+                <outlet property="titleLabel" destination="L8G-lm-gJu" id="LGz-Om-agd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

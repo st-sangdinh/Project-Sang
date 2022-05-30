@@ -14,7 +14,7 @@ protocol DetailsTableViewCellDelegate: AnyObject {
 class DetailsTableViewCell: UITableViewCell {
 
     enum Action {
-        case didSelectMapView
+        case didSelect
     }
 
     var viewModel: DetailsTableViewModelType! {
@@ -55,7 +55,7 @@ class DetailsTableViewCell: UITableViewCell {
     }
 
     @IBAction func locationButton(_ sender: Any) {
-        delegate?.viewCell(view: self, action: .didSelectMapView)
+        delegate?.viewCell(view: self, action: .didSelect)
     }
 
     func setData(name: String, address: String) {

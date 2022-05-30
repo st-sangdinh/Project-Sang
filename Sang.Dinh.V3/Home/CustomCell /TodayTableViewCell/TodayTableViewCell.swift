@@ -6,8 +6,15 @@
 //
 
 import UIKit
+protocol TodayTableViewCellDelegate: AnyObject {
+    func viewCell(view: TodayTableViewCell, action: TodayTableViewCell.Action)
+}
 
 class TodayTableViewCell: UITableViewCell {
+
+    enum Action {
+        case didSelect
+    }
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -16,7 +23,8 @@ class TodayTableViewCell: UITableViewCell {
             reloadData()
         }
     }
-    var didSelect: (() -> Void)?
+
+    weak var delegate: TodayTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,7 +66,6 @@ extension TodayTableViewCell: UICollectionViewDataSource {
               cell?.layer.masksToBounds = false
         let menu = viewModel.getMenu(at: indexPath).menus[indexPath.item]
         cell?.setData(avatar: menu.imageUrl, name: menu.name, price: menu.price)
-
         return cell ?? UICollectionViewCell()
     }
 }
@@ -82,6 +89,7 @@ extension TodayTableViewCell: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSelect?()
+//        didSelect?()
+        delegate?.viewCell(view: self, action: .didSelect)
     }
 }

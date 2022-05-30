@@ -26,6 +26,7 @@ class CartViewController: UIViewController {
     weak var delegate: CartViewControllerDelegate?
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var checkOutView: UIView!
@@ -34,9 +35,9 @@ class CartViewController: UIViewController {
     @IBOutlet weak var clear: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configView()
         configTableView()
+        loadCartData()
         // Do any additional setup after loading the view.
     }
 
@@ -57,12 +58,10 @@ class CartViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        totalItem.text = "\(CartDataStore.shared.getCart().count) Items"
-        priceLabel.text = "\(viewModel?.price ?? 0) $"
     }
 
     func configView() {
-
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         headerView.layer.cornerRadius = 20
         headerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
@@ -106,17 +105,9 @@ class CartViewController: UIViewController {
         viewController.delegate = self
     }
     func loadCartData() {
-        priceDiscount = 0
-        totalAmout = 0
-        CartDataStore.shared.getCart().forEach { item in
-            let price = item.menuItem.price
-            var discount = item.menuItem.discount
-            let amout = item.amout
-            totalAmout += item.amout
-//            totalPrice += item.amout * item.menuItem.price
-            discount = Int(CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100)))
-            priceDiscount += discount * amout
-        }
+        _ = viewModel?.loadCart()
+        totalItem.text = "\(CartDataStore.shared.getCart().count) Items"
+        priceLabel.text = "\(viewModel?.loadCart() ?? 0) $"
     }
 }
 
@@ -159,7 +150,7 @@ extension CartViewController: CartTableViewCellDelegate {
                 CartDataStore.shared.replaceItemOrder(item: itemOrder, index: indexPath.row)
 //                priceLabel.text = "\(itemOrder.amout * itemOrder.menuItem.price) $"
                 loadCartData()
-                priceLabel.text = "\(priceDiscount) $"
+                priceLabel.text = "\(viewModel?.priceDiscount ?? 0) $"
                 tableView.reloadData()
                 delegate?.viewController(view: self, acction: .updateCart)
             } else if itemOrder.amout < 1 {
@@ -174,7 +165,7 @@ extension CartViewController: CartTableViewCellDelegate {
             itemOrder.amout += 1
             CartDataStore.shared.replaceItemOrder(item: itemOrder, index: indexPath.row)
             loadCartData()
-            priceLabel.text = "\(priceDiscount) $"
+            priceLabel.text = "\(viewModel?.priceDiscount ?? 0) $"
             tableView.reloadData()
             delegate?.viewController(view: self, acction: .updateCart )
         }

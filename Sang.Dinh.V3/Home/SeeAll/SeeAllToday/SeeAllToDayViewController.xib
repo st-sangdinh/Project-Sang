@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="collectionView" destination="3TY-Io-FPt" id="taG-AP-9lZ"/>
                 <outlet property="navigationView" destination="XLk-r9-Vev" id="DsG-Z2-Jp4"/>
+                <outlet property="titleLabel" destination="DrH-HW-89p" id="bE1-GL-DDd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

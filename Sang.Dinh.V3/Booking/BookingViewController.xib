@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="headerView" destination="hpb-Bh-KjJ" id="2By-bE-T5Y"/>
                 <outlet property="tableView" destination="Jh8-9B-PZZ" id="AQP-sb-WcA"/>
+                <outlet property="titleLabel" destination="OLc-bb-Bta" id="nFa-QS-KZu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

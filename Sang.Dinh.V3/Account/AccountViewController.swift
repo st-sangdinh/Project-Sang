@@ -35,6 +35,7 @@ class AccountViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension AccountViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.numberOfSections()

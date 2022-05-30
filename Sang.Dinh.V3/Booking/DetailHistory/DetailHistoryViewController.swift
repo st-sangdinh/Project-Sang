@@ -31,23 +31,20 @@ class DetailHistoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configView()
         configTabelView()
+        loadDiscount()
+    }
+    
+    func configView() {
+        headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
         headerLabel.text = viewModel.resName
         let date = viewModel.dateTime
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd - HH:mm a"
-
         dateLabel.text = dateFormatter.string(from: date!)
         dateLabel.font = UIFont.boldSystemFont(ofSize: 14)
         viewTotal.layer.cornerRadius = 10
-        viewModel.resMenu?.forEach({ item in
-            let amout = item.amout
-            let price = item.menuItem.price
-            let discount = item.menuItem.discount
-            let priceDiscount = Int(CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100)))
-            totalDiscount += priceDiscount * amout
-        })
-        totalPriceLabel.text = "Total: \(totalDiscount)$"
     }
 
     func configTabelView() {
@@ -69,10 +66,19 @@ class DetailHistoryViewController: UIViewController {
         footerView.layer.position = footerView.center
     }
 
+    func loadDiscount() {
+        viewModel.resMenu?.forEach({ item in
+            let amout = item.amout
+            let price = item.menuItem.price
+            let discount = item.menuItem.discount
+            let priceDiscount = Int(CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100)))
+            totalDiscount += priceDiscount * amout
+        })
+        totalPriceLabel.text = "Total: \(totalDiscount)$"
+    }
+
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true)
-    }
-    @IBAction func buttonTotal(_ sender: Any) {
     }
 }
 

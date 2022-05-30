@@ -9,7 +9,6 @@ import Foundation
 
 protocol SeeALLViewModelType {
     func getListMenu() -> [Restaurant]
-
     func getMenu(at indexPath: IndexPath) -> Restaurant
     func viewMdelForDetailsView(in indexPath: IndexPath) -> DetailsViewModel
 }

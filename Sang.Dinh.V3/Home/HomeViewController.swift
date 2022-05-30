@@ -17,11 +17,13 @@ final class HomeViewController: UIViewController {
     let viewModel: HomeViewModelType = HomeViewModel()
     var contactsData: [String] = []
     var contacts: [String] = []
+    let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationHome()
         configTableView()
+        refreshHome()
         getAPI()
         getAPIBanners()
     }
@@ -33,6 +35,13 @@ final class HomeViewController: UIViewController {
             self.loaderView.stopAnimating()
             self.viewLoad.isHidden = true
             self.tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                self.refreshControl.endRefreshing()
+                self.tableView.contentOffset = .zero
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        self.tableView.scrollsToTop = true
+                    }
+                })
         }
     }
 
@@ -42,6 +51,13 @@ final class HomeViewController: UIViewController {
             self.loaderView.stopAnimating()
             self.viewLoad.isHidden = true
             self.tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                self.refreshControl.endRefreshing()
+                self.tableView.contentOffset = .zero
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        self.tableView.scrollsToTop = true
+                    }
+                })
         }
     }
 
@@ -59,6 +75,18 @@ final class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.sectionFooterHeight = .leastNonzeroMagnitude
+
+    }
+
+    func refreshHome() {
+        refreshControl.tintColor = .green
+                refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+                tableView.addSubview(refreshControl)
+    }
+
+    @objc func refreshData() {
+        getAPI()
+        getAPIBanners()
     }
 
     func navigationHome() {
@@ -127,6 +155,7 @@ final class HomeViewController: UIViewController {
     }
 
     @objc func imgAccButton() {
+//        let a = AccountViewController()
     }
     @IBAction func searchButton(_ sender: Any) {
         let viewController = SearchViewController()
@@ -166,12 +195,7 @@ extension HomeViewController: UITableViewDataSource {
             }
             cell.viewModel = viewModel.viewModelForTodayTabbleViewCell(in: indexPath)
             cell.reloadData()
-            cell.didSelect = {
-                let viewController = DetailsViewController(
-                    viewModel: self.viewModel.viewMdelForDetailsView(in: indexPath))
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+            cell.delegate = self
             return cell
         case .booking:
             guard let cell = tableView.dequeueReusableCell(
@@ -276,5 +300,18 @@ extension HomeViewController: HomeTableHeaderViewDelegate {
 //            case.booking:
 //            print(isSeeAll)
 //        }
-//    }
+//    }b
+}
+
+extension HomeViewController: TodayTableViewCellDelegate {
+    func viewCell(view: TodayTableViewCell, action: TodayTableViewCell.Action) {
+        switch action {
+        case .didSelect:
+            guard let indexPath = tableView.indexPath(for: view) else {return}
+            let viewController = DetailsViewController(
+                viewModel: self.viewModel.viewMdelForDetailsView(in: indexPath))
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }

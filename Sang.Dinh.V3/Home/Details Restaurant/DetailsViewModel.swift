@@ -27,9 +27,13 @@ protocol DetailsViewModelType {
 
     func cartOrder() -> [HistoryOrder]
 
+    func loadCart() -> (Int, Int)
+
 }
 
 class DetailsViewModel {
+    var priceDiscount: Int = 0
+    var totalAmout: Int = 0
     var listDetails: Restaurant
 
     init(listDetails: Restaurant) {
@@ -38,6 +42,21 @@ class DetailsViewModel {
 }
 
 extension DetailsViewModel: DetailsViewModelType {
+    func loadCart() -> (Int, Int) {
+        priceDiscount = 0
+        totalAmout = 0
+        CartDataStore.shared.getCart().forEach { item in
+            let price = item.menuItem.price
+            var discount = item.menuItem.discount
+            let amout = item.amout
+            totalAmout += item.amout
+//            totalPrice += item.amout * item.menuItem.price
+            discount = Int(Float(price) * (Float(Float(100 - discount) / 100)))
+            priceDiscount += discount * amout
+        }
+        return (totalAmout, priceDiscount)
+    }
+    
 
     func viewForAllRecommended() -> SeeAllMenuDeltailsViewModel {
         return SeeAllMenuDeltailsViewModel(listAllRecommended: listDetails)

@@ -12,6 +12,7 @@ class DetailsViewController: UIViewController {
     var viewModel: DetailsViewModelType
 
     @IBOutlet weak var navigationView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var cartView: UIView!
@@ -74,6 +75,8 @@ class DetailsViewController: UIViewController {
     }
 
     func configView() {
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+
         footerView.layer.cornerRadius = 20
         footerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         footerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.09).cgColor
@@ -102,19 +105,20 @@ class DetailsViewController: UIViewController {
     }
 
     func loadCartData() {
-        priceDiscount = 0
-        totalAmout = 0
-        CartDataStore.shared.getCart().forEach { item in
-            let price = item.menuItem.price
-            var discount = item.menuItem.discount
-            let amout = item.amout
-            totalAmout += item.amout
-//            totalPrice += item.amout * item.menuItem.price
-            discount = Int(CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100)))
-            priceDiscount += discount * amout
-        }
-        labelCheckOut.text = "Check Out \(priceDiscount) $"
-        quantityCart.text = "\(totalAmout) "
+//        priceDiscount = 0
+//        totalAmout = 0
+//        CartDataStore.shared.getCart().forEach { item in
+//            let price = item.menuItem.price
+//            var discount = item.menuItem.discount
+//            let amout = item.amout
+//            totalAmout += item.amout
+////            totalPrice += item.amout * item.menuItem.price
+//            discount = Int(CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100)))
+//            priceDiscount += discount * amout
+//        }
+        _ = viewModel.loadCart()
+        labelCheckOut.text = "Check Out \(viewModel.loadCart().1) $"
+        quantityCart.text = "\(viewModel.loadCart().0) "
 
     }
 
@@ -165,7 +169,6 @@ extension DetailsViewController: UITableViewDataSource {
                 withIdentifier: "RecommendedTableViewCell", for: indexPath) as? RecommendedTableViewCell
 
 //            let menu = viewModel.getMenu(at: indexPath)
-//
 //            cell?.setData(image: menu.imageUrl, name: menu.name, description: menu.description)
 //
             cell?.delegate = self
@@ -258,15 +261,22 @@ extension DetailsViewController: CartViewControllerDelegate {
 // MARK: - DetailsHeaderViewCellDelegate
 extension DetailsViewController: DetailsHeaderViewCellDelegate {
     func viewHeader(view: DetailsHeaderViewCell, action: DetailsHeaderViewCell.Action) {
-        let viewController = SeeAllMenuDeltailsViewController(viewModel: viewModel.viewForAllRecommended())
-        navigationController?.pushViewController(viewController, animated: true)
+        switch action {
+        case.seeAll:
+            let viewController = SeeAllMenuDeltailsViewController(viewModel: viewModel.viewForAllRecommended())
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 
+// MARK: - DetailsTableViewCellDelegate
 extension DetailsViewController: DetailsTableViewCellDelegate {
     func viewCell(view: DetailsTableViewCell, action: DetailsTableViewCell.Action) {
-        let viewController = MapViewController(viewModel: self.viewModel.viewModelForMap())
-        self.navigationController?.pushViewController(viewController, animated: true)
+        switch action {
+        case.didSelect:
+            let viewController = MapViewController(viewModel: self.viewModel.viewModelForMap())
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 //extension DetailsViewController: UIAdaptivePresentationControllerDelegate {

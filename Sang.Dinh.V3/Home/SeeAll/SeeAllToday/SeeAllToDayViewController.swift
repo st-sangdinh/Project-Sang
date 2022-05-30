@@ -12,11 +12,12 @@ class SeeAllToDayViewController: UIViewController {
     var viewModel: SeeAllTodayViewModelType = SeeAllTodayViewModel()
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var navigationView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
-        navigationView.layer.cornerRadius = 20
-        navigationView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        configCollectionView()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -29,12 +30,19 @@ class SeeAllToDayViewController: UIViewController {
     }
 
     func configView() {
+        navigationView.layer.cornerRadius = 20
+        navigationView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+    }
+
+    func configCollectionView() {
         collectionView.register(
             UINib(nibName: "TodayCollectionViewCell", bundle: nil),
             forCellWithReuseIdentifier: "TodayCollectionViewCell")
         collectionView.dataSource = self
         collectionView.delegate = self
     }
+
     @IBAction func back(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }

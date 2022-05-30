@@ -9,10 +9,11 @@ import Foundation
 
 protocol CartViewModelType {
     func saveHistoryOrder()
+    func loadCart() -> Int
 }
 
 class CartViewModel {
-
+    var priceDiscount: Int = 0
     var restaurantId: Int = 0
     var nameStore: String
     var address: String
@@ -67,5 +68,22 @@ class CartViewModel {
     func randomString(length: Int) -> String {
       let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
       return String((0..<length).map { _ in letters.randomElement()! })
+    }
+}
+
+extension CartViewModel: CartViewModelType {
+    func loadCart() -> Int {
+        priceDiscount = 0
+//        totalAmout = 0
+        CartDataStore.shared.getCart().forEach { item in
+            let price = item.menuItem.price
+            var discount = item.menuItem.discount
+            let amout = item.amout
+//            totalAmout += item.amout
+//            totalPrice += item.amout * item.menuItem.price
+            discount = Int(Float(price) * (Float(Float(100 - discount) / 100)))
+            priceDiscount += discount * amout
+        }
+        return  priceDiscount
     }
 }

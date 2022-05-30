@@ -38,11 +38,9 @@ class SearchViewController: UIViewController {
         viewContent.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         searchBar.layer.cornerRadius = 12
         searchBar.delegate = self
-//        filterData = data
     }
 
     func configTableView() {
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(UINib(nibName: "BookingTableViewCell", bundle: nil),
                            forCellReuseIdentifier: "BookingTableViewCell")
         tableView.dataSource = self
