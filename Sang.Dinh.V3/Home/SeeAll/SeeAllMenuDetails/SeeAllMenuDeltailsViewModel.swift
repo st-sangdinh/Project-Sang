@@ -10,11 +10,10 @@ import Foundation
 protocol SeeAllMenuDeltailsViewModelType {
     func getRecommende() -> Restaurant
     func getMenu(at indexPath: IndexPath) -> Menu
-    func viewModelForOrder(in indexPath: IndexPath, priceDiscount: Int) -> OrderViewModel
-    func viewModelForCart(price: Int) -> CartViewModel
+    func numberOfItemsInSection() -> Int
+    func viewModelForOrder(in indexPath: IndexPath) -> OrderViewModel
+    func viewModelForCart() -> CartViewModel
     func loadCart() -> (Int, Int)
-    func discount() -> Int
-    func amout() -> Int
 }
 
 class SeeAllMenuDeltailsViewModel {
@@ -22,19 +21,14 @@ class SeeAllMenuDeltailsViewModel {
     var priceDiscount: Int = 0
     var totalAmout: Int = 0
 
-    init( listAllRecommended: Restaurant) {
+    init( listAllRecommended: Restaurant ) {
         self.listAllRecommended =  listAllRecommended
     }
 }
 
 extension SeeAllMenuDeltailsViewModel: SeeAllMenuDeltailsViewModelType {
-
-    func discount() -> Int {
-        return priceDiscount
-    }
-
-    func amout() -> Int {
-        return totalAmout
+    func numberOfItemsInSection() -> Int {
+        listAllRecommended.menus.count
     }
 
     func loadCart() -> (Int, Int) {
@@ -61,19 +55,19 @@ extension SeeAllMenuDeltailsViewModel: SeeAllMenuDeltailsViewModelType {
         return menus
     }
 
-    func viewModelForOrder(in indexPath: IndexPath, priceDiscount: Int) -> OrderViewModel {
+    func viewModelForOrder(in indexPath: IndexPath) -> OrderViewModel {
         return OrderViewModel(
             listOrder: listAllRecommended.menus[indexPath.row],
             restaurant: listAllRecommended,
             priceDiscount: priceDiscount)
     }
 
-    func viewModelForCart(price: Int) -> CartViewModel {
+    func viewModelForCart() -> CartViewModel {
         return CartViewModel(
             restaurantId: listAllRecommended.id,
             nameStore: listAllRecommended.name,
             address: listAllRecommended.address.address,
             img: listAllRecommended.photos.first ?? "",
-            price: price)
+            priceDiscount: priceDiscount)
     }
 }

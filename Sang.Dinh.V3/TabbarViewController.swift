@@ -21,23 +21,16 @@ final class TabbarViewController: UITabBarController {
 
     private func tabBarViewController () {
         let homeVN = UINavigationController(rootViewController: homeVC)
-        homeVN.tabBarItem = UITabBarItem(
-            title: "",
-            image: UIImage(named: "Home"),
-            selectedImage: UIImage(named: "Home"))
+        homeVN.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Home"),
+                                         selectedImage: UIImage(named: "Home1")?.withRenderingMode(.alwaysOriginal))
 
         let bookingHistoryVN = UINavigationController(rootViewController: bookingVC)
-        bookingHistoryVN.tabBarItem = UITabBarItem(
-            title: "",
-            image: UIImage(named: "Booking"),
-            selectedImage: UIImage(named: "Booking"))
+        bookingHistoryVN.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Booking"),
+                                                   selectedImage: UIImage(named: "Booking1")?.withRenderingMode(.alwaysOriginal))
 
         let accountVN = UINavigationController(rootViewController: accountVC)
-        accountVN.tabBarItem = UITabBarItem(
-            title: "",
-            image: UIImage(named: "Account"),
-            selectedImage: UIImage(named: "Account"))
-
+        accountVN.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Account"),
+                                            selectedImage: UIImage(named: "Account1")?.withRenderingMode(.alwaysOriginal))
         viewControllers = [homeVN, bookingHistoryVN, accountVN]
     }
 

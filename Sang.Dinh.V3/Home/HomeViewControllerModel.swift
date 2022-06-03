@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 import Darwin
 
+enum Action {
+    case success
+    case failure(Error)
+}
+
 protocol HomeViewModelType {
     func getRestaurant() -> [Restaurant]
 
@@ -20,7 +25,7 @@ protocol HomeViewModelType {
 
     func viewModelForBannerTabbleViewCell(in indexPath: IndexPath) -> BannerTableCellViewModel
 
-    func viewModelForTodayTabbleViewCell(in indexPath: IndexPath) -> TodayTableViewModel
+    func viewModelForTodayTabbleViewCell() -> TodayTableViewModel
 
     func viewModelForBookingTabbleViewCell(in indexPath: IndexPath) -> BookingTableViewModel
 
@@ -32,7 +37,7 @@ protocol HomeViewModelType {
 
     func getAIP(completion: @escaping () -> Void)
 
-    func getAPIBenners(completion: @escaping () -> Void)
+    func getAPIBenners(completion: @escaping (Action) -> Void)
 }
 
 enum HomeType: Int, CaseIterable {
@@ -49,6 +54,7 @@ class HomeViewModel {
 }
 
 extension HomeViewModel: HomeViewModelType {
+
     func getRestaurant() -> [Restaurant] {
         listMenus
     }
@@ -73,7 +79,7 @@ extension HomeViewModel: HomeViewModelType {
         return DetailsViewModel(listDetails: listMenus[indexPath.item])
     }
 
-    func viewModelForTodayTabbleViewCell(in indexPath: IndexPath) -> TodayTableViewModel {
+    func viewModelForTodayTabbleViewCell() -> TodayTableViewModel {
         return TodayTableViewModel(listToday: listMenus)
     }
 
@@ -101,6 +107,7 @@ extension HomeViewModel: HomeViewModelType {
     func viewModelForBannerTabbleViewCell(in indexPath: IndexPath) -> BannerTableCellViewModel {
         return BannerTableCellViewModel(bannerImages: listPhoto )
     }
+
     func getAIP(completion: @escaping () -> Void) {
         guard let url = URL(string: "https://ios-interns.herokuapp.com/api/restaurants?page=0&limit=20") else {
             return
@@ -155,19 +162,33 @@ extension HomeViewModel: HomeViewModelType {
         task.resume()
     }
 
-    func getAPIBenners(completion: @escaping () -> Void) {
+    func getAPIBenners(completion: @escaping (Action) -> Void) {
         guard let url = URL(string: "https://ios-interns.herokuapp.com/api/banners") else { return }
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url) { data, _, _ in
-            if let data = data {
-                let decoder = JSONDecoder()
-                if let datas = try? decoder.decode(ListBannersResponse.self, from: data) {
-                    for item in datas.data {
-                        self.listPhoto.append(item)
+        let task = session.dataTask(with: url) { data, _, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            } else {
+                if let data = data {
+                    let decoder = JSONDecoder()
+                    if let datas = try? decoder.decode(ListBannersResponse.self, from: data) {
+                        for item in datas.data {
+                            self.listPhoto.append(item)
+                        }
+                        DispatchQueue.main.async {
+                            completion(.success)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            completion(.failure(NSError(domain: "Booking", code: -999, userInfo: [NSLocalizedDescriptionKey: "Parse data fail"])))
+                        }
                     }
+                } else {
                     DispatchQueue.main.async {
-                        completion()
+                        completion(.failure(NSError(domain: "Booking", code: -999, userInfo: [NSLocalizedDescriptionKey: "Data null"])))
                     }
                 }
             }

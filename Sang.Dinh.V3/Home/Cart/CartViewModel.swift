@@ -9,6 +9,7 @@ import Foundation
 
 protocol CartViewModelType {
     func saveHistoryOrder()
+    func numberOfRowsInSection() -> Int
     func loadCart() -> Int
 }
 
@@ -20,15 +21,14 @@ class CartViewModel {
     var img: String
     var number: Int = 0
     var note = ""
-    var price: Int = 0
 
-    init( restaurantId: Int, nameStore: String, address: String, img: String, price: Int) {
+    init( restaurantId: Int, nameStore: String, address: String, img: String, priceDiscount: Int) {
 
         self.restaurantId = restaurantId
         self.nameStore = nameStore
         self.address = address
         self.img = img
-        self.price = price
+        self.priceDiscount = priceDiscount
 
     }
 
@@ -39,7 +39,7 @@ class CartViewModel {
                 menuItem: cart.menuItem,
                 restaurant: cart.restaurant,
                 amout: cart.amout,
-                priceDiscount: price,
+                priceDiscount: priceDiscount,
                 notes: cart.notes)
 
             let storeDataOrder = StoreDataOrder.shared.getHistoryOrder()
@@ -72,6 +72,10 @@ class CartViewModel {
 }
 
 extension CartViewModel: CartViewModelType {
+    func numberOfRowsInSection() -> Int {
+         CartDataStore.shared.getCart().count
+    }
+
     func loadCart() -> Int {
         priceDiscount = 0
 //        totalAmout = 0

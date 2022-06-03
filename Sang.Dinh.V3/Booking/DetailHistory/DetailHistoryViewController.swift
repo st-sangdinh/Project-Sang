@@ -17,7 +17,7 @@ class DetailHistoryViewController: UIViewController {
     @IBOutlet weak var viewTotal: UIView!
     @IBOutlet weak var totalPriceLabel: UILabel!
 
-    var viewModel: DetailHistoryViewModel
+    var viewModel: DetailHistoryViewModel?
 
     var totalDiscount: Int = 0
 
@@ -35,11 +35,11 @@ class DetailHistoryViewController: UIViewController {
         configTabelView()
         loadDiscount()
     }
-    
+
     func configView() {
         headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        headerLabel.text = viewModel.resName
-        let date = viewModel.dateTime
+        headerLabel.text = viewModel?.resName
+        let date = viewModel?.dateTime
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd - HH:mm a"
         dateLabel.text = dateFormatter.string(from: date!)
@@ -67,7 +67,7 @@ class DetailHistoryViewController: UIViewController {
     }
 
     func loadDiscount() {
-        viewModel.resMenu?.forEach({ item in
+        viewModel?.resMenu?.forEach({ item in
             let amout = item.amout
             let price = item.menuItem.price
             let discount = item.menuItem.discount
@@ -85,13 +85,13 @@ class DetailHistoryViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension DetailHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.resMenu?.count ?? 0
+        viewModel?.resMenu?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "DetailHistoryTableViewCell", for: indexPath) as? DetailHistoryTableViewCell
-        let checkMenu = viewModel.resMenu?[indexPath.row]
+        let checkMenu = viewModel?.resMenu?[indexPath.row]
         let price = checkMenu?.menuItem.price ?? 0
         let discount = checkMenu?.menuItem.discount ?? 0
         let priceDiscount = CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100))

@@ -15,7 +15,6 @@ class CartTableViewCell: UITableViewCell {
     enum Action {
         case minius
         case plus
-
     }
 
     @IBOutlet weak var viewConten: UIView!

@@ -36,7 +36,6 @@ class BookingViewController: UIViewController {
                            forCellReuseIdentifier: "BookingHistoryTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
-//        tableView.isEditing = true
     }
 }
 
@@ -80,7 +79,6 @@ extension BookingViewController: BookingHistoryTableViewCellDelegate {
         guard let indexPath = tableView.indexPath(for: subView) else { return }
         let viewModel = BookingViewModel().makeVC(indexPath: indexPath)
         let viewController = DetailHistoryViewController(viewModel: viewModel)
-
         viewController.hidesBottomBarWhenPushed = true
         navigationController?.present(viewController, animated: true)
     }

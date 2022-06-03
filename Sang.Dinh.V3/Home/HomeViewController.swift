@@ -31,7 +31,7 @@ final class HomeViewController: UIViewController {
     func getAPI() {
         // Show loading
         loaderView.startAnimating()
-        viewModel.getAIP {
+        let completion: () -> Void = {
             self.loaderView.stopAnimating()
             self.viewLoad.isHidden = true
             self.tableView.reloadData()
@@ -43,21 +43,33 @@ final class HomeViewController: UIViewController {
                     }
                 })
         }
+        viewModel.getAIP(completion: completion)
     }
 
     func getAPIBanners() {
         loaderView.startAnimating()
-        viewModel.getAPIBenners {
-            self.loaderView.stopAnimating()
-            self.viewLoad.isHidden = true
-            self.tableView.reloadData()
+        viewModel.getAPIBenners { [weak self] result in
+            guard let this = self else { return }
+            this.loaderView.stopAnimating()
+            switch result {
+            case .success:
+                this.viewLoad.isHidden = true
+                this.tableView.reloadData()
+            case .failure(let error):
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+                let alertViewController = UIAlertController(title: "Error",
+                                                            message: error.localizedDescription,
+                                                            preferredStyle: .alert)
+                alertViewController.addAction(cancelAction)
+                this.present(alertViewController, animated: true)
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                self.refreshControl.endRefreshing()
-                self.tableView.contentOffset = .zero
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        self.tableView.scrollsToTop = true
-                    }
-                })
+                this.refreshControl.endRefreshing()
+                this.tableView.contentOffset = .zero
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    this.tableView.scrollsToTop = true
+                }
+            })
         }
     }
 
@@ -129,26 +141,6 @@ final class HomeViewController: UIViewController {
             navigationItem.leftBarButtonItem = listButton
 
     }
-//    func refreshControl () {
-//        let refreshControl = UIRefreshControl()
-//
-//        refreshControl.tintColor = UIColor.green
-//                refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-//                tableView.addSubview(refreshControl)
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-//                     self.refreshControl.endRefreshing()
-//                     self.tableView.contentOffset = .zero
-//                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//                         self.tableView.scrollToTop(animated: true)
-//                     }
-//                 })
-//    }
-//    @objc private func refreshData() {
-//        trendingVC.reloadData()
-//        loadData()
-//    }
-//
 
     @objc func listButton() {
         print("dsds")
@@ -159,7 +151,6 @@ final class HomeViewController: UIViewController {
     }
     @IBAction func searchButton(_ sender: Any) {
         let viewController = SearchViewController()
-
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -169,7 +160,6 @@ extension HomeViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.numberOfSection()
-
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -193,7 +183,7 @@ extension HomeViewController: UITableViewDataSource {
                 withIdentifier: "TodayTableViewCell", for: indexPath) as? TodayTableViewCell else {
                 return UITableViewCell()
             }
-            cell.viewModel = viewModel.viewModelForTodayTabbleViewCell(in: indexPath)
+            cell.viewModel = viewModel.viewModelForTodayTabbleViewCell()
             cell.reloadData()
             cell.delegate = self
             return cell
@@ -203,6 +193,7 @@ extension HomeViewController: UITableViewDataSource {
                 for: indexPath) as? BookingTableViewCell else {
                 return UITableViewCell()
             }
+            cell.delegate = self
             let menu = viewModel.getListMenu(in: indexPath)
             cell.setData(
                 img: menu.photos.first ?? "",
@@ -244,7 +235,7 @@ extension HomeViewController: UITableViewDelegate {
         case .banner:
             return 200
         case .today:
-            return 250
+            return 230
         case .booking:
             return 93
         }
@@ -265,7 +256,6 @@ extension HomeViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
             let viewController = DetailsViewController(viewModel: self.viewModel.viewMdelForDetailsView(in: indexPath))
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
@@ -278,7 +268,8 @@ extension HomeViewController: HomeTableHeaderViewDelegate {
         switch action {
         case .seeAll:
             if view.tag == 1 {
-                let viewController = SeeAllViewController(viewModel: viewModel.viewModelForSeeAllViewController())
+                let viewController = SeeAllViewController()
+                viewController.viewModel = viewModel.viewModelForSeeAllViewController()
                 navigationController?.pushViewController(viewController, animated: true)
             } else {
                 let viewController = SeeAllToDayViewController()
@@ -287,22 +278,9 @@ extension HomeViewController: HomeTableHeaderViewDelegate {
             }
         }
     }
-//    func cell(action: HomeTableHeaderView.Action) {
-//        switch action {
-//        case .seeAll(let isSeeAll):
-//            let se = tableView.numberOfSections
-//            guard let section = HomeType(rawValue: se) else {
-//                return
-//            }
-//            switch section {
-//            case .today:
-//                return print("SeeAll ")
-//            case.booking:
-//            print(isSeeAll)
-//        }
-//    }b
 }
 
+// MARK: - TodayTableViewCellDelegate
 extension HomeViewController: TodayTableViewCellDelegate {
     func viewCell(view: TodayTableViewCell, action: TodayTableViewCell.Action) {
         switch action {
@@ -310,6 +288,19 @@ extension HomeViewController: TodayTableViewCellDelegate {
             guard let indexPath = tableView.indexPath(for: view) else {return}
             let viewController = DetailsViewController(
                 viewModel: self.viewModel.viewMdelForDetailsView(in: indexPath))
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+}
+
+// MARK: - BookingTableViewCellDelegate
+extension HomeViewController: BookingTableViewCellDelegate {
+    func viewCell(view: BookingTableViewCell, action: BookingTableViewCell.Action) {
+        switch action {
+        case.detail:
+            guard let indexPath = tableView.indexPath(for: view) else {return}
+            let viewController = DetailsViewController(viewModel: viewModel.viewMdelForDetailsView(in: indexPath))
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         }

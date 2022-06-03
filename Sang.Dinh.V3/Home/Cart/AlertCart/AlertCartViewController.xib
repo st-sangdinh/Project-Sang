@@ -41,25 +41,25 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGb-jv-6Dy">
-                            <rect key="frame" x="25" y="100" width="75" height="35"/>
+                            <rect key="frame" x="25" y="100" width="80" height="35"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="75" id="O9Z-FA-zE8"/>
+                                <constraint firstAttribute="width" constant="80" id="O9Z-FA-zE8"/>
                                 <constraint firstAttribute="height" constant="35" id="nts-Yx-n1y"/>
                             </constraints>
                             <color key="tintColor" red="0.1960784314" green="0.71764705880000002" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Cance"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
                             <connections>
                                 <action selector="canceButton:" destination="-1" eventType="touchUpInside" id="pio-7N-bBs"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khk-Cq-ODM">
-                            <rect key="frame" x="150" y="100" width="75" height="35"/>
+                            <rect key="frame" x="145" y="100" width="80" height="35"/>
                             <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="CJS-0n-QjM"/>
-                                <constraint firstAttribute="width" constant="75" id="Chj-gS-u6S"/>
+                                <constraint firstAttribute="width" constant="80" id="Chj-gS-u6S"/>
                             </constraints>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>

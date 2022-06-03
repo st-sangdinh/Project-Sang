@@ -44,6 +44,7 @@ class OrderViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configView()
+        viewLoad()
     }
 
     func configView() {
@@ -62,7 +63,9 @@ class OrderViewController: UIViewController, UITextFieldDelegate {
         viewFooter.layer.position = viewFooter.center
 
         orderButton.layer.cornerRadius = 14
+    }
 
+    func viewLoad() {
         nameLabel.text = viewModel?.getMenu().name
         priceLabel.text = "\(viewModel?.getMenu().price ?? 0) $ "
         descriptionLabel.text = viewModel?.getMenu().description
@@ -75,6 +78,11 @@ class OrderViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
+
+    @IBAction func back(_ sender: Any) {
+        dismiss(animated: true)
+    }
+
     @IBAction func plusButton(_ sender: Any) {
         quantity += 1
         quantityLable.text = "\(quantity)"

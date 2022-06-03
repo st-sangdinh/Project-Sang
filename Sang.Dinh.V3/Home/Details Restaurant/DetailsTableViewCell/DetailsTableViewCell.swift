@@ -67,7 +67,7 @@ class DetailsTableViewCell: UITableViewCell {
 // MARK: - UICollectionViewDataSource
 extension DetailsTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.getListMenu().photos.count
+        viewModel.numberOfItemsInSection()
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

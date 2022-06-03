@@ -9,19 +9,12 @@ import UIKit
 
 class SeeAllViewController: UIViewController {
 
-    var viewModel: SeeALLViewModelType
+    var viewModel: SeeALLViewModelType = SeeALLViewModel()
 
     @IBOutlet weak var navigationView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
 
-    init(viewModel: SeeALLViewModelType) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
@@ -58,7 +51,7 @@ class SeeAllViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension SeeAllViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.getListMenu().count
+        viewModel.numberOfItemsInSection()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(

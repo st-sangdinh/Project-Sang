@@ -47,11 +47,7 @@ class TodayTableViewCell: UITableViewCell {
 // MARK: - UICollectionViewDataSource
 extension TodayTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if viewModel.getListMenu().first?.menus.count ?? 0 > 4 {
-            return 4
-        } else {
-            return viewModel.getListMenu().first?.menus.count ?? 0
-        }
+        viewModel.numberOfItemsInSection()
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

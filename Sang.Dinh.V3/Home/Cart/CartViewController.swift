@@ -87,7 +87,6 @@ class CartViewController: UIViewController {
 
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true)
-
     }
 
     @IBAction func order(_ sender: Any) {
@@ -98,16 +97,16 @@ class CartViewController: UIViewController {
     }
 
     @IBAction func clearButton(_ sender: Any) {
-
         let viewController = AlertCartViewController()
         viewController.modalPresentationStyle = .overCurrentContext
         present(viewController, animated: true, completion: nil)
         viewController.delegate = self
     }
+
     func loadCartData() {
-        _ = viewModel?.loadCart()
+        let loadCart = viewModel?.loadCart()
         totalItem.text = "\(CartDataStore.shared.getCart().count) Items"
-        priceLabel.text = "\(viewModel?.loadCart() ?? 0) $"
+        priceLabel.text = "\(loadCart ?? 0) $"
     }
 }
 
@@ -116,7 +115,7 @@ extension CartViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        CartData.carts.count
-        CartDataStore.shared.getCart().count
+        viewModel?.numberOfRowsInSection() ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

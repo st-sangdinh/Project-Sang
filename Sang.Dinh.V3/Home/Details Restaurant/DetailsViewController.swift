@@ -20,10 +20,6 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var viewCheckOut: UIView!
     @IBOutlet weak var labelCheckOut: UILabel!
 
-    var priceDiscount: Int = 0
-    var totalAmout: Int = 0
-    var discount: Int = 0
-
     init(viewModel: DetailsViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -39,8 +35,6 @@ class DetailsViewController: UIViewController {
         //  any additional setup after loading the view.
         configTableView()
         configView()
-        navigationView.layer.cornerRadius = 20
-        navigationView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         reloadData()
     }
 
@@ -51,7 +45,7 @@ class DetailsViewController: UIViewController {
         if CartDataStore.shared.getCart().isEmpty {
             footerView.isHidden = true
         } else {
-            loadCartData()
+//            loadCartData()
             footerView.isHidden = false
         }
         loadCartData()
@@ -76,6 +70,8 @@ class DetailsViewController: UIViewController {
 
     func configView() {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        navigationView.layer.cornerRadius = 20
+        navigationView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
         footerView.layer.cornerRadius = 20
         footerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -105,20 +101,9 @@ class DetailsViewController: UIViewController {
     }
 
     func loadCartData() {
-//        priceDiscount = 0
-//        totalAmout = 0
-//        CartDataStore.shared.getCart().forEach { item in
-//            let price = item.menuItem.price
-//            var discount = item.menuItem.discount
-//            let amout = item.amout
-//            totalAmout += item.amout
-////            totalPrice += item.amout * item.menuItem.price
-//            discount = Int(CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100)))
-//            priceDiscount += discount * amout
-//        }
-        _ = viewModel.loadCart()
-        labelCheckOut.text = "Check Out \(viewModel.loadCart().1) $"
-        quantityCart.text = "\(viewModel.loadCart().0) "
+        let loadCart = viewModel.loadCart()
+        labelCheckOut.text = "Check Out \(loadCart.1) $"
+        quantityCart.text = "\(loadCart.0) "
 
     }
 
@@ -131,7 +116,7 @@ class DetailsViewController: UIViewController {
     }
 
     @IBAction func checkOut(_ sender: Any) {
-        let viewController = CartViewController(viewModel: viewModel.viewModelForCart(price: priceDiscount))
+        let viewController = CartViewController(viewModel: viewModel.viewModelForCart())
         viewController.delegate = self
         navigationController?.present(viewController, animated: true)
     }
@@ -167,7 +152,6 @@ extension DetailsViewController: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "RecommendedTableViewCell", for: indexPath) as? RecommendedTableViewCell
-
 //            let menu = viewModel.getMenu(at: indexPath)
 //            cell?.setData(image: menu.imageUrl, name: menu.name, description: menu.description)
 //
@@ -218,10 +202,10 @@ extension DetailsViewController: UITableViewDelegate {
 extension DetailsViewController: RecommendedTableViewCellDelegate {
     func viewCell(view: RecommendedTableViewCell, action: RecommendedTableViewCell.Action) {
         switch action {
-        case .item(let index):
+        case .didSelect(let index):
 //            guard let indexPath = tableView.indexPath(for: view) else { return }
             let viewController = OrderViewController(
-                viewModel: self.viewModel.viewModelForOrder(in: index, priceDiscount: priceDiscount))
+                viewModel: self.viewModel.viewModelForOrder(in: index))
             viewController.delegate = self
     //        vc.presentationController?.delegate = self
             self.present(viewController, animated: true)
@@ -247,9 +231,8 @@ extension DetailsViewController: CartViewControllerDelegate {
         case.checkOut:
             footerView.isHidden = true
         case .updateCart:
-//            quantityCart.text = "\(amout)"
             loadCartData()
-            if totalAmout <= 0 {
+            if viewModel.loadCart().0  <= 0 {
                 footerView.isHidden = true
             }
         case .clearCart:

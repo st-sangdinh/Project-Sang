@@ -132,13 +132,28 @@
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQ9-mm-HfU">
+                            <rect key="frame" x="8" y="8" width="50" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="60k-Os-yJ5"/>
+                                <constraint firstAttribute="width" constant="50" id="hQx-B4-1Bs"/>
+                            </constraints>
+                            <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="multiply" catalog="system"/>
+                            <connections>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="lQt-zZ-INm"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="vCg-Oa-WQz" secondAttribute="trailing" id="0HV-Co-gGa"/>
+                        <constraint firstItem="CQ9-mm-HfU" firstAttribute="leading" secondItem="Hvg-8G-HDG" secondAttribute="leading" constant="8" id="2fe-ez-u29"/>
                         <constraint firstItem="kQx-7N-gbF" firstAttribute="leading" secondItem="Hvg-8G-HDG" secondAttribute="leading" constant="20" id="4F8-7F-itD"/>
                         <constraint firstItem="A51-bd-dqM" firstAttribute="leading" secondItem="Hvg-8G-HDG" secondAttribute="leading" constant="20" id="8hf-3K-nYn"/>
                         <constraint firstItem="uxH-PN-Rgl" firstAttribute="top" secondItem="vCg-Oa-WQz" secondAttribute="bottom" constant="20" id="F6C-Jp-K6a"/>
+                        <constraint firstItem="CQ9-mm-HfU" firstAttribute="top" secondItem="Hvg-8G-HDG" secondAttribute="top" constant="8" id="Fkd-Xo-amE"/>
                         <constraint firstItem="vCg-Oa-WQz" firstAttribute="leading" secondItem="Hvg-8G-HDG" secondAttribute="leading" id="M0y-Zt-Lou"/>
                         <constraint firstItem="Bko-f3-x1M" firstAttribute="leading" secondItem="Hvg-8G-HDG" secondAttribute="leading" constant="20" id="MHS-C7-Dce"/>
                         <constraint firstAttribute="trailing" secondItem="A51-bd-dqM" secondAttribute="trailing" constant="20" id="Pas-1q-ow3"/>
@@ -174,6 +189,7 @@
     </objects>
     <resources>
         <image name="minus.circle" catalog="system" width="128" height="121"/>
+        <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

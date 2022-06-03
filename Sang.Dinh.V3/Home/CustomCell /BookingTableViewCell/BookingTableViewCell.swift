@@ -6,10 +6,18 @@
 //
 
 import UIKit
+protocol BookingTableViewCellDelegate: AnyObject {
+    func viewCell(view: BookingTableViewCell, action: BookingTableViewCell.Action)
+}
 
 class BookingTableViewCell: UITableViewCell {
 
+    enum Action {
+        case detail
+    }
+
     var viewModel: BookingTableViewModelType = BookingTableViewModel()
+    weak var delegate: BookingTableViewCellDelegate?
 
     @IBOutlet weak var contenView: UIView!
     @IBOutlet weak var imgBooking: UIImageView!
@@ -18,6 +26,15 @@ class BookingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        configView()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        // Configure the view for the selected state
+    }
+
+    func configView() {
         imgBooking.layer.cornerRadius = 8
         contenView.layer.cornerRadius = 10
         contenView.layer.cornerRadius = 16
@@ -29,13 +46,8 @@ class BookingTableViewCell: UITableViewCell {
         contenView.layer.masksToBounds = false
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
-
     @IBAction func booking(_ sender: Any) {
-        print("Book")
+        delegate?.viewCell(view: self, action: .detail)
     }
 
     func setData(img: String, name: String, address: String) {

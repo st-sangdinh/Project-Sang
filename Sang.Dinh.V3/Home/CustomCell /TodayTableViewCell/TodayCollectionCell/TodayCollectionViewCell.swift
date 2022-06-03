@@ -17,12 +17,14 @@ class TodayCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        configView()
+    }
+
+    func configView() {
         view.layer.cornerRadius = 16
         view.layer.shadowOffset = CGSize(width: 0, height: 10)
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        img.roundCorner(corners: [.topLeft, .topRight], radius: 10)
+        img.layer.cornerRadius = 10
+        img.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 
     func setData(avatar: String, name: String, price: Int) {
@@ -33,14 +35,14 @@ class TodayCollectionViewCell: UICollectionViewCell {
     }
 
 }
-extension UIView {
-    public func roundCorner(corners: UIRectCorner, radius: CGFloat) {
-      let path = UIBezierPath(
-        roundedRect: bounds,
-        byRoundingCorners: corners,
-        cornerRadii: CGSize(width: radius, height: radius))
-      let mask = CAShapeLayer()
-      mask.path = path.cgPath
-      layer.mask = mask
-    }
-}
+//extension UIView {
+//    public func roundCorner(corners: UIRectCorner, radius: CGFloat) {
+//      let path = UIBezierPath(
+//        roundedRect: bounds,
+//        byRoundingCorners: corners,
+//        cornerRadii: CGSize(width: radius, height: radius))
+//      let mask = CAShapeLayer()
+//      mask.path = path.cgPath
+//      layer.mask = mask
+//    }
+//}

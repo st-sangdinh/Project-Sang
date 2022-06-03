@@ -19,7 +19,7 @@ class RecommendedTableViewCell: UITableViewCell {
 //    var didSelect: ((IndexPath) -> Void)?
     weak var delegate: RecommendedTableViewCellDelegate?
     enum Action {
-        case item(IndexPath)
+        case didSelect(IndexPath)
     }
 
     override func awakeFromNib() {
@@ -85,7 +85,7 @@ extension RecommendedTableViewCell: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.viewCell(view: self, action: .item(indexPath))
+        delegate?.viewCell(view: self, action: .didSelect(indexPath))
 //        didSelect?(indexPath)
     }
 }

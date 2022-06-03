@@ -10,6 +10,7 @@ import Foundation
 protocol SeeALLViewModelType {
     func getListMenu() -> [Restaurant]
     func getMenu(at indexPath: IndexPath) -> Restaurant
+    func numberOfItemsInSection() -> Int
     func viewMdelForDetailsView(in indexPath: IndexPath) -> DetailsViewModel
 }
 
@@ -22,6 +23,10 @@ class SeeALLViewModel {
 }
 
 extension SeeALLViewModel: SeeALLViewModelType {
+    func numberOfItemsInSection() -> Int {
+        listBooking.count
+    }
+
     func viewMdelForDetailsView(in indexPath: IndexPath) -> DetailsViewModel {
         return DetailsViewModel(listDetails: listBooking[indexPath.item])
     }

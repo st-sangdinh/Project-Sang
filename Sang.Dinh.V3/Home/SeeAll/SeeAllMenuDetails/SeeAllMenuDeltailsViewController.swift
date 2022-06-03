@@ -18,10 +18,6 @@ class SeeAllMenuDeltailsViewController: UIViewController {
     @IBOutlet weak var labelCheckOut: UILabel!
     @IBOutlet weak var quantityCart: UILabel!
 
-    var priceDiscount: Int = 0
-    var totalAmout: Int = 0
-    var discount: Int = 0
-
     var viewModel: SeeAllMenuDeltailsViewModelType?
 
     init(viewModel: SeeAllMenuDeltailsViewModelType) {
@@ -38,6 +34,7 @@ class SeeAllMenuDeltailsViewController: UIViewController {
         configCollectionView()
         configView()
         loadCartData()
+
         if CartDataStore.shared.getCart().isEmpty {
             footerView.isHidden = true
         } else {
@@ -49,7 +46,7 @@ class SeeAllMenuDeltailsViewController: UIViewController {
 
     func configView() {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        contentView.layer.cornerRadius = 10
+        contentView.layer.cornerRadius = 20
         contentView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
         footerView.layer.cornerRadius = 20
@@ -82,8 +79,6 @@ class SeeAllMenuDeltailsViewController: UIViewController {
         collectionView.register(
             UINib(nibName: "RecommendedCollectionViewCell", bundle: nil),
             forCellWithReuseIdentifier: "RecommendedCollectionViewCell")
-
-//        collectionView.register(UICollectionView.self, forCellWithReuseIdentifier: "cell")
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -93,22 +88,22 @@ class SeeAllMenuDeltailsViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.isNavigationBarHidden = false
+//    }
     @IBAction func back(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
 
     func loadCartData() {
-        _ = viewModel?.loadCart()
-        labelCheckOut.text = "Check Out \(viewModel?.discount() ?? 0) $"
-        quantityCart.text = "\(viewModel?.amout() ?? 0) "
+        let loadCart = viewModel?.loadCart()
+        labelCheckOut.text = "Check Out \(loadCart?.0 ?? 0) $"
+        quantityCart.text = "\(loadCart?.1 ?? 0) "
     }
 
     @IBAction func checkOut(_ sender: Any) {
-        let viewController = CartViewController(viewModel: (viewModel?.viewModelForCart(price: priceDiscount))!)
+        let viewController = CartViewController(viewModel: (viewModel?.viewModelForCart())!)
         viewController.delegate = self
         navigationController?.present(viewController, animated: true)
     }
@@ -117,7 +112,7 @@ class SeeAllMenuDeltailsViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension SeeAllMenuDeltailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel?.getRecommende().menus.count ?? 0
+        viewModel?.numberOfItemsInSection() ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -126,14 +121,20 @@ extension SeeAllMenuDeltailsViewController: UICollectionViewDataSource {
             withReuseIdentifier: "RecommendedCollectionViewCell",
             for: indexPath) as? RecommendedCollectionViewCell
 
+        cell?.layer.borderWidth = 0.0
+        cell?.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+        cell?.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cell?.layer.shadowRadius = 1
+        cell?.layer.shadowOpacity = 8
+        cell?.layer.masksToBounds = false
+
         let menu = viewModel?.getMenu(at: indexPath)
         cell?.setData(img: menu?.imageUrl ?? "", name: menu?.name ?? "", price: menu?.price ?? 0)
         return cell ?? UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewController = OrderViewController(
-            viewModel: (viewModel?.viewModelForOrder(in: indexPath, priceDiscount: priceDiscount))!)
+        let viewController = OrderViewController(viewModel: (viewModel?.viewModelForOrder(in: indexPath))!)
         viewController.delegate = self
         self.present(viewController, animated: true)
 
@@ -177,7 +178,7 @@ extension SeeAllMenuDeltailsViewController: CartViewControllerDelegate {
         case .updateCart:
 //            quantityCart.text = "\(amout)"
             loadCartData()
-            if totalAmout <= 0 {
+            if viewModel?.loadCart().1 ?? 0 <= 0 {
                 footerView.isHidden = true
             }
         case .clearCart:

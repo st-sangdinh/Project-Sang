@@ -52,7 +52,7 @@ class SeeAllToDayViewController: UIViewController {
 extension SeeAllToDayViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.getListMenu().first?.menus.count ?? 0
+        viewModel.numberOfItemsInSection()
     }
 
     func collectionView(_ collectionView: UICollectionView,

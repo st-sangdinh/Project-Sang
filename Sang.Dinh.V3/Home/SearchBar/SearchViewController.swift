@@ -54,13 +54,15 @@ class SearchViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.getFilterRestaurant().count
+        viewModel.numberOfItemsInSection()
     }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "BookingTableViewCell", for: indexPath) as? BookingTableViewCell
         let res = viewModel.getFilterRestaurant()[indexPath.row]
         cell?.setData(img: res.photos.first ?? "", name: res.name, address: res.address.address)
+        cell?.delegate = self
         return cell ?? UITableViewCell()
     }
 }
@@ -69,13 +71,13 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = DetailsViewController(viewModel: viewModel.viewMdelForDetailsView(in: indexPath))
+        viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
 // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
-
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         loaderView.startAnimating()
         viewModel.getAIP {_ in
@@ -86,5 +88,18 @@ extension SearchViewController: UISearchBarDelegate {
             }
         }
         view.endEditing(true)
+    }
+}
+
+// MARK: - BookingTableViewCellDelegate
+extension SearchViewController: BookingTableViewCellDelegate {
+    func viewCell(view: BookingTableViewCell, action: BookingTableViewCell.Action) {
+        switch action {
+        case.detail:
+            guard let indexPath = tableView.indexPath(for: view) else {return}
+            let viewController = DetailsViewController(viewModel: viewModel.viewMdelForDetailsView(in: indexPath))
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }

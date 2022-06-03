@@ -10,6 +10,7 @@ import Foundation
 protocol TodayTableViewModelType {
     func getListMenu() -> [Restaurant]
     func getMenu(at indexPath: IndexPath) -> Restaurant
+    func numberOfItemsInSection() -> Int
 }
 
 class TodayTableViewModel {
@@ -21,6 +22,14 @@ class TodayTableViewModel {
 }
 
 extension TodayTableViewModel: TodayTableViewModelType {
+    func numberOfItemsInSection() -> Int {
+        if listToday.first?.menus.count ?? 0 > 4 {
+            return 4
+        } else {
+            return listToday.first?.menus.count ?? 0
+        }
+    }
+
     func getListMenu() -> [Restaurant] {
         listToday
     }

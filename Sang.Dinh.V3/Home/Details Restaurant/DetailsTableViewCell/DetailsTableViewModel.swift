@@ -9,6 +9,7 @@ import Foundation
 
 protocol DetailsTableViewModelType {
     func getListMenu() -> Restaurant
+    func numberOfItemsInSection() -> Int
 }
 
 class DetailsTableViewModel {
@@ -20,6 +21,9 @@ class DetailsTableViewModel {
 }
 
 extension DetailsTableViewModel: DetailsTableViewModelType {
+    func numberOfItemsInSection() -> Int {
+        listDetails.photos.count
+    }
     func getListMenu() -> Restaurant {
         listDetails
     }

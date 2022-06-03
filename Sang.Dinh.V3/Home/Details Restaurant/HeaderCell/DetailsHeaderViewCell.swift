@@ -25,7 +25,6 @@ class DetailsHeaderViewCell: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         nameLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        view.roundCorner(corners: [.topLeft, .topRight], radius: 16)
     }
     @IBAction func seeAll(_ sender: Any) {
         delegate?.viewHeader(view: self, action: .seeAll)

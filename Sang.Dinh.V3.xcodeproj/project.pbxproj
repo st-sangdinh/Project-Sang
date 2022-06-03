@@ -330,6 +330,7 @@
 		22800EC1282CE36600D99DF4 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				225E58BE283E097900A66B77 /* AlertCart */,
 				22800EC6282CECDC00D99DF4 /* CartViewCell */,
 				22800EC2282CE39E00D99DF4 /* CartViewController.swift */,
 				22800EC3282CE39E00D99DF4 /* CartViewController.xib */,
@@ -341,7 +342,6 @@
 		22800EC6282CECDC00D99DF4 /* CartViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				225E58BE283E097900A66B77 /* AlertCart */,
 				22800EC7282CECFD00D99DF4 /* CartTableViewCell.swift */,
 				22800EC8282CECFD00D99DF4 /* CartTableViewCell.xib */,
 			);

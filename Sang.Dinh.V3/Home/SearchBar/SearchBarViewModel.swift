@@ -11,6 +11,7 @@ protocol SearchBarViewModelType {
     func getAIP(completion: @escaping (Bool) -> Void)
     func setKeyWord(keyWord: String)
     func getFilterRestaurant() -> [Restaurant]
+    func numberOfItemsInSection() -> Int
     func viewMdelForDetailsView(in indexPath: IndexPath) -> DetailsViewModel
 }
 
@@ -62,6 +63,9 @@ extension SearchBarViewModel: SearchBarViewModelType {
     }
     func getFilterRestaurant() -> [Restaurant] {
         filterRestaurant
+    }
+    func numberOfItemsInSection() -> Int {
+        filterRestaurant.count
     }
     func viewMdelForDetailsView(in indexPath: IndexPath) -> DetailsViewModel {
         return DetailsViewModel(listDetails: filterRestaurant[indexPath.item])

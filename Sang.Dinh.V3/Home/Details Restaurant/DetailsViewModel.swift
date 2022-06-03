@@ -15,9 +15,9 @@ protocol DetailsViewModelType {
 
     func viewModelForDetails(in indexPath: IndexPath) -> DetailsTableViewModel
 
-    func viewModelForOrder(in indexPath: IndexPath, priceDiscount: Int) -> OrderViewModel
+    func viewModelForOrder(in indexPath: IndexPath) -> OrderViewModel
 
-    func viewModelForCart(price: Int) -> CartViewModel
+    func viewModelForCart() -> CartViewModel
 
     func viewModelForMap() -> MapViewModel
 
@@ -56,7 +56,6 @@ extension DetailsViewModel: DetailsViewModelType {
         }
         return (totalAmout, priceDiscount)
     }
-    
 
     func viewForAllRecommended() -> SeeAllMenuDeltailsViewModel {
         return SeeAllMenuDeltailsViewModel(listAllRecommended: listDetails)
@@ -70,20 +69,20 @@ extension DetailsViewModel: DetailsViewModelType {
         return MapViewModel(lat: listDetails.address.lat, lng: listDetails.address.lng)
     }
 
-    func viewModelForCart(price: Int) -> CartViewModel {
+    func viewModelForCart() -> CartViewModel {
         return CartViewModel(
             restaurantId: listDetails.id,
             nameStore: listDetails.name,
             address: listDetails.address.address,
             img: listDetails.photos.first ?? "",
-            price: price)
+            priceDiscount: priceDiscount)
     }
 
     func cartOrder() -> [HistoryOrder] {
         return StoreDataOrder.shared.getHistoryOrder()
     }
 
-    func viewModelForOrder(in indexPath: IndexPath, priceDiscount: Int) -> OrderViewModel {
+    func viewModelForOrder(in indexPath: IndexPath) -> OrderViewModel {
         return OrderViewModel(
             listOrder: listDetails.menus[indexPath.row],
             restaurant: listDetails,
