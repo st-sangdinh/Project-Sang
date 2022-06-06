@@ -11,6 +11,7 @@ protocol CartViewModelType {
     func saveHistoryOrder()
     func numberOfRowsInSection() -> Int
     func loadCart() -> Int
+    func priceDiscount(at index: IndexPath) -> Int
 }
 
 class CartViewModel {
@@ -75,7 +76,6 @@ extension CartViewModel: CartViewModelType {
     func numberOfRowsInSection() -> Int {
          CartDataStore.shared.getCart().count
     }
-
     func loadCart() -> Int {
         priceDiscount = 0
 //        totalAmout = 0
@@ -89,5 +89,13 @@ extension CartViewModel: CartViewModelType {
             priceDiscount += discount * amout
         }
         return  priceDiscount
+    }
+
+    func priceDiscount(at index: IndexPath) -> Int {
+        let cart = CartDataStore.shared.getItemOrder(at: index.row)
+        let price = cart.menuItem.price
+        let discount = cart.menuItem.discount
+        let priceDiscount = Float(price) * (Float(Float(100 - discount) / 100))
+        return Int(priceDiscount)
     }
 }

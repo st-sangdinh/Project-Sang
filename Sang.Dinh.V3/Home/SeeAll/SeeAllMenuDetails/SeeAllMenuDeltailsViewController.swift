@@ -18,7 +18,7 @@ class SeeAllMenuDeltailsViewController: UIViewController {
     @IBOutlet weak var labelCheckOut: UILabel!
     @IBOutlet weak var quantityCart: UILabel!
 
-    var viewModel: SeeAllMenuDeltailsViewModelType?
+    var viewModel: SeeAllMenuDeltailsViewModelType
 
     init(viewModel: SeeAllMenuDeltailsViewModelType) {
         self.viewModel = viewModel
@@ -97,13 +97,13 @@ class SeeAllMenuDeltailsViewController: UIViewController {
     }
 
     func loadCartData() {
-        let loadCart = viewModel?.loadCart()
-        labelCheckOut.text = "Check Out \(loadCart?.0 ?? 0) $"
-        quantityCart.text = "\(loadCart?.1 ?? 0) "
+        let loadCart = viewModel.loadCart()
+        labelCheckOut.text = "Check Out \(loadCart.0 ) $"
+        quantityCart.text = "\(loadCart.1 ) "
     }
 
     @IBAction func checkOut(_ sender: Any) {
-        let viewController = CartViewController(viewModel: (viewModel?.viewModelForCart())!)
+        let viewController = CartViewController(viewModel: (viewModel.viewModelForCart()))
         viewController.delegate = self
         navigationController?.present(viewController, animated: true)
     }
@@ -112,7 +112,7 @@ class SeeAllMenuDeltailsViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension SeeAllMenuDeltailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel?.numberOfItemsInSection() ?? 0
+        viewModel.numberOfItemsInSection()
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -128,16 +128,15 @@ extension SeeAllMenuDeltailsViewController: UICollectionViewDataSource {
         cell?.layer.shadowOpacity = 8
         cell?.layer.masksToBounds = false
 
-        let menu = viewModel?.getMenu(at: indexPath)
-        cell?.setData(img: menu?.imageUrl ?? "", name: menu?.name ?? "", price: menu?.price ?? 0)
+        let menu = viewModel.getMenu(at: indexPath)
+        cell?.setData(img: menu.imageUrl, name: menu.name, price: menu.price)
         return cell ?? UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewController = OrderViewController(viewModel: (viewModel?.viewModelForOrder(in: indexPath))!)
+        let viewController = OrderViewController(viewModel: (viewModel.viewModelForOrder(in: indexPath)))
         viewController.delegate = self
         self.present(viewController, animated: true)
-
     }
 
 }
@@ -178,7 +177,7 @@ extension SeeAllMenuDeltailsViewController: CartViewControllerDelegate {
         case .updateCart:
 //            quantityCart.text = "\(amout)"
             loadCartData()
-            if viewModel?.loadCart().1 ?? 0 <= 0 {
+            if viewModel.loadCart().1 <= 0 {
                 footerView.isHidden = true
             }
         case .clearCart:

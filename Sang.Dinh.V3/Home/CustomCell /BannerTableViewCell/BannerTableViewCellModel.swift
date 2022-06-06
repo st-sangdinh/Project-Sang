@@ -11,7 +11,6 @@ import UIKit
 protocol BannerTableCellViewModelType {
     func numberOfItem() -> Int
     func banner(at index: Int) -> String
-//    func bannerImage(at indexPath: IndexPath) -> UIImage?
 }
 
 class BannerTableCellViewModel {
@@ -30,9 +29,4 @@ extension BannerTableCellViewModel: BannerTableCellViewModelType {
     func numberOfItem() -> Int {
         return bannerImages.count
     }
-
-//    func bannerImage(at indexPath: IndexPath) -> UIImage? {
-//        let bannerImage = bannerImages[indexPath.row]
-//        return bannerImage
-//    }
 }

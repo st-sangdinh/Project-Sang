@@ -17,11 +17,9 @@ class DetailHistoryViewController: UIViewController {
     @IBOutlet weak var viewTotal: UIView!
     @IBOutlet weak var totalPriceLabel: UILabel!
 
-    var viewModel: DetailHistoryViewModel?
+    var viewModel: DetailHistoryViewModelType
 
-    var totalDiscount: Int = 0
-
-    init(viewModel: DetailHistoryViewModel) {
+    init(viewModel: DetailHistoryViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,13 +31,13 @@ class DetailHistoryViewController: UIViewController {
         super.viewDidLoad()
         configView()
         configTabelView()
-        loadDiscount()
+        totalPriceLabel.text = "Total: \(viewModel.totalDiscount())$"
     }
 
     func configView() {
         headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        headerLabel.text = viewModel?.resName
-        let date = viewModel?.dateTime
+        headerLabel.text = viewModel.getResName()
+        let date = viewModel.getDataTime()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd - HH:mm a"
         dateLabel.text = dateFormatter.string(from: date!)
@@ -66,17 +64,6 @@ class DetailHistoryViewController: UIViewController {
         footerView.layer.position = footerView.center
     }
 
-    func loadDiscount() {
-        viewModel?.resMenu?.forEach({ item in
-            let amout = item.amout
-            let price = item.menuItem.price
-            let discount = item.menuItem.discount
-            let priceDiscount = Int(CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100)))
-            totalDiscount += priceDiscount * amout
-        })
-        totalPriceLabel.text = "Total: \(totalDiscount)$"
-    }
-
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -85,20 +72,22 @@ class DetailHistoryViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension DetailHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.resMenu?.count ?? 0
+        viewModel.numberOfRowsInSection()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "DetailHistoryTableViewCell", for: indexPath) as? DetailHistoryTableViewCell
-        let checkMenu = viewModel?.resMenu?[indexPath.row]
-        let price = checkMenu?.menuItem.price ?? 0
-        let discount = checkMenu?.menuItem.discount ?? 0
-        let priceDiscount = CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100))
+        let checkMenu = viewModel.getItemOrder(at: indexPath)
+//        let price = checkMenu.menuItem.price
+//        let discount = checkMenu.menuItem.discount
+//        let priceDiscount = CGFloat(price) * (CGFloat(CGFloat(100 - discount) / 100))
+        let priceDiscount = viewModel.priceDiscount(at: indexPath)
         cell?.setData(
-            name: checkMenu?.menuItem.name ?? "",
-            price: Int(priceDiscount), note: checkMenu?.notes ?? "",
-            quantity: checkMenu?.amout ?? 0)
+            name: checkMenu.menuItem.name ,
+            price: priceDiscount,
+            note: checkMenu.notes,
+            quantity: checkMenu.amout )
 
         return cell ?? UITableViewCell()
     }

@@ -16,7 +16,7 @@ class OrderViewController: UIViewController, UITextFieldDelegate {
         case addCart
     }
 
-    var viewModel: OrderViewModel?
+    var viewModel: OrderViewModel
     var quantity: Int = 0
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var viewFooter: UIView!
@@ -66,10 +66,10 @@ class OrderViewController: UIViewController, UITextFieldDelegate {
     }
 
     func viewLoad() {
-        nameLabel.text = viewModel?.getMenu().name
-        priceLabel.text = "\(viewModel?.getMenu().price ?? 0) $ "
-        descriptionLabel.text = viewModel?.getMenu().description
-        imgView.downloaded(from: viewModel?.getMenu().imageUrl ?? "")
+        nameLabel.text = viewModel.getMenu().name
+        priceLabel.text = "\(viewModel.getMenu().price ) $ "
+        descriptionLabel.text = viewModel.getMenu().description
+        imgView.downloaded(from: viewModel.getMenu().imageUrl )
 //        self.quantity = viewModel?.getMenu().number ?? 0
         textField.delegate = self
     }
@@ -96,9 +96,9 @@ class OrderViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func orderButton(_ sender: Any) {
-        guard let viewModel = viewModel else {
-            return
-        }
+//        guard let viewModel = viewModel else {
+//            return
+//        }
         viewModel.number = quantity
         viewModel.note = textField.text ?? ""
         if quantity > 0 {
