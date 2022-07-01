@@ -7,10 +7,10 @@
 
 import UIKit
 
-class RegistrationViewController: UIViewController {
+final class RegistrationViewController: UIViewController {
 
-    @IBOutlet weak var createAccountButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet private weak var createAccountButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class RegistrationViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
 
-    func configView() {
+    private func configView() {
         createAccountButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         createAccountButton.layer.cornerRadius = 12
 
@@ -26,11 +26,11 @@ class RegistrationViewController: UIViewController {
         loginButton.layer.cornerRadius = 12
     }
 
-    @IBAction func createAccountButton(_ sender: Any) {
+    @IBAction private func createAccountButton(_ sender: Any) {
 
     }
 
-    @IBAction func loginButton(_ sender: Any) {
+    @IBAction private func loginButton(_ sender: Any) {
 
     }
 }

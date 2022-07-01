@@ -7,16 +7,11 @@
 
 import UIKit
 
-class OnboardingCollectionViewCell: UICollectionViewCell {
+final class OnboardingCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var img: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var contentLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet private weak var img: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var contentLabel: UILabel!
 
     func setData(data: OnboardingCollectionCellData) {
         img.image = data.image
@@ -30,4 +25,3 @@ struct OnboardingCollectionCellData {
     let title: String
     let content: String
 }
-
