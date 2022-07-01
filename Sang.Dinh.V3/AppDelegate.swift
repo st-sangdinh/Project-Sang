@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-        let homeVC = TabbarViewController()
+        let homeVC = OnboardingViewController()
         window?.rootViewController = homeVC
         window?.makeKeyAndVisible()
         return true
