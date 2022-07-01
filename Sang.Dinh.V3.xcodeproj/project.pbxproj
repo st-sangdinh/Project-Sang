@@ -54,6 +54,8 @@
 		228565A3286ECEA000C5EC99 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2285659E286ECEA000C5EC99 /* OnboardingViewController.swift */; };
 		228565A4286ECEA000C5EC99 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2285659F286ECEA000C5EC99 /* OnboardingViewModel.swift */; };
 		228565A7286EE3C300C5EC99 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565A6286EE3C300C5EC99 /* AuthRepository.swift */; };
+		228565AB286EE71F00C5EC99 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565A9286EE71F00C5EC99 /* RegistrationViewController.swift */; };
+		228565AC286EE71F00C5EC99 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565AA286EE71F00C5EC99 /* RegistrationViewController.xib */; };
 		22A2513028193CE9003FF30B /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2512E28193CE9003FF30B /* BookingViewController.swift */; };
 		22A2513128193CE9003FF30B /* BookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A2512F28193CE9003FF30B /* BookingViewController.xib */; };
 		22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2513228193CF7003FF30B /* AccountViewController.swift */; };
@@ -156,6 +158,8 @@
 		2285659E286ECEA000C5EC99 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		2285659F286ECEA000C5EC99 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		228565A6286EE3C300C5EC99 /* AuthRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		228565A9286EE71F00C5EC99 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		228565AA286EE71F00C5EC99 /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
 		22A2512E28193CE9003FF30B /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		22A2512F28193CE9003FF30B /* BookingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingViewController.xib; sourceTree = "<group>"; };
 		22A2513228193CF7003FF30B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -364,8 +368,8 @@
 			isa = PBXGroup;
 			children = (
 				2285659A286ECEA000C5EC99 /* OnboardingCell */,
-				2285659D286ECEA000C5EC99 /* OnboardingViewController.xib */,
 				2285659E286ECEA000C5EC99 /* OnboardingViewController.swift */,
+				2285659D286ECEA000C5EC99 /* OnboardingViewController.xib */,
 				2285659F286ECEA000C5EC99 /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
@@ -386,6 +390,15 @@
 				228565A6286EE3C300C5EC99 /* AuthRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		228565A8286EE68F00C5EC99 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				228565A9286EE71F00C5EC99 /* RegistrationViewController.swift */,
+				228565AA286EE71F00C5EC99 /* RegistrationViewController.xib */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		22A25137281A73C6003FF30B /* CustomCell  */ = {
@@ -553,6 +566,7 @@
 				22A79B66281939DE00673642 /* Account */,
 				22A79B65281939CE00673642 /* Booking */,
 				22A79B60281937B000673642 /* Home */,
+				228565A8286EE68F00C5EC99 /* Registration */,
 				22856599286ECEA000C5EC99 /* Onboarding */,
 				22A79B4C2819376700673642 /* AppDelegate.swift */,
 				22A79B502819376700673642 /* ViewController.swift */,
@@ -718,6 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A25151281AAB28003FF30B /* TodayTableViewCell.xib in Resources */,
+				228565AC286EE71F00C5EC99 /* RegistrationViewController.xib in Resources */,
 				22A79B592819376900673642 /* LaunchScreen.storyboard in Resources */,
 				22A25163281B74CC003FF30B /* BookingTableViewCell.xib in Resources */,
 				2237853F282251A4009EAF47 /* LogoutTableViewCell.xib in Resources */,
@@ -824,6 +839,7 @@
 				22EC21142828C86600118F42 /* DetailsTableViewModel.swift in Sources */,
 				22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */,
 				22800ED02832535500D99DF4 /* MapViewModel.swift in Sources */,
+				228565AB286EE71F00C5EC99 /* RegistrationViewController.swift in Sources */,
 				22EC210F2828A8C900118F42 /* DetailsCollectionViewCell.swift in Sources */,
 				2237853E282251A4009EAF47 /* LogoutTableViewCell.swift in Sources */,
 				2237854128225C50009EAF47 /* Menu.swift in Sources */,

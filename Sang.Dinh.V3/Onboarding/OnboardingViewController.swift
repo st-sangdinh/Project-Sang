@@ -42,8 +42,8 @@ class OnboardingViewController: UIViewController {
     }
 
     @IBAction func skipButton(_ sender: Any) {
-//        let viewController = RegistrationViewController()
-//        navigationController?.pushViewController(viewController, animated: true)
+        let viewController = RegistrationViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     @IBAction func nextButton(_ sender: Any) {
@@ -57,8 +57,8 @@ class OnboardingViewController: UIViewController {
             }
         }
         if  currentIndexPath.item == viewModel.numberOfItemsInSection() {
-//            let viewController = RegistrationViewController()
-//            navigationController?.pushViewController(viewController, animated: true)
+            let viewController = RegistrationViewController()
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }

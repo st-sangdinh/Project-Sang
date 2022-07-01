@@ -123,7 +123,7 @@ extension HomeViewModel: HomeViewModelType {
                         self.listMenus.append(item)
                     }
                     DispatchQueue.main.async {
-                        completion()
+                        completion(.v)
                     }
                 }
 //                let json = data.converToJson(from: data)
