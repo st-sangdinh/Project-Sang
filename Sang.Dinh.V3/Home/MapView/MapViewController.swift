@@ -60,7 +60,8 @@ class MapViewController: UIViewController {
 //    func getDirections() {
 //           let request = MKDirections.Request()
 //           // Source
-//           let sourcePlaceMark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 16.0472484, longitude: 108.1716005))
+//           let sourcePlaceMark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 16.0472484,
+//                                                                                longitude: 108.1716005))
 //           request.source = MKMapItem(placemark: sourcePlaceMark)
 //           // Destination
 //           let destPlaceMark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 73.3892, longitude: 173.1031))

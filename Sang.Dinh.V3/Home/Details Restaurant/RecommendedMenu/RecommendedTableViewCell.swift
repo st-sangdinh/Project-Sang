@@ -45,7 +45,7 @@ class RecommendedTableViewCell: UITableViewCell {
 extension RecommendedTableViewCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
 
     func collectionView(_ collectionView: UICollectionView,

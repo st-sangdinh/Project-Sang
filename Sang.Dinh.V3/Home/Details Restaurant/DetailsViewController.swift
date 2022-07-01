@@ -188,15 +188,15 @@ extension DetailsViewController: UITableViewDelegate {
     }
 
 }
-//extension DetailsViewController: ListDetailsTableViewCellDelegate {
+// extension DetailsViewController: ListDetailsTableViewCellDelegate {
 //    func cell(subView: ListDetailsTableViewCell) {
 //        guard let indexPath = tableView.indexPath(for: subView) else { return }
 //        let vc = OrderViewController(viewModel: self.viewModel.viewModelForOrder(in: indexPath))
 //        vc.delegate = self
-////        vc.presentationController?.delegate = self
+//        vc.presentationController?.delegate = self
 //        self.present(vc, animated: true)
 //    }
-//}
+// }
 
 // MARK: - RecommendedTableViewCellDelegate
 extension DetailsViewController: RecommendedTableViewCellDelegate {
@@ -207,7 +207,6 @@ extension DetailsViewController: RecommendedTableViewCellDelegate {
             let viewController = OrderViewController(
                 viewModel: self.viewModel.viewModelForOrder(in: index))
             viewController.delegate = self
-    //        vc.presentationController?.delegate = self
             self.present(viewController, animated: true)
         }
     }
@@ -262,9 +261,9 @@ extension DetailsViewController: DetailsTableViewCellDelegate {
         }
     }
 }
-//extension DetailsViewController: UIAdaptivePresentationControllerDelegate {
+// extension DetailsViewController: UIAdaptivePresentationControllerDelegate {
 //    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
 //        print("AAAAAAA")
 //        return true
 //    }
-//}
+// }

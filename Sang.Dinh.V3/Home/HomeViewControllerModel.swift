@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 import Darwin
 
-enum Action {
-    case success
+enum Result<T> {
+    case success(T)
     case failure(Error)
 }
+
+typealias Completion<T> = (Result<T>) -> Void
 
 protocol HomeViewModelType {
     func getRestaurant() -> [Restaurant]
@@ -35,9 +37,11 @@ protocol HomeViewModelType {
 
     func viewMdelForDetailsView(in indexPath: IndexPath) -> DetailsViewModel
 
-    func getAIP(completion: @escaping () -> Void)
+//    func getAIP(completion: @escaping () -> Void)
 
-    func getAPIBenners(completion: @escaping (Action) -> Void)
+    func getRestaurant(completion: @escaping Completion<Void>)
+
+    func getAPIBenners(completion: @escaping Completion<Void>)
 }
 
 enum HomeType: Int, CaseIterable {
@@ -47,13 +51,47 @@ enum HomeType: Int, CaseIterable {
 }
 
 class HomeViewModel {
+    var bannerRepository: BannerRepository
+    var restaurantRepository: RestaurantRepository
     var bannerImages: [String] = []
     var listMenus: [Restaurant] = []
-    var listPhoto: [ListBanners] = []
+//    var listPhoto: [ListBanners] = []
+    var banners: [Banner] = []
+
+    init(bannerRepository: BannerRepository = BannerRepository(),
+         restaurantRepository: RestaurantRepository = RestaurantRepository()) {
+        self.bannerRepository = bannerRepository
+        self.restaurantRepository = restaurantRepository
+    }
 
 }
 
 extension HomeViewModel: HomeViewModelType {
+    func getRestaurant(completion: @escaping Completion<Void>) {
+        restaurantRepository.getRestaurant { [weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .success(let listMenus):
+                    this.listMenus = listMenus
+                    completion(.success(Void()))
+            case .failure(let error):
+                    completion(.failure(error))
+            }
+        }
+    }
+
+    func getAPIBenners(completion: @escaping Completion<Void>) {
+        bannerRepository.getAPIBenners { [weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .success(let banners):
+                this.banners = banners
+                completion(.success(Void()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
     func getRestaurant() -> [Restaurant] {
         listMenus
@@ -104,28 +142,29 @@ extension HomeViewModel: HomeViewModelType {
             }
         }
     }
+
     func viewModelForBannerTabbleViewCell(in indexPath: IndexPath) -> BannerTableCellViewModel {
-        return BannerTableCellViewModel(bannerImages: listPhoto )
+        return BannerTableCellViewModel(bannerImages: banners )
     }
 
-    func getAIP(completion: @escaping () -> Void) {
-        guard let url = URL(string: "https://ios-interns.herokuapp.com/api/restaurants?page=0&limit=20") else {
-            return
-        }
-        let configuration = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url) { data, _, _ in
-            if let data = data {
-                let decoder = JSONDecoder()
-                if let datas = try? decoder.decode(RestaurantResponse.self, from: data) {
-//
-                    for item in datas.data {
-                        self.listMenus.append(item)
-                    }
-                    DispatchQueue.main.async {
-                        completion()
-                    }
-                }
+//    func getAIP(completion: @escaping () -> Void) {
+//        guard let url = URL(string: "https://ios-interns.herokuapp.com/api/restaurants?page=0&limit=20") else {
+//            return
+//        }
+//        let configuration = URLSessionConfiguration.ephemeral
+//        let session = URLSession(configuration: configuration)
+//        let task = session.dataTask(with: url) { data, _, _ in
+//            if let data = data {
+//                let decoder = JSONDecoder()
+//                if let datas = try? decoder.decode(RestaurantResponse.self, from: data) {
+////
+//                    for item in datas.data {
+//                        self.listMenus.append(item)
+//                    }
+//                    DispatchQueue.main.async {
+//                        completion()
+//                    }
+//                }
 //                let json = data.converToJson(from: data)
 //                if let datas = json["data"] as? [[String: Any]]{
 //                    for item in datas {
@@ -146,23 +185,49 @@ extension HomeViewModel: HomeViewModelType {
 //                                let price = i["price"] as? Int ?? 0
 //                                let imageUrl = i["imageUrl"] as? String ?? ""
 //                                let discount = i["discount"] as? Int ?? 0
-//                                let menu = Menu(id: id, type: type, name: name, description: description, price: price, imageUrl: imageUrl, number: 0, discount: discount)
+//                                let menu = Menu(id: id,
+//                                                type: type,
+//                                                name: name,
+//                                                description: description,
+//                                                price: price,
+//                                                imageUrl: imageUrl,
+//                                                number: 0,
+//                                                discount: discount)
 //                                menus.append(menu)
 //                            }
 //                        }
-//
-//                        let list = Restaurant(id: id , name: name , address: Address(lat: lat , lng: lng , address: ar), photos: photos, menu: menus)
+////
+//                        let list = Restaurant(id: id ,
+//                                              name: name ,
+//                                              address: Address(lat: lat , lng: lng , address: ar),
+//                                              photos: photos,
+//                                              menu: menus)
 //
 //                        self.listMenus.append(list)
 //                    }
 //                }
 
-            }
-        }
-        task.resume()
-    }
-
-    func getAPIBenners(completion: @escaping (Action) -> Void) {
+//            }
+//        }
+//        task.resume()
+//    }
+}
+// extension Data {
+//    func converToJson(from jsonData: Data) -> [String: Any] {
+//        var json: [String: Any] = [:]
+//        do {
+//            if let jsonObj = try JSONSerialization.jsonObject(with: jsonData,
+//                                                              options: .mutableContainers) as? [String: Any] {
+//                json = jsonObj
+//            }
+//        }catch {
+//            print("Json error")
+//        }
+//        return json
+//    }
+// }
+class BannerRepository {
+    func getAPIBenners(completion: @escaping Completion<[Banner]>) {
         guard let url = URL(string: "https://ios-interns.herokuapp.com/api/banners") else { return }
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration)
@@ -174,21 +239,67 @@ extension HomeViewModel: HomeViewModelType {
             } else {
                 if let data = data {
                     let decoder = JSONDecoder()
-                    if let datas = try? decoder.decode(ListBannersResponse.self, from: data) {
-                        for item in datas.data {
-                            self.listPhoto.append(item)
-                        }
+                    do {
+                        let response = try decoder.decode(ResponseData<[Banner]>.self, from: data)
                         DispatchQueue.main.async {
-                            completion(.success)
+                            completion(.success(response.data))
                         }
-                    } else {
-                        DispatchQueue.main.async {
-                            completion(.failure(NSError(domain: "Booking", code: -999, userInfo: [NSLocalizedDescriptionKey: "Parse data fail"])))
-                        }
+                    } catch {
+                        let error = NSError(domain: "Booking", code: -999,
+                                            userInfo: [NSLocalizedDescriptionKey: "Parse data fail"])
+                        completion(.failure(error))
                     }
+
+//                    if let response = try? decoder.decode(ResponseData<[Banner]>.self, from: data) {
+//                        DispatchQueue.main.async {
+//                            completion(.success(response.data))
+//                        }
+//                    } else {
+//                        DispatchQueue.main.async {
+//                            completion(.failure(NSError(domain: "Booking",
+//                                                        code: -999,
+//                                                        userInfo: [NSLocalizedDescriptionKey: "Parse data fail"])))
+//                        }
+//                    }
                 } else {
                     DispatchQueue.main.async {
-                        completion(.failure(NSError(domain: "Booking", code: -999, userInfo: [NSLocalizedDescriptionKey: "Data null"])))
+                        completion(.failure(NSError(domain: "Booking",
+                                                    code: -999,
+                                                    userInfo: [NSLocalizedDescriptionKey: "Data null"])))
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+
+}
+
+class RestaurantRepository {
+    func getRestaurant(completion: @escaping Completion<[Restaurant]>) {
+        guard let url = URL(string: "https://ios-interns.herokuapp.com/api/restaurants?page=0&limit=20") else {
+            return
+        }
+        let configuration = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: configuration)
+        let task = session.dataTask(with: url) { data, _, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            } else {
+                if let data = data {
+                    let decoder = JSONDecoder()
+                    if let datas = try? decoder.decode(ResponseData<[Restaurant]>.self, from: data) {
+                        DispatchQueue.main.async {
+                            completion(.success(datas.data))
+                        }
+                }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(.failure(NSError(domain: "Booking",
+                                                    code: -999,
+                                                    userInfo: [NSLocalizedDescriptionKey: "Data null"])))
                     }
                 }
             }
@@ -196,17 +307,3 @@ extension HomeViewModel: HomeViewModelType {
         task.resume()
     }
 }
-
-//extension Data {
-//    func converToJson(from jsonData: Data) -> [String: Any] {
-//        var json: [String: Any] = [:]
-//        do {
-//            if let jsonObj = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any] {
-//                json = jsonObj
-//            }
-//        }catch {
-//            print("Json error")
-//        }
-//        return json
-//    }
-//}

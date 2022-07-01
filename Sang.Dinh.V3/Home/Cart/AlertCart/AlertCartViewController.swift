@@ -61,7 +61,8 @@ class AlertCartViewController: UIViewController {
     }
 
     @IBAction func okButton(_ sender: Any) {
-        delegate?.viewController(view: self, action: .clearCart)
-        dismiss(animated: true)
+        dismiss(animated: true) {
+            self.delegate?.viewController(view: self, action: .clearCart)
+        }
     }
 }

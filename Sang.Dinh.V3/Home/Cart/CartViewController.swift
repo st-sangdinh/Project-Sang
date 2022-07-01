@@ -33,6 +33,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var totalItem: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var clear: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
@@ -98,8 +99,15 @@ class CartViewController: UIViewController {
 
     @IBAction func clearButton(_ sender: Any) {
         let viewController = AlertCartViewController()
-        viewController.modalPresentationStyle = .overCurrentContext
-        present(viewController, animated: true, completion: nil)
+//        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.view.backgroundColor = .red
+        present(viewController, animated: true) {
+            let viewController2 = AlertCartViewController()
+//            viewController2.modalPresentationStyle = .overCurrentContext
+            viewController.present(viewController2, animated: true, completion: nil)
+            viewController2.delegate = self
+            viewController2.view.backgroundColor = .blue
+        }
         viewController.delegate = self
     }
 
@@ -181,6 +189,7 @@ extension CartViewController: AlertCartViewControllerDelegate {
             delegate?.viewController(view: self, acction: .clearCart)
             totalItem.text = "\(0) Item"
             priceLabel.text = "\(0) $"
+            dismiss(animated: true)
         }
     }
 }

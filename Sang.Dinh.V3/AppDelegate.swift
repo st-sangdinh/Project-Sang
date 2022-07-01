@@ -17,10 +17,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-        let homeVC = TabbarViewController()
-        window?.rootViewController = homeVC
+        let homeVC = OnboardingViewController()
+        let navi = UINavigationController(rootViewController: homeVC)
+        window?.rootViewController = navi
         window?.makeKeyAndVisible()
         return true
     }
 
+//
+//    enum RootType {
+//        case Onboarding
+//        case Registration
+//    }
+//
+//    func switchRoot(root: RootType) {
+//        switch root {
+//            case .Onboarding:
+//                
+//            case .Registration:
+//                <#code#>
+//        }
+//    }
 }

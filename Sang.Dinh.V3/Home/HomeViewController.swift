@@ -24,26 +24,54 @@ final class HomeViewController: UIViewController {
         navigationHome()
         configTableView()
         refreshHome()
-        getAPI()
+//        getAPI()
         getAPIBanners()
+        getRestaurant()
     }
+//
+//    func getAPI() {
+//        // Show loading
+//        loaderView.startAnimating()
+//        let completion: () -> Void = {
+//            self.loaderView.stopAnimating()
+//            self.viewLoad.isHidden = true
+//            self.tableView.reloadData()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+//                self.refreshControl.endRefreshing()
+//                self.tableView.contentOffset = .zero
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//                        self.tableView.scrollsToTop = true
+//                    }
+//                })
+//        }
+//        viewModel.getAIP(completion: completion)
+//    }
 
-    func getAPI() {
-        // Show loading
+    func getRestaurant() {
         loaderView.startAnimating()
-        let completion: () -> Void = {
-            self.loaderView.stopAnimating()
-            self.viewLoad.isHidden = true
-            self.tableView.reloadData()
+        viewModel.getRestaurant { [weak self] result in
+            guard let this = self else { return }
+            this.loaderView.stopAnimating()
+            switch result {
+            case .success:
+                    this.viewLoad.isHidden = true
+                    this.tableView.reloadData()
+            case .failure(let error):
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+                    let alertViewController = UIAlertController(title: "Error",
+                                                                message: error.localizedDescription,
+                                                                preferredStyle: .alert)
+                    alertViewController.addAction(cancelAction)
+                    this.present(alertViewController, animated: true)
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                self.refreshControl.endRefreshing()
-                self.tableView.contentOffset = .zero
+                this.refreshControl.endRefreshing()
+                this.tableView.contentOffset = .zero
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        self.tableView.scrollsToTop = true
+                        this.tableView.scrollsToTop = true
                     }
                 })
         }
-        viewModel.getAIP(completion: completion)
     }
 
     func getAPIBanners() {
@@ -97,7 +125,8 @@ final class HomeViewController: UIViewController {
     }
 
     @objc func refreshData() {
-        getAPI()
+//        getAPI()
+        getRestaurant()
         getAPIBanners()
     }
 
@@ -151,6 +180,7 @@ final class HomeViewController: UIViewController {
     }
     @IBAction func searchButton(_ sender: Any) {
         let viewController = SearchViewController()
+
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

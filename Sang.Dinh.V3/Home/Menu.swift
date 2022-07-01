@@ -40,6 +40,19 @@ struct ListBanners: Codable {
     var imageUrl: String = ""
 }
 
-struct ListBannersResponse: Codable {
-    var data: [ListBanners]
+// struct ListBannersResponse: Codable {
+//    var data: [ListBanners]
+// }
+//
+// struct BannersResponse: Codable {
+//    var data: [Banner]
+// }
+
+struct ResponseData<T: Codable>: Codable {
+    var data: T
+}
+
+struct Banner: Codable {
+    var id: Int = 0
+    var imageUrl: String = ""
 }

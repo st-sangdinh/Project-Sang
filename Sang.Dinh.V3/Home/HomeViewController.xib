@@ -82,7 +82,7 @@
                 <constraint firstItem="sDK-QK-0L3" firstAttribute="top" secondItem="BEd-bp-2qo" secondAttribute="bottom" constant="28" id="v39-BO-3pe"/>
                 <constraint firstItem="fAy-jQ-uQg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="zJX-Qz-P9S"/>
             </constraints>
-            <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>
+            <point key="canvasLocation" x="157" y="76"/>
         </view>
     </objects>
     <resources>
