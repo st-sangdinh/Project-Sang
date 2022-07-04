@@ -411,9 +411,9 @@
 		228565B4286EF66B00C5EC99 /* RegistrationFirst */ = {
 			isa = PBXGroup;
 			children = (
+				228565B6286EF66B00C5EC99 /* RegistrationFirstViewController.swift */,
 				228565BB286F001D00C5EC99 /* RegistrationFirstViewController.xib */,
 				228565BC286F001D00C5EC99 /* RegistrationFirstViewModel.swift */,
-				228565B6286EF66B00C5EC99 /* RegistrationFirstViewController.swift */,
 			);
 			path = RegistrationFirst;
 			sourceTree = "<group>";

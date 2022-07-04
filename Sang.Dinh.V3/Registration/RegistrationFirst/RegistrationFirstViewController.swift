@@ -6,11 +6,8 @@
 //
 
 import UIKit
-protocol RegistrationFirstViewControllerDelegate: AnyObject {
-    func viewController(view: RegistrationFirstViewController, action: RegistrationFirstViewController.Action)
-}
 
-class RegistrationFirstViewController: UIViewController {
+final class RegistrationFirstViewController: UIViewController {
 
     enum ScreenChoose {
         case createAccount
@@ -24,45 +21,46 @@ class RegistrationFirstViewController: UIViewController {
 
     var viewModel: RegistrationFirstViewModelType = RegistrationFirstViewModel()
 
-    @IBOutlet weak var fullNameView: UIView!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var exitView: UIView!
-    @IBOutlet weak var createAccountButton: UIButton!
-    @IBOutlet weak var lineCreateAccount: UIView!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var lineLogin: UIView!
+    @IBOutlet private weak var fullNameView: UIView!
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var exitView: UIView!
+    @IBOutlet private weak var createAccountButton: UIButton!
+    @IBOutlet private weak var lineCreateAccount: UIView!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var lineLogin: UIView!
 
-    @IBOutlet weak var fullNameTextField: TextField!
+    @IBOutlet private weak var fullNameTextField: TextField!
 
-    @IBOutlet weak var emailTextField: TextField!
+    @IBOutlet private weak var emailTextField: TextField!
 
-    @IBOutlet weak var passwordTextField: TextField!
-    @IBOutlet weak var forgetPasswordButton: UIButton!
-    @IBOutlet weak var registrationButton: UIButton!
-    @IBOutlet weak var signUpView: UIView!
-    @IBOutlet weak var heightFullNameConstrain: NSLayoutConstraint!
+    @IBOutlet private weak var passwordTextField: TextField!
+    @IBOutlet private weak var forgetPasswordButton: UIButton!
+    @IBOutlet private weak var registrationButton: UIButton!
+    @IBOutlet private weak var signUpView: UIView!
+    @IBOutlet private weak var heightFullNameConstrain: NSLayoutConstraint!
 
-    weak var delegate: RegistrationFirstViewControllerDelegate?
-    var statusView: ScreenChoose = .createAccount
+//    weak var delegate: RegistrationFirstViewControllerDelegate?
+    var statusView: ScreenChoose
 
-       init(statusView: ScreenChoose) {
-           super.init(nibName: "RegistrationFirstViewController", bundle: nil)
+    init(statusView: ScreenChoose) {
            self.statusView = statusView
+
+           super.init(nibName: "RegistrationFirstViewController", bundle: nil)
        }
 
-       required init?(coder aDecoder: NSCoder) {
-           super.init(coder: aDecoder)
-       }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
-        updateView(status: statusView)
+        updateView()
         textFieldChane()
         self.navigationController?.isNavigationBarHidden = true
     }
 
-    func configView() {
+    private func configView() {
         containerView.layer.cornerRadius = 30
         exitView.layer.cornerRadius = exitView.bounds.height / 2
         createAccountButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
@@ -85,16 +83,16 @@ class RegistrationFirstViewController: UIViewController {
         registrationButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         registrationButton.layer.cornerRadius = 12
         signUpView.layer.cornerRadius = 12
+        registrationButton.tintColor =  UIColor(red: 0.612, green: 0.639, blue: 0.686, alpha: 1)
     }
 
-    func textFieldChane() {
-        fullNameTextField.addTarget(self, action: #selector(fullNameTextFieldDidChange), for: .editingChanged)
+    private func textFieldChane() {
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextFieldChange), for: .editingChanged)
     }
 
-    private func updateView(status: ScreenChoose ) {
-        switch status {
+    private func updateView() {
+        switch statusView {
         case .createAccount:
                 lineLogin.isHidden = true
                 lineCreateAccount.isHidden = false
@@ -103,7 +101,7 @@ class RegistrationFirstViewController: UIViewController {
                 heightFullNameConstrain.constant = 82
                 forgetPasswordButton.isHidden = true
                 fullNameView.isHidden = false
-                registrationButton.titleLabel?.text = "Registration"
+                registrationButton.setTitle("Registration", for: .normal)
 
         case .login:
                 lineCreateAccount.isHidden = true
@@ -113,51 +111,74 @@ class RegistrationFirstViewController: UIViewController {
                 heightFullNameConstrain.constant = 0
                 forgetPasswordButton.isHidden  = false
                 fullNameView.isHidden = true
-                registrationButton.titleLabel?.text = "Login"
+                registrationButton.setTitle("Login", for: .normal)
         }
     }
 
-    @IBAction func createButton(_ sender: Any) {
-        updateView(status: .createAccount)
+    @IBAction private func createButton(_ sender: Any) {
+        statusView = .createAccount
+        updateView()
     }
 
-    @IBAction func loginButton(_ sender: Any) {
-        updateView(status: .login)
+    @IBAction private func loginButton(_ sender: Any) {
+        statusView = .login
+        updateView()
     }
 
-    @objc func fullNameTextFieldDidChange(_ textField: UITextField) {
-        viewModel.setFullName(fullName: textField.text ?? "")
-        if textField.text != "" {
-//            registrationButton.setTitleColor(<#T##color: UIColor?##UIColor?#>, for: .normal)
-//            layer.backgroundColor = UIColor(red: 0.196, green: 0.718, blue: 0.408, alpha: 1).cgColor
-            registrationButton.tintColor = .white
-
-              } else {
-                  registrationButton.layer.backgroundColor = UIColor(red: 0.957, green: 0.957, blue: 0.957, alpha: 1).cgColor
-              }
-    }
-
-    @objc func emailTextFieldDidChange(_ textField: UITextField) {
+    @objc private func emailTextFieldDidChange(_ textField: UITextField) {
         viewModel.setEmai(email: textField.text ?? "")
+        updateButton()
     }
 
-    @objc func passwordTextFieldChange(_ textField: UITextField) {
+    @objc private func passwordTextFieldChange(_ textField: UITextField) {
         viewModel.setPassword(password: textField.text ?? "")
+        updateButton()
     }
 
-    @IBAction func forgetPassword(_ sender: Any) {
+    @IBAction private func forgetPassword(_ sender: Any) {
         dismiss(animated: true)
-        delegate?.viewController(view: self, action: .forgetPassword)
     }
 
-    @IBAction func registrationButton(_ sender: Any) {
-        
-        delegate?.viewController(view: self, action: .home)
-
-        // Change root window
-//        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = HomeViewController()
+    @IBAction private func registrationButton(_ sender: Any) {
+        switch statusView {
+        case .createAccount:
+                print("Create")
+        case .login:
+                login()
+        }
     }
 
+    private func updateButton() {
+        registrationButton.isEnabled = viewModel.isValid()
+        if viewModel.isValid() {
+            registrationButton.backgroundColor = UIColor(red: 0.196, green: 0.718, blue: 0.408, alpha: 1)
+            registrationButton.tintColor = .white
+        } else {
+            registrationButton.backgroundColor = UIColor(red: 0.957, green: 0.957, blue: 0.957, alpha: 1)
+            registrationButton.tintColor =  UIColor(red: 0.612, green: 0.639, blue: 0.686, alpha: 1)
+        }
+      }
+
+    private func login() {
+        viewModel.login(completion: {[weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .success:
+                    this.dismiss(animated: true)
+                    // Change root window
+                    (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = TabbarViewController()
+            case .failure(let error):
+                    let alertController = UIAlertController(
+                        title: "Error",
+                        message: error.localizedDescription,
+                        preferredStyle: .alert
+                    )
+                    let action = UIAlertAction(title: "OK", style: .default)
+                    alertController.addAction(action)
+                    self?.present(alertController, animated: true)
+            }
+        })
+    }
 }
 
 class TextField: UITextField {

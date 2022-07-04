@@ -11,6 +11,7 @@ protocol RegistrationFirstViewModelType {
     func setFullName(fullName: String)
     func setEmai(email: String)
     func setPassword(password: String)
+    func isValid() -> Bool
     func checkLogin() -> Bool
     func login(completion: @escaping Completion<User>)
 }
@@ -35,6 +36,15 @@ extension RegistrationFirstViewModel: RegistrationFirstViewModelType {
     func setPassword(password: String) {
         self.password = password
     }
+
+    func isValid() -> Bool {
+        if !password.isEmpty && !email.isEmpty {
+            return true
+        } else if password.isEmpty && email.isEmpty {
+            return false
+        }
+        return true
+      }
 
     func checkLogin() -> Bool {
         for user in userRepository.users {
@@ -65,7 +75,11 @@ extension RegistrationFirstViewModel: RegistrationFirstViewModelType {
         if let error = validate() {
             completion(.failure(error))
         } else {
-            userRepository.login(fullName: self.fullName, email: self.email, password: self.password, completion: completion)
+            userRepository.login(
+                fullName: self.fullName,
+                email: self.email,
+                password: self.password,
+                completion: completion)
         }
     }
 }
