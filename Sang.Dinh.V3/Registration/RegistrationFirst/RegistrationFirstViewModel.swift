@@ -12,7 +12,9 @@ protocol RegistrationFirstViewModelType {
     func setEmai(email: String)
     func setPassword(password: String)
     func isValid() -> Bool
-    func checkLogin() -> Bool
+//    func checkLogin() -> Bool
+    func checkEmail() -> String
+    func checkPass() -> String
     func login(completion: @escaping Completion<User>)
 }
 
@@ -43,43 +45,50 @@ extension RegistrationFirstViewModel: RegistrationFirstViewModelType {
         } else if password.isEmpty && email.isEmpty {
             return false
         }
-        return true
+        return false
       }
 
-    func checkLogin() -> Bool {
-        for user in userRepository.users {
-            if user.email == self.email && user.passWord == self.password {
-                return true
-            }
+//    func checkLogin() -> Bool {
+//        for user in userRepository.users {
+//            if user.email == self.email && user.passWord == self.password {
+//                return true
+//            }
+//        }
+//        return false
+//    }
+
+    func checkEmail() -> String {
+        if email.isEmpty {
+            return "Email không được để trống"
         }
-        return false
+        return checkRegexEmail() ? "" : "Email không hợp lệ"
     }
 
-    private func validate() -> Error? {
-        if email.isEmpty {
-            return NSError(
-                domain: "Booking", code: 1,
-                userInfo: [NSLocalizedDescriptionKey: "Email không được để trống"]
-            )
-        }
+    private func checkRegexEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+           let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: self.email)
+    }
+
+    func checkPass() -> String {
         if password.isEmpty {
-            return NSError(
-                domain: "Booking", code: 1,
-                userInfo: [NSLocalizedDescriptionKey: "Password không được để trống"]
-            )
+            return "Password không được để trống"
         }
-        return nil
+        if password.count < 6 {
+            return "Password phải trên 6 kí tự"
+        }
+        return ""
     }
 
     func login(completion: @escaping Completion<User>) {
-        if let error = validate() {
-            completion(.failure(error))
-        } else {
+//        if let error = validate() {
+//            completion(.failure(error))
+//        } else {
             userRepository.login(
                 fullName: self.fullName,
                 email: self.email,
                 password: self.password,
                 completion: completion)
-        }
+//        }
     }
 }

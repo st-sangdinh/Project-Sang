@@ -28,12 +28,11 @@ final class RegistrationFirstViewController: UIViewController {
     @IBOutlet private weak var lineCreateAccount: UIView!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var lineLogin: UIView!
-
     @IBOutlet private weak var fullNameTextField: TextField!
-
     @IBOutlet private weak var emailTextField: TextField!
-
+    @IBOutlet weak var emailError: UILabel!
     @IBOutlet private weak var passwordTextField: TextField!
+    @IBOutlet weak var passwordError: UILabel!
     @IBOutlet private weak var forgetPasswordButton: UIButton!
     @IBOutlet private weak var registrationButton: UIButton!
     @IBOutlet private weak var signUpView: UIView!
@@ -73,10 +72,12 @@ final class RegistrationFirstViewController: UIViewController {
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor(red: 0.745, green: 0.773, blue: 0.82, alpha: 1).cgColor
         emailTextField.layer.cornerRadius = 12
+//        emailTextField.delegate = self
 
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.borderColor = UIColor(red: 0.745, green: 0.773, blue: 0.82, alpha: 1).cgColor
         passwordTextField.layer.cornerRadius = 12
+//        passwordTextField.delegate = self
 
         forgetPasswordButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
 
@@ -98,7 +99,7 @@ final class RegistrationFirstViewController: UIViewController {
                 lineCreateAccount.isHidden = false
                 createAccountButton.tintColor = UIColor(red: 0.196, green: 0.718, blue: 0.408, alpha: 1)
                 loginButton.tintColor =  UIColor(red: 0.537, green: 0.565, blue: 0.62, alpha: 1)
-                heightFullNameConstrain.constant = 82
+                heightFullNameConstrain.constant = 102
                 forgetPasswordButton.isHidden = true
                 fullNameView.isHidden = false
                 registrationButton.setTitle("Registration", for: .normal)
@@ -126,13 +127,15 @@ final class RegistrationFirstViewController: UIViewController {
     }
 
     @objc private func emailTextFieldDidChange(_ textField: UITextField) {
-        viewModel.setEmai(email: textField.text ?? "")
-        updateButton()
+                viewModel.setEmai(email: textField.text ?? "")
+                updateButton()
+                emailError.text = viewModel.checkEmail()
     }
 
     @objc private func passwordTextFieldChange(_ textField: UITextField) {
-        viewModel.setPassword(password: textField.text ?? "")
-        updateButton()
+                viewModel.setPassword(password: textField.text ?? "")
+                updateButton()
+                passwordError.text = viewModel.checkPass()
     }
 
     @IBAction private func forgetPassword(_ sender: Any) {
@@ -142,9 +145,11 @@ final class RegistrationFirstViewController: UIViewController {
     @IBAction private func registrationButton(_ sender: Any) {
         switch statusView {
         case .createAccount:
-                print("Create")
+            print("Create")
         case .login:
-                login()
+                if viewModel.isValid() {
+                    login()
+                }
         }
     }
 
@@ -169,7 +174,7 @@ final class RegistrationFirstViewController: UIViewController {
                     (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = TabbarViewController()
             case .failure(let error):
                     let alertController = UIAlertController(
-                        title: "Error",
+                        title: "Lỗi",
                         message: error.localizedDescription,
                         preferredStyle: .alert
                     )
@@ -197,3 +202,15 @@ class TextField: UITextField {
         return bounds.inset(by: padding)
     }
 }
+
+//extension RegistrationFirstViewController: UITextFieldDelegate {
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if textField == emailTextField {
+//            emailError.text = viewModel.validate()
+//        }
+//        if textField == passwordTextField {
+//            passwordError.text = viewModel.pass()
+//        }
+//    }
+//}

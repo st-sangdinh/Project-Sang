@@ -14,9 +14,9 @@ struct User {
 }
 
 class UserRepository {
-    var users: [User] = [User(fullName: "", email: "sang", passWord: "Sang123@"),
-                         User(fullName: "", email: "sang1", passWord: "Sang124@"),
-                         User(fullName: "", email: "sang2", passWord: "Sang124@")]
+    var users: [User] = [User(fullName: "", email: "rinsang@gmail.com", passWord: "Sang123@"),
+                         User(fullName: "", email: "rinsang2@gmail.com", passWord: "Sang124@"),
+                         User(fullName: "", email: "sang@gmail.com", passWord: "Sang124@")]
 
     func login(fullName: String, email: String, password: String, completion: @escaping Completion<User>) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
