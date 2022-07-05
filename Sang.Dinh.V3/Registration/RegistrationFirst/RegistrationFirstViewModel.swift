@@ -12,7 +12,7 @@ protocol RegistrationFirstViewModelType {
     func setEmai(email: String)
     func setPassword(password: String)
     func isValid() -> Bool
-//    func checkLogin() -> Bool
+    func creatUser()
     func checkEmail() -> String
     func checkPass() -> String
     func login(completion: @escaping Completion<User>)
@@ -48,15 +48,6 @@ extension RegistrationFirstViewModel: RegistrationFirstViewModelType {
         return false
       }
 
-//    func checkLogin() -> Bool {
-//        for user in userRepository.users {
-//            if user.email == self.email && user.passWord == self.password {
-//                return true
-//            }
-//        }
-//        return false
-//    }
-
     func checkEmail() -> String {
         if email.isEmpty {
             return "Email không được để trống"
@@ -90,5 +81,9 @@ extension RegistrationFirstViewModel: RegistrationFirstViewModelType {
                 password: self.password,
                 completion: completion)
 //        }
+    }
+
+    func creatUser() {
+        userRepository.createUser(user: User(fullName: self.fullName, email: self.email, passWord: self.password))
     }
 }

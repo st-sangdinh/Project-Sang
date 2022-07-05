@@ -59,6 +59,7 @@
 		228565B9286EF66B00C5EC99 /* RegistrationFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565B6286EF66B00C5EC99 /* RegistrationFirstViewController.swift */; };
 		228565BD286F001D00C5EC99 /* RegistrationFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565BB286F001D00C5EC99 /* RegistrationFirstViewController.xib */; };
 		228565BE286F001D00C5EC99 /* RegistrationFirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565BC286F001D00C5EC99 /* RegistrationFirstViewModel.swift */; };
+		228565C2287424FC00C5EC99 /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565C1287424FC00C5EC99 /* UserDataStore.swift */; };
 		22A2513028193CE9003FF30B /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2512E28193CE9003FF30B /* BookingViewController.swift */; };
 		22A2513128193CE9003FF30B /* BookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A2512F28193CE9003FF30B /* BookingViewController.xib */; };
 		22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2513228193CF7003FF30B /* AccountViewController.swift */; };
@@ -166,6 +167,7 @@
 		228565B6286EF66B00C5EC99 /* RegistrationFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFirstViewController.swift; sourceTree = "<group>"; };
 		228565BB286F001D00C5EC99 /* RegistrationFirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationFirstViewController.xib; sourceTree = "<group>"; };
 		228565BC286F001D00C5EC99 /* RegistrationFirstViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFirstViewModel.swift; sourceTree = "<group>"; };
+		228565C1287424FC00C5EC99 /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 		22A2512E28193CE9003FF30B /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		22A2512F28193CE9003FF30B /* BookingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingViewController.xib; sourceTree = "<group>"; };
 		22A2513228193CF7003FF30B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 				22A79B6B28193C5500673642 /* TabbarViewController.swift */,
 				2251403F283632CC00319D8B /* CartDataStore.swift */,
 				225140412836332600319D8B /* StoreDataOrder.swift */,
+				228565C1287424FC00C5EC99 /* UserDataStore.swift */,
 			);
 			path = Sang.Dinh.V3;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				225E58B9283DE33300A66B77 /* Loader.swift in Sources */,
 				22800ECE282E4BD600D99DF4 /* BookingTableViewModel.swift in Sources */,
 				22800EC4282CE39E00D99DF4 /* CartViewController.swift in Sources */,
+				228565C2287424FC00C5EC99 /* UserDataStore.swift in Sources */,
 				2237853A28224D3B009EAF47 /* AccountViewModel .swift in Sources */,
 				2242023028372520007B5A4B /* RecommendedTableViewCell.swift in Sources */,
 				22800ECC282CF44500D99DF4 /* CartViewModel.swift in Sources */,

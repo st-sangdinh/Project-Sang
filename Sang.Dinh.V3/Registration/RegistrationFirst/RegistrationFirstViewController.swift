@@ -31,15 +31,14 @@ final class RegistrationFirstViewController: UIViewController {
     @IBOutlet private weak var lineLogin: UIView!
     @IBOutlet private weak var fullNameTextField: TextField!
     @IBOutlet private weak var emailTextField: TextField!
-    @IBOutlet weak var emailError: UILabel!
+    @IBOutlet private weak var emailError: UILabel!
     @IBOutlet private weak var passwordTextField: TextField!
-    @IBOutlet weak var passwordError: UILabel!
+    @IBOutlet private weak var passwordError: UILabel!
     @IBOutlet private weak var forgetPasswordButton: UIButton!
     @IBOutlet private weak var registrationButton: UIButton!
     @IBOutlet private weak var signUpView: UIView!
     @IBOutlet private weak var heightFullNameConstrain: NSLayoutConstraint!
 
-//    weak var delegate: RegistrationFirstViewControllerDelegate?
     var statusView: ScreenChoose
 
     init(statusView: ScreenChoose) {
@@ -73,12 +72,10 @@ final class RegistrationFirstViewController: UIViewController {
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor(red: 0.745, green: 0.773, blue: 0.82, alpha: 1).cgColor
         emailTextField.layer.cornerRadius = 12
-//        emailTextField.delegate = self
 
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.borderColor = UIColor(red: 0.745, green: 0.773, blue: 0.82, alpha: 1).cgColor
         passwordTextField.layer.cornerRadius = 12
-//        passwordTextField.delegate = self
 
         forgetPasswordButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
 
@@ -104,6 +101,10 @@ final class RegistrationFirstViewController: UIViewController {
                 forgetPasswordButton.isHidden = true
                 fullNameView.isHidden = false
                 registrationButton.setTitle("Registration", for: .normal)
+                emailTextField.text = ""
+                emailError.text = ""
+                passwordTextField.text = ""
+                passwordError.text = ""
 
         case .login:
                 lineCreateAccount.isHidden = true
@@ -114,6 +115,10 @@ final class RegistrationFirstViewController: UIViewController {
                 forgetPasswordButton.isHidden  = false
                 fullNameView.isHidden = true
                 registrationButton.setTitle("Login", for: .normal)
+                emailTextField.text = ""
+                emailError.text = ""
+                passwordTextField.text = ""
+                passwordError.text = ""
         }
     }
 
@@ -128,15 +133,15 @@ final class RegistrationFirstViewController: UIViewController {
     }
 
     @objc private func emailTextFieldDidChange(_ textField: UITextField) {
-                viewModel.setEmai(email: textField.text ?? "")
-                updateButton()
-                emailError.text = viewModel.checkEmail()
+        viewModel.setEmai(email: textField.text ?? "")
+        updateButton()
+        emailError.text = viewModel.checkEmail()
     }
 
     @objc private func passwordTextFieldChange(_ textField: UITextField) {
-                viewModel.setPassword(password: textField.text ?? "")
-                updateButton()
-                passwordError.text = viewModel.checkPass()
+        viewModel.setPassword(password: textField.text ?? "")
+        updateButton()
+        passwordError.text = viewModel.checkPass()
     }
 
     @IBAction private func forgetPassword(_ sender: Any) {
@@ -146,7 +151,10 @@ final class RegistrationFirstViewController: UIViewController {
     @IBAction private func registrationButton(_ sender: Any) {
         switch statusView {
         case .createAccount:
-            print("Create")
+                if viewModel.isValid() {
+                    viewModel.creatUser()
+                }
+                dismiss(animated: true)
         case .login:
                 if viewModel.isValid() {
                     login()
