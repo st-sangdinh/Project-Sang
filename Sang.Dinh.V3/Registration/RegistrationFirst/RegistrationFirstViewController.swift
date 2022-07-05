@@ -21,6 +21,7 @@ final class RegistrationFirstViewController: UIViewController {
 
     var viewModel: RegistrationFirstViewModelType = RegistrationFirstViewModel()
 
+    @IBOutlet private weak var loader: Loader!
     @IBOutlet private weak var fullNameView: UIView!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var exitView: UIView!
@@ -165,8 +166,10 @@ final class RegistrationFirstViewController: UIViewController {
       }
 
     private func login() {
+        loader.startAnimating()
         viewModel.login(completion: {[weak self] result in
             guard let this = self else { return }
+            this.loader.stopAnimating()
             switch result {
             case .success:
                     this.dismiss(animated: true)
