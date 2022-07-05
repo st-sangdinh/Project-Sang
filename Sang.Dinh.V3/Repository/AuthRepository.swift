@@ -31,7 +31,15 @@ class UserRepository {
         }
     }
 
-    func createUser(user: User) {
-        UserDataStore.shared.appendUser(item: user)
+    func createUser(user: User, completion: @escaping Completion<Void>) {
+        let users = UserDataStore.shared.getUser()
+        if let _ = users.first(where: {$0.email == user.email}) {
+            let error = NSError(domain: "Demo.Sang", code: 1,
+                                userInfo: [NSLocalizedDescriptionKey: "Email đã trùng"])
+            completion(.failure(error))
+        } else {
+            UserDataStore.shared.appendUser(item: user)
+            completion(.success(Void()))
+        }
     }
 }

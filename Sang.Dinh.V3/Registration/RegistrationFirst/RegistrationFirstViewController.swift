@@ -30,6 +30,7 @@ final class RegistrationFirstViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var lineLogin: UIView!
     @IBOutlet private weak var fullNameTextField: TextField!
+    @IBOutlet private weak var fullNameError: UILabel!
     @IBOutlet private weak var emailTextField: TextField!
     @IBOutlet private weak var emailError: UILabel!
     @IBOutlet private weak var passwordTextField: TextField!
@@ -86,6 +87,7 @@ final class RegistrationFirstViewController: UIViewController {
     }
 
     private func textFieldChane() {
+        fullNameTextField.addTarget(self, action:  #selector(fullNameTextFieldDidChange), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextFieldChange), for: .editingChanged)
     }
@@ -101,6 +103,8 @@ final class RegistrationFirstViewController: UIViewController {
                 forgetPasswordButton.isHidden = true
                 fullNameView.isHidden = false
                 registrationButton.setTitle("Registration", for: .normal)
+                fullNameTextField.text = ""
+                fullNameError.text = ""
                 emailTextField.text = ""
                 emailError.text = ""
                 passwordTextField.text = ""
@@ -132,6 +136,12 @@ final class RegistrationFirstViewController: UIViewController {
         updateView()
     }
 
+    @objc private func fullNameTextFieldDidChange(_ textField: UITextField) {
+        viewModel.setFullName(fullName: textField.text ?? "")
+        updateButton()
+        fullNameError.text = viewModel.checkFullName()
+    }
+
     @objc private func emailTextFieldDidChange(_ textField: UITextField) {
         viewModel.setEmai(email: textField.text ?? "")
         updateButton()
@@ -151,10 +161,18 @@ final class RegistrationFirstViewController: UIViewController {
     @IBAction private func registrationButton(_ sender: Any) {
         switch statusView {
         case .createAccount:
-                if viewModel.isValid() {
-                    viewModel.creatUser()
+                if viewModel.isValidCreate() {
+                    create()
+                } else {
+                    let alertController = UIAlertController(
+                        title: "Lỗi",
+                        message: "Vui lòng nhập các trường trên",
+                        preferredStyle: .alert
+                    )
+                    let action = UIAlertAction(title: "OK", style: .default)
+                    alertController.addAction(action)
+                    self.present(alertController, animated: true)
                 }
-                dismiss(animated: true)
         case .login:
                 if viewModel.isValid() {
                     login()
@@ -191,7 +209,26 @@ final class RegistrationFirstViewController: UIViewController {
                     )
                     let action = UIAlertAction(title: "OK", style: .default)
                     alertController.addAction(action)
-                    self?.present(alertController, animated: true)
+                    this.present(alertController, animated: true)
+            }
+        })
+    }
+
+    private func create() {
+        viewModel.creatUser(completion: {[weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .success:
+                    this.dismiss(animated: true)
+            case .failure(let error):
+                    let alertController = UIAlertController(
+                        title: "Lỗi",
+                        message: error.localizedDescription,
+                        preferredStyle: .alert
+                    )
+                    let action = UIAlertAction(title: "OK", style: .default)
+                    alertController.addAction(action)
+                    this.present(alertController, animated: true)
             }
         })
     }
