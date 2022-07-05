@@ -29,6 +29,6 @@ class LogoutTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func logoutButton(_ sender: Any) {
-        print("Logout")
+        (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = RegistrationViewController()
     }
 }
