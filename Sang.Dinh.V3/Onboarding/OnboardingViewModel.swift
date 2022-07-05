@@ -14,7 +14,7 @@ protocol OnboardingViewModelTyple {
     func dataForItems(at index: IndexPath) -> OnboardingCollectionCellData
 }
 
-class OnboardingViewModel {
+final class OnboardingViewModel {
 
     var onboarding: [Onboarding] = []
 
