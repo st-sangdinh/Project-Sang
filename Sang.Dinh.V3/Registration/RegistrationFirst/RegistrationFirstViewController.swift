@@ -60,7 +60,7 @@ final class RegistrationFirstViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
 
-    private func configView() { 
+    private func configView() {
         containerView.layer.cornerRadius = 30
         exitView.layer.cornerRadius = exitView.bounds.height / 2
         createAccountButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
@@ -250,16 +250,3 @@ class TextField: UITextField {
         return bounds.inset(by: padding)
     }
 }
-
-//extension RegistrationFirstViewController: UITextFieldDelegate {
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        if textField == emailTextField {
-//            emailError.text = viewModel.validate()
-//        }
-//        if textField == passwordTextField {
-//            passwordError.text = viewModel.pass()
-//        }
-//    }
-//}
-
