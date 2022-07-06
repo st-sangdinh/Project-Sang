@@ -9,45 +9,26 @@ import UIKit
 
 final class HomeViewController: UIViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var loaderView: Loader!
-    @IBOutlet weak var viewLoad: UIView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var loaderView: Loader!
+    @IBOutlet private weak var viewLoad: UIView!
 
     let viewModel: HomeViewModelType = HomeViewModel()
-    var contactsData: [String] = []
-    var contacts: [String] = []
-    let refreshControl = UIRefreshControl()
+    private var contactsData: [String] = []
+    private var contacts: [String] = []
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationHome()
         configTableView()
         refreshHome()
-//        getAPI()
         getAPIBanners()
         getRestaurant()
     }
-//
-//    func getAPI() {
-//        // Show loading
-//        loaderView.startAnimating()
-//        let completion: () -> Void = {
-//            self.loaderView.stopAnimating()
-//            self.viewLoad.isHidden = true
-//            self.tableView.reloadData()
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-//                self.refreshControl.endRefreshing()
-//                self.tableView.contentOffset = .zero
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//                        self.tableView.scrollsToTop = true
-//                    }
-//                })
-//        }
-//        viewModel.getAIP(completion: completion)
-//    }
 
-    func getRestaurant() {
+    private func getRestaurant() {
         loaderView.startAnimating()
         viewModel.getRestaurant { [weak self] result in
             guard let this = self else { return }
@@ -101,7 +82,7 @@ final class HomeViewController: UIViewController {
         }
     }
 
-    func configTableView() {
+    private func configTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(UINib(nibName: "BannerTableViewCell", bundle: nil),
                            forCellReuseIdentifier: "BannerTableViewCell")
@@ -118,7 +99,7 @@ final class HomeViewController: UIViewController {
 
     }
 
-    func refreshHome() {
+    private func refreshHome() {
         refreshControl.tintColor = .green
                 refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
                 tableView.addSubview(refreshControl)
@@ -130,7 +111,7 @@ final class HomeViewController: UIViewController {
         getAPIBanners()
     }
 
-    func navigationHome() {
+    private func navigationHome() {
         let listButton = UIBarButtonItem(image: UIImage(named: "List"),
                                          style: .done,
                                          target: self,
@@ -147,7 +128,6 @@ final class HomeViewController: UIViewController {
             let searchIcon = UIButton()
 
             searchIcon.setImage(UIImage(named: "place"), for: .normal)
-//            searchIcon.backgroundColor = UIColor.red
             searchIcon.layer.frame = CGRect(x: 55, y: 8, width: 28, height: 28)
 
             titleContainer.addSubview(searchIcon)
@@ -171,16 +151,15 @@ final class HomeViewController: UIViewController {
 
     }
 
-    @objc func listButton() {
+    @objc private func listButton() {
         print("dsds")
     }
 
-    @objc func imgAccButton() {
-//        let a = AccountViewController()
+    @objc private func imgAccButton() {
     }
-    @IBAction func searchButton(_ sender: Any) {
-        let viewController = SearchViewController()
 
+    @IBAction private func searchButton(_ sender: Any) {
+        let viewController = SearchViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
