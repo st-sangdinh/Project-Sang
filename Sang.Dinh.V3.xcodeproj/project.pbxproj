@@ -61,6 +61,9 @@
 		228565BE286F001D00C5EC99 /* RegistrationFirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565BC286F001D00C5EC99 /* RegistrationFirstViewModel.swift */; };
 		228565C2287424FC00C5EC99 /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565C1287424FC00C5EC99 /* UserDataStore.swift */; };
 		228565C628752EFA00C5EC99 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 228565C528752EFA00C5EC99 /* IQKeyboardManagerSwift */; };
+		228565CA2875455800C5EC99 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565C82875455800C5EC99 /* ForgetPasswordViewController.swift */; };
+		228565CB2875455800C5EC99 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565C92875455800C5EC99 /* ForgetPasswordViewController.xib */; };
+		228565CD287548D000C5EC99 /* ForgetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565CC287548D000C5EC99 /* ForgetPasswordViewModel.swift */; };
 		22A2513028193CE9003FF30B /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2512E28193CE9003FF30B /* BookingViewController.swift */; };
 		22A2513128193CE9003FF30B /* BookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A2512F28193CE9003FF30B /* BookingViewController.xib */; };
 		22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2513228193CF7003FF30B /* AccountViewController.swift */; };
@@ -169,6 +172,9 @@
 		228565BB286F001D00C5EC99 /* RegistrationFirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationFirstViewController.xib; sourceTree = "<group>"; };
 		228565BC286F001D00C5EC99 /* RegistrationFirstViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFirstViewModel.swift; sourceTree = "<group>"; };
 		228565C1287424FC00C5EC99 /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
+		228565C82875455800C5EC99 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
+		228565C92875455800C5EC99 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
+		228565CC287548D000C5EC99 /* ForgetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewModel.swift; sourceTree = "<group>"; };
 		22A2512E28193CE9003FF30B /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		22A2512F28193CE9003FF30B /* BookingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingViewController.xib; sourceTree = "<group>"; };
 		22A2513228193CF7003FF30B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -422,6 +428,16 @@
 			path = RegistrationFirst;
 			sourceTree = "<group>";
 		};
+		228565C72875437900C5EC99 /* ForgetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				228565C82875455800C5EC99 /* ForgetPasswordViewController.swift */,
+				228565C92875455800C5EC99 /* ForgetPasswordViewController.xib */,
+				228565CC287548D000C5EC99 /* ForgetPasswordViewModel.swift */,
+			);
+			path = ForgetPassword;
+			sourceTree = "<group>";
+		};
 		22A25137281A73C6003FF30B /* CustomCell  */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +603,7 @@
 				22A79B66281939DE00673642 /* Account */,
 				22A79B65281939CE00673642 /* Booking */,
 				22A79B60281937B000673642 /* Home */,
+				228565C72875437900C5EC99 /* ForgetPassword */,
 				228565A8286EE68F00C5EC99 /* Registration */,
 				22856599286ECEA000C5EC99 /* Onboarding */,
 				22A79B4C2819376700673642 /* AppDelegate.swift */,
@@ -795,6 +812,7 @@
 				22A79B64281937BF00673642 /* HomeViewController.xib in Resources */,
 				22EC2120282A111800118F42 /* OrderViewController.xib in Resources */,
 				22A2513B281A753B003FF30B /* BannerTableViewCell.xib in Resources */,
+				228565CB2875455800C5EC99 /* ForgetPasswordViewController.xib in Resources */,
 				22397C792824B21000DD9D7A /* DetailsTableViewCell.xib in Resources */,
 				228565A2286ECEA000C5EC99 /* OnboardingViewController.xib in Resources */,
 				22EC2127282B48F200118F42 /* DetailHistoryViewController.xib in Resources */,
@@ -877,6 +895,7 @@
 				22A79B4D2819376700673642 /* AppDelegate.swift in Sources */,
 				22A2513028193CE9003FF30B /* BookingViewController.swift in Sources */,
 				22A2513F281A7860003FF30B /* BannerCollectionViewCell.swift in Sources */,
+				228565CA2875455800C5EC99 /* ForgetPasswordViewController.swift in Sources */,
 				228565A0286ECEA000C5EC99 /* OnboardingCollectionViewCell.swift in Sources */,
 				228565BE286F001D00C5EC99 /* RegistrationFirstViewModel.swift in Sources */,
 				222FF59E2834E2F50066FC62 /* UserDefaut.swift in Sources */,
@@ -886,6 +905,7 @@
 				22A25144281A8AAE003FF30B /* BannerTableViewCellModel.swift in Sources */,
 				22A25189282222CC003FF30B /* Cell3TableViewCell.swift in Sources */,
 				22A25166281B818D003FF30B /* HomeTableHeaderView.swift in Sources */,
+				228565CD287548D000C5EC99 /* ForgetPasswordViewModel.swift in Sources */,
 				22EC21122828AF9100118F42 /* DetailsViewModel.swift in Sources */,
 				22EC211F282A111800118F42 /* OrderViewController.swift in Sources */,
 				228565A7286EE3C300C5EC99 /* AuthRepository.swift in Sources */,

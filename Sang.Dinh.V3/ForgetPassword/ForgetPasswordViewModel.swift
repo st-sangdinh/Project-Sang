@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol ForgetPasswordViewModelType {
+
+}
+
+final class ForgetPasswordViewModel {
+
+}
+
+extension ForgetPasswordViewModel: ForgetPasswordViewModelType {
+    
+}
