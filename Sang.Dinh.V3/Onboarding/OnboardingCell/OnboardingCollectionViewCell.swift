@@ -25,4 +25,3 @@ struct OnboardingCollectionCellData {
     let title: String
     let content: String
 }
-

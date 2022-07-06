@@ -48,7 +48,7 @@ extension OnboardingViewModel: OnboardingViewModelTyple {
         onboarding.count
     }
 
-    func getData(in index: IndexPath) -> Onboarding  {
+    func getData(in index: IndexPath) -> Onboarding {
         self.onboarding[index.item]
     }
 }
@@ -58,5 +58,3 @@ struct Onboarding {
     let title: String
     let content: String
 }
-
-

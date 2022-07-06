@@ -17,7 +17,7 @@ protocol CartDataStoreType {
     func removeAll()
 }
 
-class CartDataStore: CartDataStoreType {
+final class CartDataStore: CartDataStoreType {
 
     // Signleton
     static let shared = CartDataStore()
