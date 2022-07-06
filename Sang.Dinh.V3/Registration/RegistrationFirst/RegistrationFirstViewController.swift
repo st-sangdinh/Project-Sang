@@ -60,7 +60,7 @@ final class RegistrationFirstViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
 
-    private func configView() {
+    private func configView() { 
         containerView.layer.cornerRadius = 30
         exitView.layer.cornerRadius = exitView.bounds.height / 2
         createAccountButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
@@ -87,7 +87,7 @@ final class RegistrationFirstViewController: UIViewController {
     }
 
     private func textFieldChane() {
-        fullNameTextField.addTarget(self, action:  #selector(fullNameTextFieldDidChange), for: .editingChanged)
+        fullNameTextField.addTarget(self, action: #selector(fullNameTextFieldDidChange), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextFieldChange), for: .editingChanged)
     }
@@ -162,7 +162,7 @@ final class RegistrationFirstViewController: UIViewController {
         switch statusView {
         case .createAccount:
                 if viewModel.isValidCreate() {
-                    create()
+                    createUser()
                 } else {
                     let alertController = UIAlertController(
                         title: "Lỗi",
@@ -214,7 +214,7 @@ final class RegistrationFirstViewController: UIViewController {
         })
     }
 
-    private func create() {
+    private func createUser() {
         viewModel.creatUser(completion: {[weak self] result in
             guard let this = self else { return }
             switch result {
@@ -262,3 +262,4 @@ class TextField: UITextField {
 //        }
 //    }
 //}
+

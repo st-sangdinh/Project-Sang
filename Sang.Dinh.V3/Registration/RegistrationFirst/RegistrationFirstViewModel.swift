@@ -12,7 +12,7 @@ protocol RegistrationFirstViewModelType {
     func setEmai(email: String)
     func setPassword(password: String)
     func isValid() -> Bool
-    func isValidCreate() -> Bool 
+    func isValidCreate() -> Bool
     func checkFullName() -> String
     func checkEmail() -> String
     func checkPass() -> String
@@ -42,19 +42,18 @@ extension RegistrationFirstViewModel: RegistrationFirstViewModelType {
     }
 
     func isValid() -> Bool {
-        if  !password.isEmpty && !email.isEmpty {
+        if  !password.isEmpty && password.count >= 6  && checkRegexEmail() && !email.isEmpty {
             return true
-        } else if password.isEmpty && email.isEmpty {
+        } else if password.isEmpty && password.count < 6  && checkRegexEmail() && email.isEmpty {
             return false
         }
         return false
     }
 
     func isValidCreate() -> Bool {
-        if  !fullName.isEmpty && !password.isEmpty && !email.isEmpty {
+        if  !fullName.isEmpty && isValid() {
             return true
-        } else if fullName.isEmpty && password.isEmpty && email.isEmpty {
-            return false
+        } else if fullName.isEmpty && isValid() {
         }
         return false
     }
