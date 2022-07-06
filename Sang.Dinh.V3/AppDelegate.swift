@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true  // tap ben ngoai ban phim se thoat khoi textField's
 //        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "OK"  // text button Done
         IQKeyboardManager.shared.enableDebugging = true  //  enableDebugging = true
-
         window = UIWindow(frame: UIScreen.main.bounds)
         let homeVC = OnboardingViewController()
         let navi = UINavigationController(rootViewController: homeVC)
