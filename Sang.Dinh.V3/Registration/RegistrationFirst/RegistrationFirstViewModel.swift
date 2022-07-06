@@ -101,6 +101,6 @@ extension RegistrationFirstViewModel: RegistrationFirstViewModelType {
     }
 
     func creatUser(completion: @escaping Completion<Void>) {
-        userRepository.createUser(user: User(fullName: self.fullName, email: self.email, passWord: self.password), completion: completion)
+        userRepository.register(user: User(fullName: self.fullName, email: self.email, passWord: self.password), completion: completion)
     }
 }

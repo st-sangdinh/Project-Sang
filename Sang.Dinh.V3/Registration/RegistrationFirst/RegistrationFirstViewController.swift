@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol RegistrationFirstViewControllerDelegate: AnyObject {
+    func viewController(view: RegistrationFirstViewController, action: RegistrationFirstViewController.Action)
+}
 
 final class RegistrationFirstViewController: UIViewController {
 
@@ -16,10 +19,10 @@ final class RegistrationFirstViewController: UIViewController {
 
     enum Action {
         case forgetPassword
-        case home
     }
 
     var viewModel: RegistrationFirstViewModelType = RegistrationFirstViewModel()
+    weak var delegate: RegistrationFirstViewControllerDelegate?
 
     @IBOutlet private weak var loader: Loader!
     @IBOutlet private weak var fullNameView: UIView!
@@ -156,6 +159,7 @@ final class RegistrationFirstViewController: UIViewController {
 
     @IBAction private func forgetPassword(_ sender: Any) {
         dismiss(animated: true)
+        delegate?.viewController(view: self, action: .forgetPassword)
     }
 
     @IBAction private func registrationButton(_ sender: Any) {

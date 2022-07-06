@@ -13,6 +13,7 @@ struct User: Codable {
     var passWord: String
 }
 
+
 class UserRepository {
 //    var users: [User] = [User(fullName: "", email: "rinsang@gmail.com", passWord: "Sang123@"),
 //                         User(fullName: "", email: "rinsang2@gmail.com", passWord: "Sang124@"),
@@ -20,7 +21,7 @@ class UserRepository {
 
     func login(fullName: String, email: String, password: String, completion: @escaping Completion<User>) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            let users = UserDataStore.shared.getUser()
+            let users = UserDataStore.shared.getUsers()
             if let user = users.first(where: {$0.email == email && $0.passWord == password}) {
                 completion(.success(user))
             } else {
@@ -31,15 +32,30 @@ class UserRepository {
         }
     }
 
-    func createUser(user: User, completion: @escaping Completion<Void>) {
-        let users = UserDataStore.shared.getUser()
+    func register(user: User, completion: @escaping Completion<Void>) {
+        let users = UserDataStore.shared.getUsers()
         if let _ = users.first(where: {$0.email == user.email}) {
             let error = NSError(domain: "Demo.Sang", code: 1,
                                 userInfo: [NSLocalizedDescriptionKey: "Email đã trùng"])
             completion(.failure(error))
         } else {
-            UserDataStore.shared.appendUser(item: user)
+            UserDataStore.shared.setUser(item: user)
             completion(.success(Void()))
         }
+    }
+
+    func getUser(email: String, completion: @escaping Completion<User>) {
+        let users = UserDataStore.shared.getUsers()
+        if let user = users.first(where: {$0.email == email}) {
+            completion(.success(user))
+        } else {
+            let error = NSError(domain: "Demo.Sang", code: 1,
+                                userInfo: [NSLocalizedDescriptionKey: "Email không tồn tại, vui lòng kiểm tra lại "])
+            completion(.failure(error))
+        }
+    }
+
+    func updatePassword(user: User) {
+        
     }
 }

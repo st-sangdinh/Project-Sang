@@ -28,11 +28,24 @@ final class RegistrationViewController: UIViewController {
 
     @IBAction private func createAccountButton(_ sender: Any) {
         let viewController = RegistrationFirstViewController(statusView: .createAccount)
-              present(viewController, animated: true)
+            present(viewController, animated: true)
     }
 
     @IBAction private func loginButton(_ sender: Any) {
         let viewController = RegistrationFirstViewController(statusView: .login)
-                present(viewController, animated: true)
+            present(viewController, animated: true)
+        viewController.delegate = self
     }
+}
+
+extension RegistrationViewController: RegistrationFirstViewControllerDelegate {
+    func viewController(view: RegistrationFirstViewController, action: RegistrationFirstViewController.Action) {
+        switch action {
+            case.forgetPassword:
+                let viewController = ForgetPasswordViewController()
+                navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+
+
 }
