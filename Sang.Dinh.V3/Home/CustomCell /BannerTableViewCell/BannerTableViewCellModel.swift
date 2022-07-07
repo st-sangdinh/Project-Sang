@@ -14,9 +14,9 @@ protocol BannerTableCellViewModelType {
 }
 
 class BannerTableCellViewModel {
-    var bannerImages: [ListBanners] = []
+    var bannerImages: [Banner] = []
 
-    init(bannerImages: [ListBanners] = []) {
+    init(bannerImages: [Banner] = []) {
         self.bannerImages = bannerImages
     }
 }

@@ -53,6 +53,22 @@
 		228565A2286ECEA000C5EC99 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2285659D286ECEA000C5EC99 /* OnboardingViewController.xib */; };
 		228565A3286ECEA000C5EC99 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2285659E286ECEA000C5EC99 /* OnboardingViewController.swift */; };
 		228565A4286ECEA000C5EC99 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2285659F286ECEA000C5EC99 /* OnboardingViewModel.swift */; };
+		228565A7286EE3C300C5EC99 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565A6286EE3C300C5EC99 /* AuthRepository.swift */; };
+		228565AB286EE71F00C5EC99 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565A9286EE71F00C5EC99 /* RegistrationViewController.swift */; };
+		228565AC286EE71F00C5EC99 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565AA286EE71F00C5EC99 /* RegistrationViewController.xib */; };
+		228565B9286EF66B00C5EC99 /* RegistrationFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565B6286EF66B00C5EC99 /* RegistrationFirstViewController.swift */; };
+		228565BD286F001D00C5EC99 /* RegistrationFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565BB286F001D00C5EC99 /* RegistrationFirstViewController.xib */; };
+		228565BE286F001D00C5EC99 /* RegistrationFirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565BC286F001D00C5EC99 /* RegistrationFirstViewModel.swift */; };
+		228565C2287424FC00C5EC99 /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565C1287424FC00C5EC99 /* UserDataStore.swift */; };
+		228565C628752EFA00C5EC99 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 228565C528752EFA00C5EC99 /* IQKeyboardManagerSwift */; };
+		228565CA2875455800C5EC99 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565C82875455800C5EC99 /* ForgetPasswordViewController.swift */; };
+		228565CB2875455800C5EC99 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565C92875455800C5EC99 /* ForgetPasswordViewController.xib */; };
+		228565CD287548D000C5EC99 /* ForgetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565CC287548D000C5EC99 /* ForgetPasswordViewModel.swift */; };
+		228565D7287590F800C5EC99 /* ChangeNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565D5287590F800C5EC99 /* ChangeNewPasswordViewController.swift */; };
+		228565D8287590F800C5EC99 /* ChangeNewPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565D6287590F800C5EC99 /* ChangeNewPasswordViewController.xib */; };
+		228565DA28766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565D928766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift */; };
+		228565DE2876876900C5EC99 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565DC2876876900C5EC99 /* SuccessViewController.swift */; };
+		228565DF2876876900C5EC99 /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565DD2876876900C5EC99 /* SuccessViewController.xib */; };
 		22A2513028193CE9003FF30B /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2512E28193CE9003FF30B /* BookingViewController.swift */; };
 		22A2513128193CE9003FF30B /* BookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A2512F28193CE9003FF30B /* BookingViewController.xib */; };
 		22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2513228193CF7003FF30B /* AccountViewController.swift */; };
@@ -154,6 +170,21 @@
 		2285659D286ECEA000C5EC99 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		2285659E286ECEA000C5EC99 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		2285659F286ECEA000C5EC99 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		228565A6286EE3C300C5EC99 /* AuthRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		228565A9286EE71F00C5EC99 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		228565AA286EE71F00C5EC99 /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
+		228565B6286EF66B00C5EC99 /* RegistrationFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFirstViewController.swift; sourceTree = "<group>"; };
+		228565BB286F001D00C5EC99 /* RegistrationFirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationFirstViewController.xib; sourceTree = "<group>"; };
+		228565BC286F001D00C5EC99 /* RegistrationFirstViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFirstViewModel.swift; sourceTree = "<group>"; };
+		228565C1287424FC00C5EC99 /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
+		228565C82875455800C5EC99 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
+		228565C92875455800C5EC99 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
+		228565CC287548D000C5EC99 /* ForgetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewModel.swift; sourceTree = "<group>"; };
+		228565D5287590F800C5EC99 /* ChangeNewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewPasswordViewController.swift; sourceTree = "<group>"; };
+		228565D6287590F800C5EC99 /* ChangeNewPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeNewPasswordViewController.xib; sourceTree = "<group>"; };
+		228565D928766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewPasswordViewModel.swift; sourceTree = "<group>"; };
+		228565DC2876876900C5EC99 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		228565DD2876876900C5EC99 /* SuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessViewController.xib; sourceTree = "<group>"; };
 		22A2512E28193CE9003FF30B /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		22A2512F28193CE9003FF30B /* BookingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingViewController.xib; sourceTree = "<group>"; };
 		22A2513228193CF7003FF30B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228565C628752EFA00C5EC99 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,8 +394,8 @@
 			isa = PBXGroup;
 			children = (
 				2285659A286ECEA000C5EC99 /* OnboardingCell */,
-				2285659D286ECEA000C5EC99 /* OnboardingViewController.xib */,
 				2285659E286ECEA000C5EC99 /* OnboardingViewController.swift */,
+				2285659D286ECEA000C5EC99 /* OnboardingViewController.xib */,
 				2285659F286ECEA000C5EC99 /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
@@ -376,6 +408,63 @@
 				2285659C286ECEA000C5EC99 /* OnboardingCollectionViewCell.xib */,
 			);
 			path = OnboardingCell;
+			sourceTree = "<group>";
+		};
+		228565A5286EE3C300C5EC99 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				228565A6286EE3C300C5EC99 /* AuthRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		228565A8286EE68F00C5EC99 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				228565B4286EF66B00C5EC99 /* RegistrationFirst */,
+				228565A9286EE71F00C5EC99 /* RegistrationViewController.swift */,
+				228565AA286EE71F00C5EC99 /* RegistrationViewController.xib */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		228565B4286EF66B00C5EC99 /* RegistrationFirst */ = {
+			isa = PBXGroup;
+			children = (
+				228565B6286EF66B00C5EC99 /* RegistrationFirstViewController.swift */,
+				228565BB286F001D00C5EC99 /* RegistrationFirstViewController.xib */,
+				228565BC286F001D00C5EC99 /* RegistrationFirstViewModel.swift */,
+			);
+			path = RegistrationFirst;
+			sourceTree = "<group>";
+		};
+		228565C72875437900C5EC99 /* ForgetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				228565C82875455800C5EC99 /* ForgetPasswordViewController.swift */,
+				228565C92875455800C5EC99 /* ForgetPasswordViewController.xib */,
+				228565CC287548D000C5EC99 /* ForgetPasswordViewModel.swift */,
+			);
+			path = ForgetPassword;
+			sourceTree = "<group>";
+		};
+		228565D4287590A700C5EC99 /* ChangeNewPassword */ = {
+			isa = PBXGroup;
+			children = (
+				228565D5287590F800C5EC99 /* ChangeNewPasswordViewController.swift */,
+				228565D6287590F800C5EC99 /* ChangeNewPasswordViewController.xib */,
+				228565D928766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift */,
+			);
+			path = ChangeNewPassword;
+			sourceTree = "<group>";
+		};
+		228565DB2876873D00C5EC99 /* Success */ = {
+			isa = PBXGroup;
+			children = (
+				228565DC2876876900C5EC99 /* SuccessViewController.swift */,
+				228565DD2876876900C5EC99 /* SuccessViewController.xib */,
+			);
+			path = Success;
 			sourceTree = "<group>";
 		};
 		22A25137281A73C6003FF30B /* CustomCell  */ = {
@@ -538,10 +627,15 @@
 		22A79B4B2819376700673642 /* Sang.Dinh.V3 */ = {
 			isa = PBXGroup;
 			children = (
+				228565A5286EE3C300C5EC99 /* Repository */,
 				223785442823C78D009EAF47 /* Extensions */,
 				22A79B66281939DE00673642 /* Account */,
 				22A79B65281939CE00673642 /* Booking */,
 				22A79B60281937B000673642 /* Home */,
+				228565DB2876873D00C5EC99 /* Success */,
+				228565D4287590A700C5EC99 /* ChangeNewPassword */,
+				228565C72875437900C5EC99 /* ForgetPassword */,
+				228565A8286EE68F00C5EC99 /* Registration */,
 				22856599286ECEA000C5EC99 /* Onboarding */,
 				22A79B4C2819376700673642 /* AppDelegate.swift */,
 				22A79B502819376700673642 /* ViewController.swift */,
@@ -553,6 +647,7 @@
 				22A79B6B28193C5500673642 /* TabbarViewController.swift */,
 				2251403F283632CC00319D8B /* CartDataStore.swift */,
 				225140412836332600319D8B /* StoreDataOrder.swift */,
+				228565C1287424FC00C5EC99 /* UserDataStore.swift */,
 			);
 			path = Sang.Dinh.V3;
 			sourceTree = "<group>";
@@ -664,6 +759,9 @@
 			dependencies = (
 			);
 			name = Sang.Dinh.V3;
+			packageProductDependencies = (
+				228565C528752EFA00C5EC99 /* IQKeyboardManagerSwift */,
+			);
 			productName = Sang.Dinh.V3;
 			productReference = 22A79B492819376700673642 /* Sang.Dinh.V3.app */;
 			productType = "com.apple.product-type.application";
@@ -692,6 +790,9 @@
 				Base,
 			);
 			mainGroup = 22A79B402819376700673642;
+			packageReferences = (
+				228565C428752EFA00C5EC99 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 22A79B4A2819376700673642 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -707,20 +808,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A25151281AAB28003FF30B /* TodayTableViewCell.xib in Resources */,
+				228565AC286EE71F00C5EC99 /* RegistrationViewController.xib in Resources */,
 				22A79B592819376900673642 /* LaunchScreen.storyboard in Resources */,
 				22A25163281B74CC003FF30B /* BookingTableViewCell.xib in Resources */,
 				2237853F282251A4009EAF47 /* LogoutTableViewCell.xib in Resources */,
 				22A2515E281AC0D9003FF30B /* TodayCollectionViewCell.xib in Resources */,
 				2242023128372520007B5A4B /* RecommendedTableViewCell.xib in Resources */,
 				223C8022283B32640046E334 /* SeeAllToDayViewController.xib in Resources */,
+				228565DF2876876900C5EC99 /* SuccessViewController.xib in Resources */,
 				22A79B562819376900673642 /* Assets.xcassets in Resources */,
 				22A2517A282217E7003FF30B /* BookingHistoryTableViewCell.xib in Resources */,
 				22800EC5282CE39E00D99DF4 /* CartViewController.xib in Resources */,
+				228565D8287590F800C5EC99 /* ChangeNewPasswordViewController.xib in Resources */,
 				22EC212C282B4CA400118F42 /* DetailHistoryTableViewCell.xib in Resources */,
 				2237854A2823CDD5009EAF47 /* DetailsViewController.xib in Resources */,
 				22A2516A281B81E8003FF30B /* HomeTableHeaderView.xib in Resources */,
 				225E58BD283E096E00A66B77 /* AlertCartViewController.xib in Resources */,
 				228565A1286ECEA000C5EC99 /* OnboardingCollectionViewCell.xib in Resources */,
+				228565BD286F001D00C5EC99 /* RegistrationFirstViewController.xib in Resources */,
 				225E58B5283CC72000A66B77 /* SearchViewController.xib in Resources */,
 				22EC211928291CC000118F42 /* SeeAllViewController.xib in Resources */,
 				22A2518A282222CC003FF30B /* Cell3TableViewCell.xib in Resources */,
@@ -740,6 +845,7 @@
 				22A79B64281937BF00673642 /* HomeViewController.xib in Resources */,
 				22EC2120282A111800118F42 /* OrderViewController.xib in Resources */,
 				22A2513B281A753B003FF30B /* BannerTableViewCell.xib in Resources */,
+				228565CB2875455800C5EC99 /* ForgetPasswordViewController.xib in Resources */,
 				22397C792824B21000DD9D7A /* DetailsTableViewCell.xib in Resources */,
 				228565A2286ECEA000C5EC99 /* OnboardingViewController.xib in Resources */,
 				22EC2127282B48F200118F42 /* DetailHistoryViewController.xib in Resources */,
@@ -786,6 +892,8 @@
 				225E58B9283DE33300A66B77 /* Loader.swift in Sources */,
 				22800ECE282E4BD600D99DF4 /* BookingTableViewModel.swift in Sources */,
 				22800EC4282CE39E00D99DF4 /* CartViewController.swift in Sources */,
+				228565C2287424FC00C5EC99 /* UserDataStore.swift in Sources */,
+				228565DE2876876900C5EC99 /* SuccessViewController.swift in Sources */,
 				2237853A28224D3B009EAF47 /* AccountViewModel .swift in Sources */,
 				2242023028372520007B5A4B /* RecommendedTableViewCell.swift in Sources */,
 				22800ECC282CF44500D99DF4 /* CartViewModel.swift in Sources */,
@@ -803,6 +911,7 @@
 				228565A4286ECEA000C5EC99 /* OnboardingViewModel.swift in Sources */,
 				22A25185282222BC003FF30B /* Cell2TableViewCell.swift in Sources */,
 				22397C812824C7CE00DD9D7A /* DetailsHeaderViewCell.swift in Sources */,
+				228565D7287590F800C5EC99 /* ChangeNewPasswordViewController.swift in Sources */,
 				225E58BC283E096E00A66B77 /* AlertCartViewController.swift in Sources */,
 				22A25142281A89C1003FF30B /* HomeViewControllerModel.swift in Sources */,
 				22397C7D2824BAFF00DD9D7A /* ListDetailsTableViewCell.swift in Sources */,
@@ -813,13 +922,17 @@
 				22EC21142828C86600118F42 /* DetailsTableViewModel.swift in Sources */,
 				22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */,
 				22800ED02832535500D99DF4 /* MapViewModel.swift in Sources */,
+				228565AB286EE71F00C5EC99 /* RegistrationViewController.swift in Sources */,
 				22EC210F2828A8C900118F42 /* DetailsCollectionViewCell.swift in Sources */,
 				2237853E282251A4009EAF47 /* LogoutTableViewCell.swift in Sources */,
+				228565B9286EF66B00C5EC99 /* RegistrationFirstViewController.swift in Sources */,
 				2237854128225C50009EAF47 /* Menu.swift in Sources */,
 				22A79B4D2819376700673642 /* AppDelegate.swift in Sources */,
 				22A2513028193CE9003FF30B /* BookingViewController.swift in Sources */,
 				22A2513F281A7860003FF30B /* BannerCollectionViewCell.swift in Sources */,
+				228565CA2875455800C5EC99 /* ForgetPasswordViewController.swift in Sources */,
 				228565A0286ECEA000C5EC99 /* OnboardingCollectionViewCell.swift in Sources */,
+				228565BE286F001D00C5EC99 /* RegistrationFirstViewModel.swift in Sources */,
 				222FF59E2834E2F50066FC62 /* UserDefaut.swift in Sources */,
 				22A79B63281937BF00673642 /* HomeViewController.swift in Sources */,
 				22397C782824B21000DD9D7A /* DetailsTableViewCell.swift in Sources */,
@@ -827,8 +940,11 @@
 				22A25144281A8AAE003FF30B /* BannerTableViewCellModel.swift in Sources */,
 				22A25189282222CC003FF30B /* Cell3TableViewCell.swift in Sources */,
 				22A25166281B818D003FF30B /* HomeTableHeaderView.swift in Sources */,
+				228565CD287548D000C5EC99 /* ForgetPasswordViewModel.swift in Sources */,
 				22EC21122828AF9100118F42 /* DetailsViewModel.swift in Sources */,
 				22EC211F282A111800118F42 /* OrderViewController.swift in Sources */,
+				228565DA28766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift in Sources */,
+				228565A7286EE3C300C5EC99 /* AuthRepository.swift in Sources */,
 				225E58B4283CC72000A66B77 /* SearchViewController.swift in Sources */,
 				223785432822729A009EAF47 /* TodayTableViewModel.swift in Sources */,
 				22EC2122282A244800118F42 /* OrderViewModel.swift in Sources */,
@@ -1054,6 +1170,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		228565C428752EFA00C5EC99 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		228565C528752EFA00C5EC99 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 228565C428752EFA00C5EC99 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22A79B412819376700673642 /* Project object */;
 }

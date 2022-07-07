@@ -39,6 +39,8 @@ final class OnboardingViewController: UIViewController {
     }
 
     @IBAction private func skipButton(_ sender: Any) {
+        let viewController = RegistrationViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     @IBAction private func nextButton(_ sender: Any) {
@@ -51,15 +53,20 @@ final class OnboardingViewController: UIViewController {
                                              animated: true)
             }
         }
+        if  currentIndexPath.item == viewModel.numberOfItemsInSection() {
+            let viewController = RegistrationViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 
 extension OnboardingViewController: UICollectionViewDataSource {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.numberOfItemsInSection()
     }
-    func collectionView(_ collectionView: UICollectionView,
+
+     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as? OnboardingCollectionViewCell else {
             return UICollectionViewCell()
