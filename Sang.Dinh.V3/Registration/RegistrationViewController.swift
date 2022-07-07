@@ -33,8 +33,9 @@ final class RegistrationViewController: UIViewController {
 
     @IBAction private func loginButton(_ sender: Any) {
         let viewController = RegistrationFirstViewController(statusView: .login)
-            present(viewController, animated: true)
         viewController.delegate = self
+//        let nv = UINavigationController(rootViewController: viewController)
+        present(viewController, animated: true)
     }
 }
 

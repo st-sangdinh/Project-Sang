@@ -59,6 +59,9 @@ final class ChangeNewPasswordViewController: UIViewController {
     @IBAction private func changePassButton(_ sender: Any) {
         if viewModel.isValid() {
             viewModel.updatePassword()
+            let viewController = SuccessViewController()
+            navigationController?.pushViewController(viewController, animated: true
+            )
         }
     }
 

@@ -60,7 +60,7 @@ final class RegistrationFirstViewController: UIViewController {
         configView()
         updateView()
         textFieldChane()
-        self.navigationController?.isNavigationBarHidden = true
+//        self.navigationController?.isNavigationBarHidden = true
     }
 
     private func configView() {
@@ -160,6 +160,9 @@ final class RegistrationFirstViewController: UIViewController {
     @IBAction private func forgetPassword(_ sender: Any) {
         dismiss(animated: true)
         delegate?.viewController(view: self, action: .forgetPassword)
+        
+//        let viewController = ForgetPasswordViewController()
+//        navigationController?.pushViewController(viewController, animated: true)
     }
 
     @IBAction private func registrationButton(_ sender: Any) {

@@ -67,6 +67,8 @@
 		228565D7287590F800C5EC99 /* ChangeNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565D5287590F800C5EC99 /* ChangeNewPasswordViewController.swift */; };
 		228565D8287590F800C5EC99 /* ChangeNewPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565D6287590F800C5EC99 /* ChangeNewPasswordViewController.xib */; };
 		228565DA28766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565D928766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift */; };
+		228565DE2876876900C5EC99 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565DC2876876900C5EC99 /* SuccessViewController.swift */; };
+		228565DF2876876900C5EC99 /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565DD2876876900C5EC99 /* SuccessViewController.xib */; };
 		22A2513028193CE9003FF30B /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2512E28193CE9003FF30B /* BookingViewController.swift */; };
 		22A2513128193CE9003FF30B /* BookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A2512F28193CE9003FF30B /* BookingViewController.xib */; };
 		22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2513228193CF7003FF30B /* AccountViewController.swift */; };
@@ -181,6 +183,8 @@
 		228565D5287590F800C5EC99 /* ChangeNewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewPasswordViewController.swift; sourceTree = "<group>"; };
 		228565D6287590F800C5EC99 /* ChangeNewPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeNewPasswordViewController.xib; sourceTree = "<group>"; };
 		228565D928766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewPasswordViewModel.swift; sourceTree = "<group>"; };
+		228565DC2876876900C5EC99 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		228565DD2876876900C5EC99 /* SuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessViewController.xib; sourceTree = "<group>"; };
 		22A2512E28193CE9003FF30B /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		22A2512F28193CE9003FF30B /* BookingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingViewController.xib; sourceTree = "<group>"; };
 		22A2513228193CF7003FF30B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -454,6 +458,15 @@
 			path = ChangeNewPassword;
 			sourceTree = "<group>";
 		};
+		228565DB2876873D00C5EC99 /* Success */ = {
+			isa = PBXGroup;
+			children = (
+				228565DC2876876900C5EC99 /* SuccessViewController.swift */,
+				228565DD2876876900C5EC99 /* SuccessViewController.xib */,
+			);
+			path = Success;
+			sourceTree = "<group>";
+		};
 		22A25137281A73C6003FF30B /* CustomCell  */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +632,7 @@
 				22A79B66281939DE00673642 /* Account */,
 				22A79B65281939CE00673642 /* Booking */,
 				22A79B60281937B000673642 /* Home */,
+				228565DB2876873D00C5EC99 /* Success */,
 				228565D4287590A700C5EC99 /* ChangeNewPassword */,
 				228565C72875437900C5EC99 /* ForgetPassword */,
 				228565A8286EE68F00C5EC99 /* Registration */,
@@ -801,6 +815,7 @@
 				22A2515E281AC0D9003FF30B /* TodayCollectionViewCell.xib in Resources */,
 				2242023128372520007B5A4B /* RecommendedTableViewCell.xib in Resources */,
 				223C8022283B32640046E334 /* SeeAllToDayViewController.xib in Resources */,
+				228565DF2876876900C5EC99 /* SuccessViewController.xib in Resources */,
 				22A79B562819376900673642 /* Assets.xcassets in Resources */,
 				22A2517A282217E7003FF30B /* BookingHistoryTableViewCell.xib in Resources */,
 				22800EC5282CE39E00D99DF4 /* CartViewController.xib in Resources */,
@@ -878,6 +893,7 @@
 				22800ECE282E4BD600D99DF4 /* BookingTableViewModel.swift in Sources */,
 				22800EC4282CE39E00D99DF4 /* CartViewController.swift in Sources */,
 				228565C2287424FC00C5EC99 /* UserDataStore.swift in Sources */,
+				228565DE2876876900C5EC99 /* SuccessViewController.swift in Sources */,
 				2237853A28224D3B009EAF47 /* AccountViewModel .swift in Sources */,
 				2242023028372520007B5A4B /* RecommendedTableViewCell.swift in Sources */,
 				22800ECC282CF44500D99DF4 /* CartViewModel.swift in Sources */,
