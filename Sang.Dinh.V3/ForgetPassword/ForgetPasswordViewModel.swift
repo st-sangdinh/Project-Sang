@@ -11,6 +11,7 @@ protocol ForgetPasswordViewModelType {
     func setEmail(email: String)
     func isValid() -> Bool
     func checkEmail() -> String
+    func viewModelForChangeNewPasswordViewController() -> ChangeNewPasswordViewModel
     func checkEmail(completion: @escaping Completion<User>)
 }
 
@@ -45,6 +46,10 @@ extension ForgetPasswordViewModel: ForgetPasswordViewModelType {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
            let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: self.email)
+    }
+
+    func viewModelForChangeNewPasswordViewController() -> ChangeNewPasswordViewModel {
+        return ChangeNewPasswordViewModel(email: self.email)
     }
 
     func checkEmail(completion: @escaping Completion<User>) {

@@ -56,6 +56,6 @@ class UserRepository {
     }
 
     func updatePassword(user: User) {
-        
+        UserDataStore.shared.updateUser(user: user)
     }
 }

@@ -64,6 +64,9 @@
 		228565CA2875455800C5EC99 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565C82875455800C5EC99 /* ForgetPasswordViewController.swift */; };
 		228565CB2875455800C5EC99 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565C92875455800C5EC99 /* ForgetPasswordViewController.xib */; };
 		228565CD287548D000C5EC99 /* ForgetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565CC287548D000C5EC99 /* ForgetPasswordViewModel.swift */; };
+		228565D7287590F800C5EC99 /* ChangeNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565D5287590F800C5EC99 /* ChangeNewPasswordViewController.swift */; };
+		228565D8287590F800C5EC99 /* ChangeNewPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228565D6287590F800C5EC99 /* ChangeNewPasswordViewController.xib */; };
+		228565DA28766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228565D928766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift */; };
 		22A2513028193CE9003FF30B /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2512E28193CE9003FF30B /* BookingViewController.swift */; };
 		22A2513128193CE9003FF30B /* BookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A2512F28193CE9003FF30B /* BookingViewController.xib */; };
 		22A2513428193CF7003FF30B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2513228193CF7003FF30B /* AccountViewController.swift */; };
@@ -175,6 +178,9 @@
 		228565C82875455800C5EC99 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		228565C92875455800C5EC99 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
 		228565CC287548D000C5EC99 /* ForgetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewModel.swift; sourceTree = "<group>"; };
+		228565D5287590F800C5EC99 /* ChangeNewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewPasswordViewController.swift; sourceTree = "<group>"; };
+		228565D6287590F800C5EC99 /* ChangeNewPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeNewPasswordViewController.xib; sourceTree = "<group>"; };
+		228565D928766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewPasswordViewModel.swift; sourceTree = "<group>"; };
 		22A2512E28193CE9003FF30B /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		22A2512F28193CE9003FF30B /* BookingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingViewController.xib; sourceTree = "<group>"; };
 		22A2513228193CF7003FF30B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -438,6 +444,16 @@
 			path = ForgetPassword;
 			sourceTree = "<group>";
 		};
+		228565D4287590A700C5EC99 /* ChangeNewPassword */ = {
+			isa = PBXGroup;
+			children = (
+				228565D5287590F800C5EC99 /* ChangeNewPasswordViewController.swift */,
+				228565D6287590F800C5EC99 /* ChangeNewPasswordViewController.xib */,
+				228565D928766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift */,
+			);
+			path = ChangeNewPassword;
+			sourceTree = "<group>";
+		};
 		22A25137281A73C6003FF30B /* CustomCell  */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,6 +619,7 @@
 				22A79B66281939DE00673642 /* Account */,
 				22A79B65281939CE00673642 /* Booking */,
 				22A79B60281937B000673642 /* Home */,
+				228565D4287590A700C5EC99 /* ChangeNewPassword */,
 				228565C72875437900C5EC99 /* ForgetPassword */,
 				228565A8286EE68F00C5EC99 /* Registration */,
 				22856599286ECEA000C5EC99 /* Onboarding */,
@@ -787,6 +804,7 @@
 				22A79B562819376900673642 /* Assets.xcassets in Resources */,
 				22A2517A282217E7003FF30B /* BookingHistoryTableViewCell.xib in Resources */,
 				22800EC5282CE39E00D99DF4 /* CartViewController.xib in Resources */,
+				228565D8287590F800C5EC99 /* ChangeNewPasswordViewController.xib in Resources */,
 				22EC212C282B4CA400118F42 /* DetailHistoryTableViewCell.xib in Resources */,
 				2237854A2823CDD5009EAF47 /* DetailsViewController.xib in Resources */,
 				22A2516A281B81E8003FF30B /* HomeTableHeaderView.xib in Resources */,
@@ -877,6 +895,7 @@
 				228565A4286ECEA000C5EC99 /* OnboardingViewModel.swift in Sources */,
 				22A25185282222BC003FF30B /* Cell2TableViewCell.swift in Sources */,
 				22397C812824C7CE00DD9D7A /* DetailsHeaderViewCell.swift in Sources */,
+				228565D7287590F800C5EC99 /* ChangeNewPasswordViewController.swift in Sources */,
 				225E58BC283E096E00A66B77 /* AlertCartViewController.swift in Sources */,
 				22A25142281A89C1003FF30B /* HomeViewControllerModel.swift in Sources */,
 				22397C7D2824BAFF00DD9D7A /* ListDetailsTableViewCell.swift in Sources */,
@@ -908,6 +927,7 @@
 				228565CD287548D000C5EC99 /* ForgetPasswordViewModel.swift in Sources */,
 				22EC21122828AF9100118F42 /* DetailsViewModel.swift in Sources */,
 				22EC211F282A111800118F42 /* OrderViewController.swift in Sources */,
+				228565DA28766F5D00C5EC99 /* ChangeNewPasswordViewModel.swift in Sources */,
 				228565A7286EE3C300C5EC99 /* AuthRepository.swift in Sources */,
 				225E58B4283CC72000A66B77 /* SearchViewController.swift in Sources */,
 				223785432822729A009EAF47 /* TodayTableViewModel.swift in Sources */,

@@ -18,7 +18,7 @@ final class ForgetPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
-        textFieldChane()
+        textFieldChange()
     }
 
     private func configView() {
@@ -29,7 +29,7 @@ final class ForgetPasswordViewController: UIViewController {
         submitButton.tintColor =  UIColor(red: 0.612, green: 0.639, blue: 0.686, alpha: 1)
     }
 
-    private func textFieldChane() {
+    private func textFieldChange() {
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
     }
 
@@ -65,7 +65,9 @@ final class ForgetPasswordViewController: UIViewController {
             guard let this = self else { return }
             switch result {
                 case.success:
-                    print("Thồng canh")
+                    let viewController = ChangeNewPasswordViewController()
+                    this.navigationController?.pushViewController(viewController, animated: true)
+                    viewController.viewModel = this.viewModel.viewModelForChangeNewPasswordViewController()
                 case.failure(let error):
                     let alertController = UIAlertController(
                         title: "Lỗi",

@@ -35,7 +35,6 @@ class UserDataStore: UserDataStoreType {
         var users = standard.getObjects(type: User.self, key: kUser)
         if let index = users.firstIndex(where: { $0.email == user.email }) {
             users[index].passWord = user.passWord
-  
         }
         standard.saveObjects(users, forKey: kUser)
     }
